@@ -1,41 +1,54 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LightSvgMotion from '../components/LightSvgMotion.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProjectsDirectory from '../components/ProjectsDirectory.astro';
 import projects from '../data/projects.json';
 
 const languages = [...new Set(projects.map((project) => project.language).filter(Boolean))].slice(0, 12);
+const totalStars = projects.reduce((sum, project) => sum + project.stars, 0);
+const totalForks = projects.reduce((sum, project) => sum + project.forks, 0);
+const latestUpdate = projects
+  .map((project) => project.pushedAt || project.updatedAt)
+  .filter(Boolean)
+  .sort()
+  .at(-1);
+const latestUpdateLabel = latestUpdate
+  ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium' }).format(new Date(latestUpdate))
+  : '';
 ---
 
-<BaseLayout title="Projects - IndopenSource">
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">Projects</p>
-      <h1>Direktori proyek Indonesia.</h1>
-      <p>
-        Daftar awal halaman ini disinkronkan dari
-        <a href="https://github.com/IndopenSource/awesome-indonesia">IndopenSource/awesome-indonesia</a>.
-      </p>
-      <div class="project-meta">
-        <span>{projects.length} projects</span>
-        {languages.map((language) => <span>{language}</span>)}
+<BaseLayout
+  title="Projects - IndopenSource"
+  description="Direktori proyek open source Indonesia dari awesome-indonesia dengan filter, pagination, release, topic, dan metadata repo."
+>
+  <PageHeader eyebrow="Projects" title="Direktori proyek Indonesia.">
+    <p>
+      Daftar awal halaman ini disinkronkan dari
+      <a class="font-bold text-brand hover:text-brand-dark" href="https://github.com/IndopenSource/awesome-indonesia">IndopenSource/awesome-indonesia</a>.
+    </p>
+    <div class="mt-4 flex flex-wrap gap-2 text-sm">
+      <span class="rounded-full border border-line px-2 py-1">{projects.length} projects</span>
+      <span class="rounded-full border border-line px-2 py-1">{totalStars.toLocaleString('id-ID')} total stars</span>
+      {languages.map((language) => <span class="rounded-full border border-line px-2 py-1">{language}</span>)}
+    </div>
+    <div class="mt-6 grid gap-3 sm:grid-cols-3">
+      <div class="rounded-lg border border-line bg-canvas p-4">
+        <span class="text-sm font-bold text-muted">Akumulasi stars</span>
+        <strong class="mt-1 block text-2xl text-ink">{totalStars.toLocaleString('id-ID')}</strong>
+      </div>
+      <div class="rounded-lg border border-line bg-canvas p-4">
+        <span class="text-sm font-bold text-muted">Akumulasi forks</span>
+        <strong class="mt-1 block text-2xl text-ink">{totalForks.toLocaleString('id-ID')}</strong>
+      </div>
+      <div class="rounded-lg border border-line bg-canvas p-4">
+        <span class="text-sm font-bold text-muted">Update terbaru</span>
+        <strong class="mt-1 block text-2xl text-ink">{latestUpdateLabel || '-'}</strong>
       </div>
     </div>
-  </section>
-  <section class="section">
-    <div class="container project-list">
-      {
-        projects.map((project) => (
-          <article class="project-card">
-            <span class="status">{project.archived ? 'Archived' : project.language || 'Project'}</span>
-            <h3><a href={project.url}>{project.fullName}</a></h3>
-            <p>{project.description}</p>
-            <div class="project-meta">
-              <span>{project.stars.toLocaleString('id-ID')} stars</span>
-              <span>{project.forks.toLocaleString('id-ID')} forks</span>
-              {project.homepage && <span><a href={project.homepage}>Homepage</a></span>}
-            </div>
-          </article>
-        ))
-      }
-    </div>
-  </section>
+  </PageHeader>
+  <div class="relative h-0 overflow-visible">
+    <LightSvgMotion variant="steps" class="text-brand" />
+  </div>
+  <ProjectsDirectory projects={projects} />
 </BaseLayout>

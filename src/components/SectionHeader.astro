@@ -1,0 +1,27 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+const { eyebrow, title, ctaHref, ctaLabel } = Astro.props;
+---
+
+<div class="mb-7 flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
+  <div>
+    <p class="mb-3.5 text-xs font-black uppercase tracking-[0.08em] text-accent">{eyebrow}</p>
+    <h2 class="m-0 text-[clamp(2rem,4vw,3.4rem)] leading-none">{title}</h2>
+  </div>
+  <div class="max-w-xl text-muted leading-7">
+    <slot />
+  </div>
+  {
+    ctaHref && ctaLabel && (
+      <a class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg border border-brand bg-brand px-4 font-extrabold text-white transition hover:bg-brand-dark" href={ctaHref}>
+        {ctaLabel}
+      </a>
+    )
+  }
+</div>

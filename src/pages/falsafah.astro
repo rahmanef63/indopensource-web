@@ -1,32 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import InfoCard from '../components/InfoCard.astro';
+import PageHeader from '../components/PageHeader.astro';
 ---
 
-<BaseLayout title="Falsafah - IndopenSource">
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">Falsafah</p>
-      <h1>Open source sebagai gotong royong teknis.</h1>
-      <p>
-        IndopenSource mengutamakan proyek yang bisa dipelajari, dipakai ulang,
-        dirawat bersama, dan memberi manfaat nyata bagi ekosistem teknologi Indonesia.
-      </p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container grid">
-      <article class="card">
-        <h3>Terbuka</h3>
+<BaseLayout
+  title="Falsafah - IndopenSource"
+  description="Falsafah IndopenSource tentang open source sebagai gotong royong teknis yang terbuka, terawat, dan bermanfaat."
+>
+  <PageHeader eyebrow="Falsafah" title="Open source sebagai gotong royong teknis.">
+    <p>
+      IndopenSource mengutamakan proyek yang bisa dipelajari, dipakai ulang,
+      dirawat bersama, dan memberi manfaat nyata bagi ekosistem teknologi Indonesia.
+    </p>
+  </PageHeader>
+  <section class="py-18">
+    <div class="mx-auto grid w-[min(1120px,calc(100%-32px))] grid-cols-3 gap-4 max-lg:grid-cols-1">
+      <InfoCard title="Terbuka">
         <p>Kode, diskusi, keputusan, dan roadmap dibuat mudah ditemukan oleh publik.</p>
-      </article>
-      <article class="card">
-        <h3>Terawat</h3>
+      </InfoCard>
+      <InfoCard title="Terawat">
         <p>Daftar proyek perlu kurasi, metadata yang jelas, dan ritme pembaruan yang sehat.</p>
-      </article>
-      <article class="card">
-        <h3>Bermanfaat</h3>
+      </InfoCard>
+      <InfoCard title="Bermanfaat">
         <p>Fokus pada perangkat, pustaka, data, dan praktik yang membantu pengguna Indonesia.</p>
-      </article>
+      </InfoCard>
     </div>
   </section>
 </BaseLayout>

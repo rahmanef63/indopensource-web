@@ -1,0 +1,22 @@
+---
+import { withBase } from '../lib/urls';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'light';
+}
+
+const { href, variant = 'primary' } = Astro.props;
+const isExternal = /^https?:\/\//.test(href);
+const targetHref = isExternal ? href : withBase(href);
+
+const variants = {
+  primary: 'border-brand bg-brand text-white hover:bg-brand-dark',
+  secondary: 'border-current bg-transparent text-current hover:bg-ink/5',
+  light: 'border-paper bg-paper text-brand-dark hover:bg-white'
+};
+---
+
+<a class={`inline-flex min-h-11 items-center justify-center rounded-lg border px-4 font-extrabold transition ${variants[variant]}`} href={targetHref}>
+  <slot />
+</a>

@@ -1,0 +1,21 @@
+---
+const items = [
+  ['Milestone 1', 'Foundation website', 'Setup repo, desain halaman inti, SEO dasar, dan build statis.'],
+  ['Milestone 2', 'Project directory', 'Sinkronisasi dari awesome-indonesia, filter, pencarian, dan detail proyek.'],
+  ['Milestone 3', 'Knowledge dan forum', 'Blog repo, editorial flow, dan integrasi GitHub Discussions.']
+];
+---
+
+<div class="grid gap-3.5">
+  {
+    items.map(([milestone, title, description]) => (
+      <div class="grid grid-cols-[160px_minmax(0,1fr)] gap-5 border-t border-line pt-4 max-md:grid-cols-1">
+        <strong class="text-brand-dark">{milestone}</strong>
+        <div>
+          <h3 class="text-lg font-bold">{title}</h3>
+          <p class="mt-2 leading-7 text-muted">{description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

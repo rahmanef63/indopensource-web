@@ -1,0 +1,16 @@
+---
+const links = [
+  ['GitHub', 'https://github.com/IndopenSource'],
+  ['Discussions', 'https://github.com/orgs/IndopenSource/discussions'],
+  ['Roadmap', 'https://github.com/orgs/IndopenSource/projects']
+];
+---
+
+<footer class="border-t border-line bg-ink pt-8 pb-8 text-paper/80 max-md:pb-28">
+  <div class="mx-auto flex w-[min(1120px,calc(100%-32px))] items-center justify-between gap-4 max-md:flex-col max-md:items-start">
+    <span>IndopenSource.org adalah ruang kerja terbuka untuk ekosistem open source Indonesia.</span>
+    <div class="flex flex-wrap gap-3.5">
+      {links.map(([label, href]) => <a class="font-semibold hover:text-paper" href={href}>{label}</a>)}
+    </div>
+  </div>
+</footer>

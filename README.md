@@ -1,6 +1,17 @@
 # IndopenSource.org
 
+[![Deploy to GitHub Pages](https://github.com/IndopenSource/indopensource.org/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/IndopenSource/indopensource.org/actions/workflows/deploy-pages.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 Website roadmap untuk `https://indopensource.org`.
+
+## Tech Stack
+
+- Astro
+- Tailwind CSS
+- TypeScript
+- GitHub Pages
+- GitHub Actions
 
 ## Pages
 
@@ -17,6 +28,25 @@ Website roadmap untuk `https://indopensource.org`.
 npm install
 npm run sync:projects
 npm run dev
+```
+
+## Project Structure
+
+```txt
+src/
+  components/   Reusable Astro UI components
+  data/         Synced project directory data
+  layouts/      Shared page layout
+  lib/          Small shared helpers
+  pages/        Route files
+  styles/       Tailwind entrypoint and theme tokens
+```
+
+## Checks
+
+```bash
+npm run check
+npm run build
 ```
 
 ## MVP Pre-release
@@ -51,3 +81,28 @@ lalu mengambil metadata repo dari GitHub API dan menulis hasilnya ke
 `src/data/projects.json`.
 
 Gunakan `GITHUB_TOKEN` atau `GH_TOKEN` untuk rate limit yang lebih lega.
+
+## Blog Sync
+
+`npm run sync:blog` membaca artikel Markdown dari
+`IndopenSource/Blog-IndopenSource`, mengambil metadata commit penulis/rilis,
+dan menulis hasilnya ke `src/data/blog-posts.json`.
+
+## Auto Sync
+
+Workflow `.github/workflows/sync-content.yml` memperbarui data secara otomatis.
+
+- Manual: jalankan workflow `Sync content data`.
+- Schedule: berjalan setiap 6 jam.
+- Dispatch dari repo lain:
+  - `sync-projects`
+  - `sync-blog`
+  - `sync-content`
+
+Jika data berubah, workflow membuat commit `Sync content data`. Setelah commit
+masuk `main`, workflow yang sama akan upload artifact dan deploy ulang GitHub
+Pages agar perubahan data langsung tayang.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).

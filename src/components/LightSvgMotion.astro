@@ -1,0 +1,44 @@
+---
+interface Props {
+  variant?: 'network' | 'orbit' | 'steps';
+  class?: string;
+}
+
+const { variant = 'network', class: className = '' } = Astro.props;
+---
+
+{
+  variant === 'network' && (
+    <svg class={`pointer-events-none absolute inset-0 h-full w-full opacity-35 ${className}`} viewBox="0 0 900 460" aria-hidden="true">
+      <path class="motion-line" d="M-20 270 C 150 190, 260 360, 430 260 S 690 180, 930 260" />
+      <path class="motion-line motion-delay" d="M-30 320 C 130 260, 250 430, 450 330 S 650 260, 930 340" />
+      <g class="motion-dots">
+        <circle cx="115" cy="238" r="7" />
+        <circle cx="300" cy="338" r="8" />
+        <circle cx="520" cy="240" r="7" />
+        <circle cx="700" cy="210" r="8" />
+      </g>
+    </svg>
+  )
+}
+
+{
+  variant === 'orbit' && (
+    <svg class={`pointer-events-none absolute right-0 top-8 h-60 w-60 opacity-30 ${className}`} viewBox="0 0 240 240" aria-hidden="true">
+      <circle class="motion-orbit" cx="120" cy="120" r="88" />
+      <circle class="motion-orbit motion-delay" cx="120" cy="120" r="56" />
+      <circle class="motion-pulse" cx="176" cy="120" r="10" />
+      <circle class="motion-pulse motion-delay" cx="120" cy="64" r="7" />
+    </svg>
+  )
+}
+
+{
+  variant === 'steps' && (
+    <svg class={`pointer-events-none absolute inset-x-0 bottom-0 h-24 w-full opacity-25 ${className}`} viewBox="0 0 900 120" preserveAspectRatio="none" aria-hidden="true">
+      <path class="motion-line" d="M0 80 H160 C210 80 210 35 260 35 H420 C470 35 470 80 520 80 H900" />
+      <circle class="motion-pulse" cx="260" cy="35" r="8" />
+      <circle class="motion-pulse motion-delay" cx="520" cy="80" r="8" />
+    </svg>
+  )
+}

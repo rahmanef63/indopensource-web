@@ -1,0 +1,29 @@
+---
+import BaseButton from './BaseButton.astro';
+import LightSvgMotion from './LightSvgMotion.astro';
+import { withBase } from '../lib/urls';
+---
+
+<section
+  class="relative min-h-[calc(100vh-68px)] overflow-hidden bg-[image:linear-gradient(115deg,rgba(15,111,92,0.9),rgba(29,37,40,0.68)),var(--hero-image)] bg-cover bg-center py-20 text-paper max-lg:min-h-0 max-lg:py-14"
+  style={`--hero-image: url("${withBase('/images/hero-community.svg')}")`}
+>
+  <LightSvgMotion variant="network" />
+  <div class="relative mx-auto grid w-[min(1120px,calc(100%-32px))] grid-cols-[minmax(0,1fr)_240px] items-center gap-10 max-lg:grid-cols-1">
+    <div>
+      <p class="mb-3.5 text-xs font-black uppercase tracking-[0.08em] text-sun">Roadmap website komunitas</p>
+      <h1 class="m-0 max-w-3xl text-[clamp(3rem,8vw,6.6rem)] leading-[0.96] max-sm:text-[clamp(2.7rem,15vw,4.5rem)]">
+        IndopenSource.org
+      </h1>
+      <p class="mt-6 max-w-3xl text-[clamp(1.05rem,2vw,1.3rem)] leading-8 text-paper/85">
+        Rumah terbuka untuk merawat daftar proyek, mendokumentasikan falsafah,
+        menulis pembelajaran, dan menghubungkan kontributor open source Indonesia.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <BaseButton href="/projects/" variant="light">Lihat projects</BaseButton>
+        <BaseButton href="https://github.com/orgs/IndopenSource/projects" variant="secondary">Roadmap GitHub</BaseButton>
+      </div>
+    </div>
+    <img class="hidden w-60 justify-self-end rounded-[28px] bg-paper/95 p-5 shadow-2xl shadow-ink/20 md:block motion-float" src={withBase('/brand/indopensource-logo.png')} alt="IndopenSource" />
+  </div>
+</section>

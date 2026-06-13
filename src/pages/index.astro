@@ -1,133 +1,64 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from '../components/HomeHero.astro';
+import InfoCard from '../components/InfoCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import RoadmapTimeline from '../components/RoadmapTimeline.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import BaseButton from '../components/BaseButton.astro';
+import LightSvgMotion from '../components/LightSvgMotion.astro';
 import projects from '../data/projects.json';
 
 const totalProjects = projects.length;
 const topProjects = projects.slice(0, 3);
-const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const withBase = (path: string) => `${baseUrl}${path.replace(/^\/+/, '')}`;
 ---
 
 <BaseLayout
   title="IndopenSource.org"
   description="Roadmap website IndopenSource untuk falsafah, direktori proyek, blog, forum, dan kolaborasi open source Indonesia."
 >
-  <section class="hero" style={`--hero-image: url("${withBase('/images/hero-community.svg')}")`}>
-    <div class="container hero-grid">
-      <div>
-        <p class="eyebrow">Roadmap website komunitas</p>
-        <h1>IndopenSource.org</h1>
-        <p class="lead">
-          Rumah terbuka untuk merawat daftar proyek, mendokumentasikan falsafah,
-          menulis pembelajaran, dan menghubungkan kontributor open source Indonesia.
-        </p>
-        <div class="hero-actions">
-          <a class="button light" href={withBase('/projects/')}>Lihat projects</a>
-          <a class="button secondary" href="https://github.com/orgs/IndopenSource/projects">Roadmap GitHub</a>
-        </div>
-      </div>
-      <aside class="roadmap-panel" aria-label="Tahap roadmap">
-        <strong>Fase awal</strong>
-        <ol>
-          <li>Bangun halaman inti dan narasi IndopenSource.</li>
-          <li>Sinkronkan direktori dari awesome-indonesia.</li>
-          <li>Siapkan blog repo dan forum berbasis GitHub Discussions.</li>
-          <li>Publish milestone publik untuk kolaborator.</li>
-        </ol>
-      </aside>
-    </div>
-  </section>
+  <HomeHero />
 
-  <section class="section alt">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Arsitektur konten</p>
-          <h2>Halaman yang dibangun bertahap</h2>
-        </div>
-        <p>
-          Situs ini disiapkan sebagai dashboard komunitas: stabil untuk pengunjung,
-          tapi tetap dekat dengan alur kerja GitHub yang dipakai IndopenSource.
-        </p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <span class="status">Live scaffold</span>
-          <h3>Home dan Falsafah</h3>
+  <section class="relative overflow-hidden bg-paper py-18">
+    <LightSvgMotion variant="orbit" />
+    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
+      <SectionHeader eyebrow="Arsitektur konten" title="Halaman yang dibangun bertahap">
+        Situs ini disiapkan sebagai dashboard komunitas: stabil untuk pengunjung,
+        tapi tetap dekat dengan alur kerja GitHub yang dipakai IndopenSource.
+      </SectionHeader>
+      <div class="grid grid-cols-3 gap-4 max-lg:grid-cols-1">
+        <InfoCard status="Live scaffold" title="Home dan Falsafah">
           <p>Memperkenalkan misi, prinsip kurasi, dan cara kontribusi komunitas.</p>
-        </article>
-        <article class="card">
-          <span class="status">{totalProjects} repo</span>
-          <h3>Projects</h3>
+        </InfoCard>
+        <InfoCard status={`${totalProjects} repo`} title="Projects">
           <p>Direktori awal mengambil daftar dari IndopenSource/awesome-indonesia.</p>
-        </article>
-        <article class="card">
-          <span class="status">Planned</span>
-          <h3>Blog dan Forum</h3>
+        </InfoCard>
+        <InfoCard status="Planned" title="Blog dan Forum">
           <p>Blog direncanakan sebagai repo khusus, forum dari GitHub Discussions.</p>
-        </article>
+        </InfoCard>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Roadmap</p>
-          <h2>Urutan pekerjaan</h2>
-        </div>
-        <a class="button" href={withBase('/contact/')}>Gabung diskusi</a>
+  <section class="relative overflow-hidden py-18">
+    <LightSvgMotion variant="steps" />
+    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
+      <div class="mb-7 flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
+        <SectionHeader eyebrow="Roadmap" title="Urutan pekerjaan" />
+        <BaseButton href="/contact/">Gabung diskusi</BaseButton>
       </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <strong>Milestone 1</strong>
-          <div>
-            <h3>Foundation website</h3>
-            <p>Setup repo, desain halaman inti, SEO dasar, dan build statis.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <strong>Milestone 2</strong>
-          <div>
-            <h3>Project directory</h3>
-            <p>Sinkronisasi dari awesome-indonesia, filter, pencarian, dan detail proyek.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <strong>Milestone 3</strong>
-          <div>
-            <h3>Knowledge dan forum</h3>
-            <p>Blog repo, editorial flow, dan integrasi GitHub Discussions.</p>
-          </div>
-        </div>
-      </div>
+      <RoadmapTimeline />
     </div>
   </section>
 
-  <section class="section alt">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Contoh projects</p>
-          <h2>Dari awesome-indonesia</h2>
-        </div>
-        <a class="button secondary" href={withBase('/projects/')}>Buka semua</a>
+  <section class="bg-paper py-18">
+    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
+      <div class="mb-7 flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
+        <SectionHeader eyebrow="Contoh projects" title="Dari awesome-indonesia" />
+        <BaseButton href="/projects/" variant="secondary">Buka semua</BaseButton>
       </div>
-      <div class="project-list">
-        {
-          topProjects.map((project) => (
-            <article class="project-card">
-              <h3><a href={project.url}>{project.fullName}</a></h3>
-              <p>{project.description}</p>
-              <div class="project-meta">
-                {project.language && <span>{project.language}</span>}
-                <span>{project.stars.toLocaleString('id-ID')} stars</span>
-                <span>{project.forks.toLocaleString('id-ID')} forks</span>
-              </div>
-            </article>
-          ))
-        }
+      <div class="grid grid-cols-2 gap-4 max-lg:grid-cols-1">
+        {topProjects.map((project) => <ProjectCard project={project} />)}
       </div>
     </div>
   </section>

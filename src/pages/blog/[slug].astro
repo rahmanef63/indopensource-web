@@ -1,0 +1,58 @@
+---
+import { marked } from 'marked';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import blogPosts from '../../data/blog-posts.json';
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const html = marked.parse(post.content);
+const authorDate = post.author?.committedAt
+  ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(new Date(post.author.committedAt))
+  : '';
+const releaseDate = post.releasedAt
+  ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(new Date(post.releasedAt))
+  : '';
+---
+
+<BaseLayout title={`${post.title} - IndopenSource`} description={post.description} type="article">
+  <PageHeader eyebrow="Blog" title={post.title}>
+    <p>{post.description}</p>
+    <div class="mt-4 flex flex-wrap gap-2 text-sm text-muted">
+      {releaseDate && <span class="rounded-full border border-line px-2 py-1">Rilis {releaseDate}</span>}
+      {post.tags.map((tag) => <span class="rounded-full border border-line px-2 py-1">{tag}</span>)}
+      <span class="rounded-full border border-line px-2 py-1">{post.status}</span>
+    </div>
+  </PageHeader>
+
+  <article class="mx-auto w-[min(820px,calc(100%-32px))] pt-7 pb-12">
+    <div class="article-body" set:html={html} />
+
+    <footer class="mt-12 rounded-lg border border-line bg-paper p-5">
+      <p class="text-sm font-black uppercase tracking-[0.08em] text-accent">Penulis</p>
+      <div class="mt-4 flex items-center gap-3">
+        {
+          post.author?.avatarUrl && (
+            <img class="size-12 rounded-lg border border-line" src={post.author.avatarUrl} alt={`${post.author.name} avatar`} />
+          )
+        }
+        <div>
+          <a class="font-extrabold text-brand hover:text-brand-dark" href={post.author?.url}>{post.author?.name}</a>
+          <p class="text-sm text-muted">
+            Diambil otomatis dari commit pertama file artikel{authorDate ? ` pada ${authorDate}` : ''}.
+          </p>
+        </div>
+      </div>
+      <div class="mt-5 flex flex-wrap gap-2 text-sm">
+        <a class="rounded-full border border-line px-3 py-2 font-bold hover:text-brand" href={post.sourceUrl}>Lihat sumber Markdown</a>
+        <a class="rounded-full border border-line px-3 py-2 font-bold hover:text-brand" href="https://github.com/IndopenSource/Blog-IndopenSource">Repo blog</a>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>

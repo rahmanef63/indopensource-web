@@ -1,0 +1,194 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+interface Project {
+  fullName: string;
+  description: string;
+  url: string;
+  homepage?: string;
+  language?: string;
+  owner?: string;
+  ownerAvatarUrl?: string;
+  stars: number;
+  forks: number;
+  topics?: string[];
+  updatedAt?: string;
+  pushedAt?: string;
+  latestRelease?: {
+    name: string;
+    tagName: string;
+    url: string;
+    publishedAt: string;
+  } | null;
+  archived?: boolean;
+}
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+const languages = [...new Set(projects.map((project) => project.language).filter((language): language is string => Boolean(language)))].sort();
+const topics = [...new Set(projects.flatMap((project) => project.topics || []))].sort().slice(0, 80);
+---
+
+<section class="pt-8 pb-18" data-projects-directory>
+  <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
+    <div class="mb-5 grid gap-3 rounded-lg border border-line bg-paper p-4 md:grid-cols-[minmax(0,1fr)_180px_180px_170px]">
+      <label class="grid gap-1.5 text-sm font-bold text-ink">
+        Cari
+        <input
+          class="min-h-11 rounded-lg border border-line bg-white px-3 font-normal text-muted outline-none focus:border-brand"
+          type="search"
+          placeholder="Nama repo, owner, deskripsi..."
+          data-project-search
+        />
+      </label>
+      <label class="grid gap-1.5 text-sm font-bold text-ink">
+        Bahasa
+        <select class="min-h-11 rounded-lg border border-line bg-white px-3 font-normal text-muted outline-none focus:border-brand" data-project-language>
+          <option value="">Semua</option>
+          {languages.map((language) => <option value={language.toLowerCase()}>{language}</option>)}
+        </select>
+      </label>
+      <label class="grid gap-1.5 text-sm font-bold text-ink">
+        Tag
+        <select class="min-h-11 rounded-lg border border-line bg-white px-3 font-normal text-muted outline-none focus:border-brand" data-project-topic>
+          <option value="">Semua</option>
+          {topics.map((topic) => <option value={topic.toLowerCase()}>{topic}</option>)}
+        </select>
+      </label>
+      <label class="grid gap-1.5 text-sm font-bold text-ink">
+        Urutkan
+        <select class="min-h-11 rounded-lg border border-line bg-white px-3 font-normal text-muted outline-none focus:border-brand" data-project-sort>
+          <option value="stars">Stars</option>
+          <option value="updated">Update terbaru</option>
+          <option value="release">Release terbaru</option>
+          <option value="name">Nama</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="mb-4 flex flex-wrap items-center justify-between gap-3 text-sm text-muted" data-project-pagination>
+      <p class="font-bold"><span data-project-count>{projects.length}</span> project ditemukan</p>
+      <div class="flex items-center gap-2">
+        <button class="rounded-lg border border-line px-3 py-2 font-bold hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-40" type="button" data-project-prev>
+          Sebelumnya
+        </button>
+        <span class="font-bold text-ink" data-project-page>1 / 1</span>
+        <button class="rounded-lg border border-line px-3 py-2 font-bold hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-40" type="button" data-project-next>
+          Berikutnya
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 max-lg:grid-cols-1" data-project-list>
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+
+    <div class="mt-8 hidden rounded-lg border border-line bg-paper p-5 text-center text-muted" data-project-empty>
+      Tidak ada project yang cocok dengan filter ini.
+    </div>
+
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm text-muted" data-project-pagination>
+      <p class="font-bold"><span data-project-count>{projects.length}</span> project ditemukan</p>
+      <div class="flex items-center gap-2">
+        <button class="rounded-lg border border-line px-3 py-2 font-bold hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-40" type="button" data-project-prev>
+          Sebelumnya
+        </button>
+        <span class="font-bold text-ink" data-project-page>1 / 1</span>
+        <button class="rounded-lg border border-line px-3 py-2 font-bold hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-40" type="button" data-project-next>
+          Berikutnya
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector('[data-projects-directory]');
+
+  if (root) {
+    const pageSize = 12;
+    let page = 1;
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-project-card]'));
+    const searchInput = root.querySelector('[data-project-search]');
+    const languageInput = root.querySelector('[data-project-language]');
+    const topicInput = root.querySelector('[data-project-topic]');
+    const sortInput = root.querySelector('[data-project-sort]');
+    const countOutputs = Array.from(root.querySelectorAll('[data-project-count]'));
+    const pageOutputs = Array.from(root.querySelectorAll('[data-project-page]'));
+    const prevButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-project-prev]'));
+    const nextButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-project-next]'));
+    const emptyState = root.querySelector('[data-project-empty]');
+    const list = root.querySelector('[data-project-list]');
+
+    const getValue = (element: Element | null) => element instanceof HTMLInputElement || element instanceof HTMLSelectElement ? element.value.toLowerCase() : '';
+    const toTime = (value?: string) => value ? new Date(value).getTime() || 0 : 0;
+
+    function matches(card: HTMLElement) {
+      const query = getValue(searchInput);
+      const language = getValue(languageInput);
+      const topic = getValue(topicInput);
+      const haystack = [
+        card.dataset.name,
+        card.dataset.owner,
+        card.dataset.description,
+        card.dataset.topics
+      ].join(' ');
+
+      return (!query || haystack.includes(query))
+        && (!language || card.dataset.language === language)
+        && (!topic || (card.dataset.topics || '').split(' ').includes(topic));
+    }
+
+    function sortCards(items: HTMLElement[]) {
+      const sort = getValue(sortInput);
+      return [...items].sort((a, b) => {
+        if (sort === 'updated') return toTime(b.dataset.updated) - toTime(a.dataset.updated);
+        if (sort === 'release') return toTime(b.dataset.release) - toTime(a.dataset.release);
+        if (sort === 'name') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+        return Number(b.dataset.stars || 0) - Number(a.dataset.stars || 0);
+      });
+    }
+
+    function render() {
+      const filtered = sortCards(cards.filter(matches));
+      const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+      page = Math.min(page, totalPages);
+      const start = (page - 1) * pageSize;
+      const visible = new Set(filtered.slice(start, start + pageSize));
+
+      cards.forEach((card) => {
+        card.classList.toggle('hidden', !visible.has(card));
+      });
+
+      filtered.forEach((card) => list?.appendChild(card));
+
+      countOutputs.forEach((output) => output.textContent = String(filtered.length));
+      pageOutputs.forEach((output) => output.textContent = `${page} / ${totalPages}`);
+      prevButtons.forEach((button) => button.disabled = page <= 1);
+      nextButtons.forEach((button) => button.disabled = page >= totalPages);
+      emptyState?.classList.toggle('hidden', filtered.length > 0);
+    }
+
+    [searchInput, languageInput, topicInput, sortInput].forEach((input) => {
+      input?.addEventListener('input', () => {
+        page = 1;
+        render();
+      });
+    });
+
+    prevButtons.forEach((button) => button.addEventListener('click', () => {
+      page = Math.max(1, page - 1);
+      render();
+    }));
+
+    nextButtons.forEach((button) => button.addEventListener('click', () => {
+      page += 1;
+      render();
+    }));
+
+    render();
+  }
+</script>

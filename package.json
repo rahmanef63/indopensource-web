@@ -5,13 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "sync:projects": "node scripts/sync-projects.mjs"
+    "sync:projects": "node scripts/sync-projects.mjs",
+    "sync:blog": "node scripts/sync-blog-posts.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@tailwindcss/vite": "^4.3.1",
     "astro": "^5.10.1",
+    "marked": "^18.0.5",
+    "tailwindcss": "^4.3.1",
     "typescript": "^5.8.3"
   }
 }

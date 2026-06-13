@@ -1,25 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseButton from '../components/BaseButton.astro';
+import PageHeader from '../components/PageHeader.astro';
 ---
 
-<BaseLayout title="Forum - IndopenSource">
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">Forum</p>
-      <h1>Diskusi publik via GitHub Discussions.</h1>
-      <p>
-        Forum direncanakan mengambil sumber dari organization discussions supaya percakapan
-        tetap dekat dengan repo, issue, project board, dan kontributor.
-      </p>
-      <div class="actions">
-        <a class="button" href="https://github.com/orgs/IndopenSource/discussions">Buka discussions</a>
-        <a class="button secondary" href="https://github.com/orgs/IndopenSource/projects">Buka project board</a>
-      </div>
+<BaseLayout
+  title="Forum - IndopenSource"
+  description="Forum diskusi publik IndopenSource berbasis GitHub Discussions untuk ide, pertanyaan, dan koordinasi komunitas."
+>
+  <PageHeader eyebrow="Forum" title="Diskusi publik via GitHub Discussions.">
+    <p>
+      Forum direncanakan mengambil sumber dari organization discussions supaya percakapan
+      tetap dekat dengan repo, issue, project board, dan kontributor.
+    </p>
+    <div class="mt-7 flex flex-wrap gap-3 text-ink">
+      <BaseButton href="https://github.com/orgs/IndopenSource/discussions">Buka discussions</BaseButton>
+      <BaseButton href="https://github.com/orgs/IndopenSource/projects" variant="secondary">Buka project board</BaseButton>
     </div>
-  </section>
-  <section class="section alt">
-    <div class="container">
-      <div class="notice">
+  </PageHeader>
+  <section class="bg-paper py-18">
+    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
+      <div class="border-l-4 border-accent bg-[#fff1dc] px-5 py-4 leading-7">
         Integrasi tahap lanjut dapat membaca GraphQL GitHub Discussions untuk menampilkan kategori,
         thread terbaru, dan status jawaban langsung di situs.
       </div>

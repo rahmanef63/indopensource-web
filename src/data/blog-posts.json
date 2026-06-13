@@ -1,0 +1,25 @@
+[
+  {
+    "slug": "memperkenalkan-blog-indopensource",
+    "path": "content/2026/06/memperkenalkan-blog-indopensource.md",
+    "year": "2026",
+    "month": "06",
+    "title": "Memperkenalkan Blog IndopenSource",
+    "description": "Catatan awal tentang rencana blog komunitas IndopenSource.",
+    "date": "2026-06-14",
+    "tags": [
+      "community",
+      "roadmap"
+    ],
+    "status": "draft",
+    "content": "Blog IndopenSource disiapkan sebagai tempat mencatat kerja komunitas open source\nIndonesia secara rapi dan mudah ditinjau.\n\n## Fokus Awal\n\nFokus awal blog ini adalah tulisan yang membantu pembaca menemukan proyek,\nmemahami praktik perawatan open source, dan mengikuti perkembangan komunitas.\n\nKategori awal yang akan dikurasi:\n\n- Project spotlight.\n- Learning notes.\n- Release notes.\n- Catatan maintenance.\n- Kabar komunitas.\n\n## Cara Berkontribusi\n\nKontributor dapat menyalin template dari `templates/article.md`, membuat file di\nfolder `content/YYYY/MM/`, lalu membuka pull request.\n\nSetiap tulisan akan direview agar struktur, sumber, dan nada tulisannya sesuai\ndengan kebutuhan pembaca IndopenSource.\n\n## Langkah Berikutnya\n\nSetelah alur editorial stabil, konten dari repo ini dapat diintegrasikan ke\nwebsite `indopensource.org`.",
+    "sourceUrl": "https://github.com/IndopenSource/Blog-IndopenSource/blob/main/content/2026/06/memperkenalkan-blog-indopensource.md",
+    "releasedAt": "2026-06-13T17:37:55Z",
+    "author": {
+      "name": "wauputr4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/103489788?v=4",
+      "url": "https://github.com/wauputr4",
+      "committedAt": "2026-06-13T17:37:55Z"
+    }
+  }
+]
