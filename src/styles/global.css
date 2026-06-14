@@ -19,7 +19,9 @@
   --color-paper: #fffdf8;
   --color-canvas: #f7f4ec;
   --color-ink: #1d2528;
-  --color-muted: #667272;
+  /* Darkened from #667272 (4.53:1 on canvas — AA-passing but thin) for headroom:
+     now 5.48:1 on canvas / 5.93:1 on paper for small muted body text. */
+  --color-muted: #5a6565;
   --color-line: #ddd6c7;
   --color-brand: #0f6f5c;
   --color-brand-dark: #0a4f43;
@@ -148,6 +150,12 @@
 }
 
 @layer components {
+  /* Hero background image, moved off an inline `style` attribute so the CSP can
+     drop `style-src 'unsafe-inline'` (SEC-02). The site ships at base path `/`. */
+  .home-hero {
+    --hero-image: url("/brand/indopensource-hero.jpg");
+  }
+
   .article-body {
     @apply text-lg leading-8 text-muted;
   }

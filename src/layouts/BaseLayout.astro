@@ -52,10 +52,11 @@ const jsonLdString = JSON.stringify(structuredData);
  * than `'unsafe-inline'`, so an injected `<script>` in user-derived HTML (e.g.
  * the sanitised blog body) still cannot execute.
  *
- * `style-src` permits `'unsafe-inline'` because Astro inlines critical CSS as
- * `<style>` blocks during the build; this is a low-risk allowance and the
- * meaningful XSS boundary stays on `script-src`. Remote images are limited to
- * the GitHub asset/avatar hosts the project data actually references.
+ * `style-src 'self'` with NO `'unsafe-inline'`: Astro emits all CSS (scoped
+ * component styles + Tailwind) as external stylesheets, and the one inline
+ * custom-property the hero used was moved to `.home-hero` in global.css, so no
+ * inline `style`/`<style>` remains. Remote images are limited to the GitHub
+ * asset/avatar + star-history hosts the project data actually references.
  */
 // SHA-256 of the exact JSON-LD bytes, base64-encoded, for the CSP allow-list.
 // Uses the Web Crypto API (available in Astro's build runtime) so no Node-only
@@ -73,7 +74,7 @@ const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   `script-src 'self' 'sha256-${jsonLdHash}'`,
-  "style-src 'self' 'unsafe-inline'",
+  "style-src 'self'",
   // `api.star-history.com` serves the per-project star-history SVG embedded on
   // every project detail page; without it the CSP blocks that image. The other
   // hosts cover GitHub avatars and raw blog/README assets.

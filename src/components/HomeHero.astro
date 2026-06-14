@@ -1,12 +1,10 @@
 ---
 import BaseButton from './BaseButton.astro';
 import LightSvgMotion from './LightSvgMotion.astro';
-import { withBase } from '../lib/urls';
 ---
 
 <section
-  class="relative overflow-hidden bg-[image:linear-gradient(90deg,rgba(29,37,40,0.92)_0%,rgba(15,111,92,0.78)_46%,rgba(29,37,40,0.5)_100%),var(--hero-image)] bg-cover bg-left py-16 text-paper md:min-h-[min(600px,calc(100vh-68px))] md:py-18 max-md:py-12"
-  style={`--hero-image: url("${withBase('/brand/indopensource-hero.jpg')}")`}
+  class="home-hero relative overflow-hidden bg-[image:linear-gradient(90deg,rgba(29,37,40,0.92)_0%,rgba(15,111,92,0.78)_46%,rgba(29,37,40,0.5)_100%),var(--hero-image)] bg-cover bg-left py-16 text-paper md:min-h-[min(600px,calc(100vh-68px))] md:py-18 max-md:py-12"
 >
   <LightSvgMotion variant="network" />
   <div class="relative mx-auto w-[min(1040px,calc(100%-80px))] max-md:w-[calc(100%-32px)]">
