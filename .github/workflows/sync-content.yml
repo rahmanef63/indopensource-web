@@ -1,5 +1,15 @@
 name: Sync content data
 
+# Refreshes the committed content snapshots (projects.json, blog-posts.json)
+# from their upstream sources and commits any drift back to the branch.
+#
+# This workflow only syncs and commits data. It does NOT deploy: publishing is
+# owned solely by the "Deploy to GitHub Pages" workflow (PERF-7 / CQ-13). The
+# commit pushed here triggers that deploy on its own, so duplicating the Pages
+# build+deploy steps inside this job only created a second concurrent deploy
+# racing the first. Those steps (Setup Pages, upload-pages-artifact,
+# deploy-pages) and the `pages: write` / `id-token: write` permissions have
+# been removed accordingly.
 on:
   workflow_dispatch:
     inputs:
@@ -12,8 +22,13 @@ on:
           - all
           - projects
           - blog
+  # Upstream runs this on a schedule to keep content fresh. Every six hours
+  # ("17 */6 * * *") is far more often than community content changes and
+  # quietly burns Actions minutes (PERF-5 / PERF-6), so the cadence is reduced
+  # to once daily. A personal fork can comment this `schedule` block out
+  # entirely and rely on `workflow_dispatch` / `repository_dispatch`.
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "17 6 * * *"
   repository_dispatch:
     types:
       - sync-projects
@@ -22,8 +37,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -46,10 +59,6 @@ jobs:
         with:
           node-version: 22
           cache: npm
-
-      - name: Setup Pages
-        if: ${{ github.ref == 'refs/heads/main' }}
-        uses: actions/configure-pages@v6
 
       - name: Install dependencies
         run: npm ci
@@ -104,15 +113,6 @@ jobs:
 
       - name: Push synced data
         if: ${{ steps.commit.outputs.changed == 'true' }}
+        # Pushing here is enough: the Deploy to GitHub Pages workflow handles
+        # publishing the new snapshot. This job intentionally stops at push.
         run: git push
-
-      - name: Upload Pages artifact
-        if: ${{ steps.commit.outputs.changed == 'true' && github.ref == 'refs/heads/main' }}
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: dist
-
-      - name: Deploy synced data to GitHub Pages
-        if: ${{ steps.commit.outputs.changed == 'true' && github.ref == 'refs/heads/main' }}
-        id: deployment
-        uses: actions/deploy-pages@v5

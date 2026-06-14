@@ -1,10 +1,18 @@
 name: CI
 
+# Build verification for pull requests.
+#
+# Upstream intent: this workflow guards the default branch. Upstream the
+# `push: main` trigger below would also run here, but the dedicated
+# "Deploy to GitHub Pages" workflow already performs a full build on every
+# push to main, so re-building here on push only races that job and burns
+# duplicate Actions minutes (CQ-13). PRs remain the meaningful CI signal,
+# so we trigger on `pull_request` only and let `workflow_dispatch` cover
+# any manual re-run. A personal fork that deploys elsewhere keeps Actions
+# usage at zero on push while still being able to validate a PR.
 on:
   pull_request:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,6 +37,16 @@ jobs:
         run: npm ci
 
       - name: Build site
+        # Build at the site root (base = "/"). The previous project-pages
+        # base ("/indopensource.org") produced asset URLs that never matched
+        # the real deploy target and diverged from the deploy workflow's
+        # `ASTRO_BASE: /` (CQ-10). CI must build with the same base it ships.
         env:
-          ASTRO_BASE: /indopensource.org
+          ASTRO_BASE: /
         run: npm run build
+
+      - name: Run tests
+        # Unit tests for the security-critical pure functions (slug safety,
+        # draft gating, Markdown sanitisation/XSS). Runs in CI so a regression
+        # in the sanitiser or publish gate fails the PR.
+        run: npm test

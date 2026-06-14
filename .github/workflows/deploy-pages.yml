@@ -1,9 +1,24 @@
 name: Deploy to GitHub Pages
 
+# This is the single source of truth for publishing the site to GitHub Pages.
+# No other workflow should build-and-deploy Pages; keeping deploys in one job
+# avoids concurrent deploys racing for the `pages` environment (PERF-7).
+#
+# Upstream (indopensource.org) deploys automatically on every push to main:
+#
+#   on:
+#     push:
+#       branches:
+#         - main
+#     workflow_dispatch:
+#
+# Fork note: a personal fork that hosts the site elsewhere (e.g. Vercel) does
+# not need GitHub Pages and should not spend Actions minutes auto-deploying it
+# on every push. We therefore expose `workflow_dispatch` only — the job still
+# exists and works (run it manually if you ever want a Pages build), but it
+# never fires on push. Re-add the `push: main` trigger above to restore the
+# upstream auto-deploy behaviour.
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -11,12 +26,12 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 concurrency:
   group: pages
   cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:

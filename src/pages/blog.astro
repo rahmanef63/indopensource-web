@@ -6,10 +6,15 @@ import LightSvgMotion from '../components/LightSvgMotion.astro';
 import PageHeader from '../components/PageHeader.astro';
 import blogPosts from '../data/blog-posts.json';
 import { withBase } from '../lib/urls';
+import { isPublished, type BlogPost } from '../lib/content';
 
-const featuredPost = blogPosts[0];
+// Feature the first *published* post, never a draft (index 0 may be a draft).
+const featuredPost = (blogPosts as BlogPost[]).find(isPublished);
 const featuredThumbnail = featuredPost?.thumbnail || '/brand/indopensource-hero.jpg';
 const featuredThumbnailUrl = /^https?:\/\//.test(featuredThumbnail) ? featuredThumbnail : withBase(featuredThumbnail);
+const featuredAlt = featuredPost
+  ? `Thumbnail artikel: ${featuredPost.title}`
+  : 'Ilustrasi sampul Blog IndopenSource';
 ---
 
 <BaseLayout
@@ -52,7 +57,7 @@ const featuredThumbnailUrl = /^https?:\/\//.test(featuredThumbnail) ? featuredTh
           <img
             class="h-full min-h-64 w-full object-cover"
             src={featuredThumbnailUrl}
-            alt=""
+            alt={featuredAlt}
             loading="lazy"
           />
         </div>

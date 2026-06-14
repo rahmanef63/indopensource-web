@@ -3,26 +3,102 @@ import '../styles/global.css';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 
+interface Props {
+  title?: string;
+  description?: string;
+  /** Open Graph / Twitter image, absolute or site-relative. */
+  image?: string;
+  /** Open Graph `og:type` (e.g. `website`, `article`). */
+  type?: string;
+  /**
+   * Structured data injected as a JSON-LD `<script>`. Pass a plain object
+   * (schema.org graph) and the layout serialises + hashes it for CSP. (SEO-4)
+   */
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
 const {
   title = 'IndopenSource',
   description = 'Roadmap website IndopenSource untuk proyek open source Indonesia.',
   image = '/brand/indopensource-logo.png',
-  type = 'website'
-} = Astro.props;
+  type = 'website',
+  jsonLd
+} = Astro.props as Props;
+
+const SITE_ORIGIN = Astro.site || new URL('https://indopensource.org');
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const canonicalUrl = new URL(Astro.url.pathname.replace(baseUrl, '/'), Astro.site || 'https://indopensource.org').toString();
-const imageUrl = new URL(image, Astro.site || 'https://indopensource.org').toString();
+const canonicalUrl = new URL(Astro.url.pathname.replace(baseUrl, '/'), SITE_ORIGIN).toString();
+const imageUrl = new URL(image, SITE_ORIGIN).toString();
+
+// Default site-level structured data so every page advertises the
+// organisation/site even when a page does not pass its own graph. (SEO-4)
+const structuredData = jsonLd ?? {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'IndopenSource',
+  url: new URL('/', SITE_ORIGIN).toString(),
+  description
+};
+const jsonLdString = JSON.stringify(structuredData);
+
+/**
+ * Content-Security-Policy (SEC-02).
+ *
+ * This is a static (SSG) site with no server able to set per-request response
+ * headers or nonces, so the policy is delivered via a `<meta http-equiv>` tag.
+ * Inline `<script>` is forbidden (`script-src 'self'`); the only inline script
+ * is the JSON-LD block above, which we allow by its exact SHA-256 hash rather
+ * than `'unsafe-inline'`, so an injected `<script>` in user-derived HTML (e.g.
+ * the sanitised blog body) still cannot execute.
+ *
+ * `style-src` permits `'unsafe-inline'` because Astro inlines critical CSS as
+ * `<style>` blocks during the build; this is a low-risk allowance and the
+ * meaningful XSS boundary stays on `script-src`. Remote images are limited to
+ * the GitHub asset/avatar hosts the project data actually references.
+ */
+// SHA-256 of the exact JSON-LD bytes, base64-encoded, for the CSP allow-list.
+// Uses the Web Crypto API (available in Astro's build runtime) so no Node-only
+// types are required. Top-level `await` is supported in Astro frontmatter.
+const jsonLdDigest = await crypto.subtle.digest(
+  'SHA-256',
+  new TextEncoder().encode(jsonLdString)
+);
+let jsonLdBinary = '';
+for (const byte of new Uint8Array(jsonLdDigest)) {
+  jsonLdBinary += String.fromCharCode(byte);
+}
+const jsonLdHash = btoa(jsonLdBinary);
+const csp = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  `script-src 'self' 'sha256-${jsonLdHash}'`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: https://raw.githubusercontent.com https://avatars.githubusercontent.com",
+  "font-src 'self' data:",
+  "connect-src 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "object-src 'none'"
+].join('; ');
 ---
 
 <!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
+    <!-- Content-Security-Policy + referrer hardening for a header-less SSG host (SEC-02). -->
+    <meta http-equiv="Content-Security-Policy" content={csp} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0f6f5c" />
     <meta name="robots" content="index, follow" />
+    <!-- Warm up TLS to the GitHub hosts that serve project avatars and blog thumbnails (PERF-4). -->
+    <link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin />
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
+    <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
+    <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href={`${baseUrl}brand/favicon.ico`} sizes="any" />
     <link rel="icon" href={`${baseUrl}brand/favicon-32.png`} type="image/png" />
@@ -38,6 +114,13 @@ const imageUrl = new URL(image, Astro.site || 'https://indopensource.org').toStr
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
     <title>{title}</title>
+    <!--
+      JSON-LD structured data (SEO-4). Emitted verbatim via `is:inline` so its
+      bytes match the SHA-256 hash allow-listed in the CSP above. `set:html`
+      with a JSON string is safe here: it is `JSON.stringify` output, not
+      user-controlled markup.
+    -->
+    <script type="application/ld+json" is:inline set:html={jsonLdString} />
   </head>
   <body>
     <SiteHeader />

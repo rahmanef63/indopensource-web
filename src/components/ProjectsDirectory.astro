@@ -1,27 +1,6 @@
 ---
 import ProjectCard from './ProjectCard.astro';
-
-interface Project {
-  fullName: string;
-  description: string;
-  url: string;
-  homepage?: string;
-  language?: string;
-  owner?: string;
-  ownerAvatarUrl?: string;
-  stars: number;
-  forks: number;
-  topics?: string[];
-  updatedAt?: string;
-  pushedAt?: string;
-  latestRelease?: {
-    name: string;
-    tagName: string;
-    url: string;
-    publishedAt: string;
-  } | null;
-  archived?: boolean;
-}
+import type { Project } from '../lib/projects';
 
 interface Props {
   projects: Project[];

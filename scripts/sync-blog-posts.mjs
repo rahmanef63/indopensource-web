@@ -91,6 +91,35 @@ async function getCommitMeta(path) {
   };
 }
 
+/**
+ * Prefer the author declared in frontmatter `authors[]` over git committer
+ * metadata (CQ-6). Items may be plain strings (the author name) or objects
+ * like `{ name, url, avatarUrl }`. Returns `null` when no usable frontmatter
+ * author is present, so callers fall back to commit metadata.
+ */
+function authorFromFrontmatter(authors) {
+  if (!Array.isArray(authors) || authors.length === 0) return null;
+
+  const first = authors[0];
+  if (typeof first === 'string') {
+    const name = first.trim();
+    return name ? { name, avatarUrl: '', url: '', committedAt: '' } : null;
+  }
+
+  if (first && typeof first === 'object') {
+    const name = (first.name || '').trim();
+    if (!name) return null;
+    return {
+      name,
+      avatarUrl: (first.avatarUrl || first.avatar || '').trim(),
+      url: (first.url || '').trim(),
+      committedAt: ''
+    };
+  }
+
+  return null;
+}
+
 const tree = await requestJson(`https://api.github.com/repos/${BLOG_REPO}/git/trees/main?recursive=1`);
 const articleFiles = tree.tree
   .filter((item) => item.type === 'blob' && /^content\/\d{4}\/\d{2}\/.+\.md$/.test(item.path))
@@ -104,6 +133,7 @@ for (const path of articleFiles) {
   const { data, content } = parseFrontmatter(raw);
   const [year, month] = path.split('/').slice(1, 3);
   const commitMeta = await getCommitMeta(path);
+  const frontmatterAuthor = authorFromFrontmatter(data.authors);
 
   posts.push({
     slug: slugFromPath(path),
@@ -119,7 +149,8 @@ for (const path of articleFiles) {
     content,
     sourceUrl: file.html_url,
     releasedAt: commitMeta.releasedAt,
-    author: commitMeta.author
+    author: frontmatterAuthor || commitMeta.author,
+    authorFromFrontmatter: Boolean(frontmatterAuthor)
   });
 }
 

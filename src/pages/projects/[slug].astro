@@ -3,35 +3,64 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BaseButton from '../../components/BaseButton.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import projects from '../../data/projects.json';
-import { projectSlug } from '../../lib/projects';
+import { projectSlug, type Project } from '../../lib/projects';
 
 export function getStaticPaths() {
-  return projects.map((project) => ({
+  return (projects as Project[]).map((project) => ({
     params: { slug: projectSlug(project.fullName) },
     props: { project }
   }));
 }
 
-const { project } = Astro.props;
+const { project } = Astro.props as { project: Project };
 const updatedDate = project.pushedAt || project.updatedAt;
 const updatedLabel = updatedDate
   ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium' }).format(new Date(updatedDate))
   : '';
 const starHistoryUrl = `https://api.star-history.com/svg?repos=${encodeURIComponent(project.fullName)}&type=Date`;
-const readmeApiUrl = `https://api.github.com/repos/${project.fullName}/readme`;
 const repoName = project.fullName.split('/').at(-1) || project.fullName;
+// README is pre-rendered to sanitized HTML at build time (PERF-1); the browser
+// no longer fetches GitHub or parses Markdown.
+const readmeHtml = project.readmeHtml || '';
+// Snippet-clamped description for <meta>/OG, falling back to the raw one (SEO-6).
+const metaDescription = project.metaDescription || project.description;
+const topics = project.topics ?? [];
+
+// SoftwareSourceCode structured data so search engines understand each project
+// page (SEO-4). Passed to BaseLayout's `jsonLd` prop, which emits it in <head>
+// and allow-lists its exact hash in the CSP (no separate inline script that a
+// strict CSP would drop).
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: repoName,
+  description: metaDescription,
+  codeRepository: project.url,
+  ...(project.homepage ? { url: project.homepage } : {}),
+  ...(project.language ? { programmingLanguage: project.language } : {}),
+  ...(project.owner
+    ? { author: { '@type': 'Organization', name: project.owner, ...(project.ownerAvatarUrl ? { image: project.ownerAvatarUrl } : {}) } }
+    : {}),
+  ...(updatedDate ? { dateModified: updatedDate } : {}),
+  ...(typeof project.stars === 'number'
+    ? { interactionStatistic: { '@type': 'InteractionCounter', interactionType: 'https://schema.org/LikeAction', userInteractionCount: project.stars } }
+    : {})
+};
 ---
 
 <BaseLayout
   title={`${project.fullName} - Project IndopenSource`}
-  description={project.description}
+  description={metaDescription}
+  image={project.ownerAvatarUrl || undefined}
+  type="article"
+  jsonLd={jsonLd}
 >
   <section class="border-b border-line bg-paper py-14">
     <div class="mx-auto grid w-[min(1040px,calc(100%-40px))] grid-cols-[minmax(0,1fr)_320px] gap-8 max-lg:grid-cols-1">
       <div>
         <p class="mb-3 text-xs font-black uppercase tracking-[0.08em] text-accent">Project detail</p>
         <div class="flex items-start gap-4">
-          {project.ownerAvatarUrl && <img class="size-14 rounded-lg border border-line bg-canvas" src={project.ownerAvatarUrl} alt={`${project.owner} avatar`} />}
+          {project.ownerAvatarUrl && <img class="size-14 rounded-lg border border-line bg-canvas" src={project.ownerAvatarUrl} alt={`Avatar ${project.owner || project.fullName}`} />}
           <div class="min-w-0">
             {project.owner && <p class="mb-2 text-lg font-extrabold text-brand-dark">{project.owner}</p>}
             <h1 class="m-0 text-balance text-[clamp(2.3rem,5vw,4.8rem)] leading-[1.02]">{repoName}</h1>
@@ -65,27 +94,29 @@ const repoName = project.fullName.split('/').at(-1) || project.fullName;
           </div>
           <a class="text-sm font-bold text-brand hover:text-brand-dark" href={`${project.url}#readme`}>GitHub</a>
         </div>
-        <div
-          class="prose-readme max-w-none text-muted"
-          data-readme-root
-          data-readme-api={readmeApiUrl}
-        >
-          <p>Memuat README dari GitHub...</p>
-        </div>
+        {
+          readmeHtml ? (
+            <div class="prose-readme max-w-none text-muted" set:html={readmeHtml} />
+          ) : (
+            <p class="text-muted">
+              README belum tersedia di sini. Buka <a class="font-bold text-brand hover:text-brand-dark" href={`${project.url}#readme`}>README langsung dari GitHub</a>.
+            </p>
+          )
+        }
       </article>
 
       <aside class="grid content-start gap-6">
         <article class="rounded-lg border border-line bg-paper p-5">
           <p class="mb-2 text-xs font-black uppercase tracking-[0.08em] text-accent">Stars</p>
           <h2 class="text-2xl font-extrabold">History stars</h2>
-          <img class="mt-5 w-full rounded-lg border border-line bg-white" src={starHistoryUrl} alt={`Star history ${project.fullName}`} loading="lazy" />
+          <img class="mt-5 w-full rounded-lg border border-line bg-white" src={starHistoryUrl} alt={`Grafik riwayat stars ${project.fullName}`} loading="lazy" />
         </article>
         {
-          project.topics?.length > 0 && (
+          topics.length > 0 && (
             <article class="rounded-lg border border-line bg-paper p-5">
               <p class="mb-2 text-xs font-black uppercase tracking-[0.08em] text-accent">Tags</p>
               <div class="flex flex-wrap gap-2 text-sm font-bold text-brand-dark">
-                {project.topics.map((topic) => <span class="rounded-full bg-brand/10 px-2.5 py-1">#{topic}</span>)}
+                {topics.map((topic) => <span class="rounded-full bg-brand/10 px-2.5 py-1">#{topic}</span>)}
               </div>
             </article>
           )
@@ -94,98 +125,3 @@ const repoName = project.fullName.split('/').at(-1) || project.fullName;
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  import { marked } from 'marked';
-
-  const root = document.querySelector('[data-readme-root]');
-  const apiUrl = root?.getAttribute('data-readme-api');
-  const unsafeSelectors = [
-    'script',
-    'style',
-    'iframe',
-    'object',
-    'embed',
-    'link',
-    'meta',
-    'svg',
-    'math',
-    'form',
-    'input',
-    'button',
-    'textarea',
-    'select'
-  ].join(',');
-
-  function repositoryRootUrl(fileUrl: string) {
-    const githubMatch = fileUrl.match(/^(https:\/\/github\.com\/[^/]+\/[^/]+)\/blob\/([^/]+)\//);
-    if (githubMatch) return `${githubMatch[1]}/blob/${githubMatch[2]}/`;
-
-    const rawMatch = fileUrl.match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)\//);
-    if (rawMatch) return `${rawMatch[1]}/`;
-
-    return fileUrl;
-  }
-
-  function safeUrl(value: string, baseUrl: string, rootBaseUrl: string) {
-    if (!value || value.startsWith('#')) return value;
-
-    try {
-      const url = new URL(value, value.startsWith('/') ? rootBaseUrl : baseUrl);
-      if (!['http:', 'https:', 'mailto:'].includes(url.protocol)) return '';
-      return url.toString();
-    } catch {
-      return '';
-    }
-  }
-
-  function sanitizeReadme(html: string, linkBaseUrl: string, assetBaseUrl: string) {
-    const document = new DOMParser().parseFromString(html, 'text/html');
-    const linkRootBaseUrl = repositoryRootUrl(linkBaseUrl);
-    const assetRootBaseUrl = repositoryRootUrl(assetBaseUrl);
-    document.querySelectorAll(unsafeSelectors).forEach((element) => element.remove());
-
-    document.body.querySelectorAll('*').forEach((element) => {
-      Array.from(element.attributes).forEach((attribute) => {
-        const name = attribute.name.toLowerCase();
-
-        if (name.startsWith('on') || name === 'style' || name === 'srcdoc') {
-          element.removeAttribute(attribute.name);
-          return;
-        }
-
-        if (name === 'href') {
-          const nextUrl = safeUrl(attribute.value, linkBaseUrl, linkRootBaseUrl);
-          nextUrl ? element.setAttribute(attribute.name, nextUrl) : element.removeAttribute(attribute.name);
-        }
-
-        if (name === 'src') {
-          const nextUrl = safeUrl(attribute.value, assetBaseUrl, assetRootBaseUrl);
-          nextUrl ? element.setAttribute(attribute.name, nextUrl) : element.removeAttribute(attribute.name);
-        }
-      });
-    });
-
-    return document.body.innerHTML;
-  }
-
-  async function loadReadme() {
-    if (!root || !apiUrl) return;
-
-    try {
-      const response = await fetch(apiUrl, { headers: { Accept: 'application/vnd.github+json' } });
-      if (!response.ok) throw new Error(`GitHub response ${response.status}`);
-
-      const data = await response.json();
-      const binary = atob(data.content.replace(/\n/g, ''));
-      const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
-      const markdown = new TextDecoder().decode(bytes);
-      const html = await marked.parse(markdown);
-      root.innerHTML = sanitizeReadme(html, data.html_url, data.download_url);
-    } catch (error) {
-      root.innerHTML = '<p>README belum bisa dimuat otomatis. Buka README langsung dari GitHub.</p>';
-    }
-  }
-
-  loadReadme();
-</script>
