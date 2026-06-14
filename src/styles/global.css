@@ -23,7 +23,13 @@
   --color-line: #ddd6c7;
   --color-brand: #0f6f5c;
   --color-brand-dark: #0a4f43;
-  --color-accent: #c84f31;
+  /*
+   * Darkened from #c84f31 (4.47:1 on paper / 4.14:1 on canvas — both below the
+   * 4.5:1 WCAG AA threshold for the 12px uppercase eyebrow labels that use
+   * `text-accent`). Hue is preserved (~12deg orange-red); lightness lowered so
+   * the token now measures 5.45:1 on paper and 5.04:1 on canvas. (A11Y-3)
+   */
+  --color-accent: #b8401f;
   --color-sun: #f0b94f;
 }
 
@@ -33,11 +39,51 @@
   }
 
   body {
-    @apply m-0 min-w-80 font-sans;
+    /*
+     * No `min-width`: a hard floor (was `min-w-80`, 320px) forces a horizontal
+     * scrollbar at ~400% zoom and on <320px viewports. The existing
+     * `w-[min(1120px,calc(100%-32px))]` wrappers already cap width without a
+     * floor, so content reflows down to 320 CSS px per WCAG 1.4.10. (A11Y-11)
+     */
+    @apply m-0 font-sans;
   }
 
+  /*
+   * Underlines are stripped here only as a chrome default for nav/button/badge
+   * links, which carry their own shape/background affordances. Content/prose
+   * links restore `text-decoration: underline` below so they are not signalled
+   * by colour alone (WCAG 1.4.1 Use of Color). (A11Y-2)
+   */
   a {
     @apply text-inherit no-underline;
+  }
+
+  /*
+   * Visible keyboard focus for every interactive element (nav, logo, footer
+   * links, buttons, anything with `tabindex`). Uses `:focus-visible` so it
+   * only shows for keyboard/AT users, and `outline` (not `box-shadow`) so it
+   * cannot be clipped by `overflow:hidden` ancestors. The 2px accent outline
+   * meets 3:1 non-text contrast on the paper/canvas surfaces. (A11Y-4)
+   */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible,
+  [role='button']:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /*
+   * `#main-content` carries `tabindex="-1"` only so the skip link can move focus
+   * to it; it is a scroll/landing target, not an interactive control. Suppress
+   * the focus ring there so activating the skip link does not draw a 2px outline
+   * around the entire main region. Keyboard users still see focus on the real
+   * controls inside it. (A11Y-4)
+   */
+  #main-content:focus,
+  #main-content:focus-visible {
+    outline: none;
   }
 
   h1,
@@ -45,6 +91,59 @@
   h3,
   p {
     overflow-wrap: anywhere;
+  }
+
+  /*
+   * Footer text links are content links (not buttons/badges), so they must not
+   * rely on colour alone. Restore the underline that the base `a` reset strips.
+   * (A11Y-2)
+   */
+  footer a {
+    @apply underline;
+    text-underline-offset: 0.15em;
+  }
+
+  /*
+   * Visually-hidden utility for screen-reader-only text and the skip link's
+   * resting state. Standard clip pattern: removed from the visual flow but
+   * still in the accessibility tree.
+   */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /*
+   * Skip-to-content link (WCAG 2.4.1 Bypass Blocks). Visually hidden until it
+   * receives keyboard focus, then it appears top-left with a high-contrast
+   * brand background so keyboard/AT users can jump past the header/nav. (A11Y-1)
+   */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 50;
+    border-radius: 0.5rem;
+    background: var(--color-brand);
+    padding: 0.5rem 1rem;
+    color: var(--color-paper);
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.15s ease-in-out;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    top: 1rem;
+    outline: 2px solid var(--color-paper);
+    outline-offset: 2px;
   }
 }
 
@@ -78,7 +177,8 @@
   }
 
   .article-body a {
-    @apply font-bold text-brand hover:text-brand-dark;
+    @apply font-bold text-brand underline hover:text-brand-dark;
+    text-underline-offset: 0.15em;
   }
 
   .prose-readme {
@@ -127,7 +227,8 @@
   }
 
   .prose-readme a {
-    @apply font-bold text-brand hover:text-brand-dark;
+    @apply font-bold text-brand underline hover:text-brand-dark;
+    text-underline-offset: 0.15em;
   }
 
   .prose-readme code {
@@ -219,10 +320,29 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /*
+   * Robust catch-all so any current OR future animation/transition is
+   * neutralised for users who request reduced motion, instead of relying on a
+   * hand-maintained selector list. (A11Y-15)
+   */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /*
+   * The decorative SVG loops have no meaningful end frame, so stop them
+   * outright rather than running a 0.01ms tick. Kept explicit as documentation
+   * of the intentionally-animated classes.
+   */
   .motion-line,
   .motion-pulse,
   .motion-orbit,
   .motion-float {
-    animation: none;
+    animation: none !important;
   }
 }

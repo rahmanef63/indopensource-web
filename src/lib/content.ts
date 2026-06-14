@@ -41,7 +41,10 @@ export interface BlogPost {
   thumbnail: string;
   content: string;
   sourceUrl: string;
+  /** Editorial publication date (frontmatter `date`), falling back to commit metadata. */
   releasedAt: string;
+  /** ISO timestamp of the most recent edit commit; distinct from `releasedAt`. */
+  lastModifiedAt?: string;
   author: PostAuthor;
   /**
    * Whether `author` was taken from frontmatter `authors[]` (true) or
@@ -141,8 +144,15 @@ export const articleSanitizeOptions: sanitizeHtml.IOptions = {
   allowProtocolRelative: false,
   // Force a safe `rel` on every anchor so a `target="_blank"` link in
   // user-authored Markdown cannot reach `window.opener` (reverse tabnabbing).
+  //
+  // Demote any `h1` in the body to `h2` (A11Y-6): the page template already
+  // renders the single page-level `<h1>` (repo name / article title), so a
+  // README or article body that opens with `# Title` would otherwise inject a
+  // second `<h1>`, breaking heading order (WCAG 1.3.1). Renaming to `h2` keeps
+  // exactly one page-level h1 while preserving the relative heading structure.
   transformTags: {
-    a: sanitizeHtml.simpleTransform('a', { rel: 'noopener noreferrer' }, true)
+    a: sanitizeHtml.simpleTransform('a', { rel: 'noopener noreferrer' }, true),
+    h1: 'h2'
   },
   // Never allow inline styles, event handlers (on*), or iframe srcdoc.
   // `allowedAttributes` already omits `style`/`srcdoc`/`on*`, but we also

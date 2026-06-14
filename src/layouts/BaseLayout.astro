@@ -74,7 +74,10 @@ const csp = [
   "base-uri 'self'",
   `script-src 'self' 'sha256-${jsonLdHash}'`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://raw.githubusercontent.com https://avatars.githubusercontent.com",
+  // `api.star-history.com` serves the per-project star-history SVG embedded on
+  // every project detail page; without it the CSP blocks that image. The other
+  // hosts cover GitHub avatars and raw blog/README assets.
+  "img-src 'self' data: https://raw.githubusercontent.com https://avatars.githubusercontent.com https://api.star-history.com",
   "font-src 'self' data:",
   "connect-src 'self'",
   "form-action 'self'",
@@ -123,8 +126,11 @@ const csp = [
     <script type="application/ld+json" is:inline set:html={jsonLdString} />
   </head>
   <body>
+    <!-- Skip past the header/primary nav to the content (WCAG 2.4.1). Must be
+         the first focusable element in the DOM. (A11Y-1) -->
+    <a href="#main-content" class="skip-link">Lewati ke konten</a>
     <SiteHeader />
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <SiteFooter />

@@ -85,8 +85,11 @@ Gunakan `GITHUB_TOKEN` atau `GH_TOKEN` untuk rate limit yang lebih lega.
 ## Blog Sync
 
 `npm run sync:blog` membaca artikel Markdown dari
-`IndopenSource/Blog-IndopenSource`, mengambil metadata commit penulis/rilis,
-dan menulis hasilnya ke `src/data/blog-posts.json`.
+`IndopenSource/Blog-IndopenSource` dan menulis hasilnya ke
+`src/data/blog-posts.json`. Tanggal rilis/perubahan diambil dari riwayat commit
+artikel. Atribusi penulis memakai field frontmatter `authors`/`author` saat
+tersedia, dan baru jatuh ke metadata commit sebagai cadangan bila frontmatter
+tidak mencantumkan penulis.
 
 ## Auto Sync
 
@@ -99,9 +102,12 @@ Workflow `.github/workflows/sync-content.yml` memperbarui data secara otomatis.
   - `sync-blog`
   - `sync-content`
 
-Jika data berubah, workflow membuat commit `Sync content data`. Setelah commit
-masuk `main`, workflow yang sama akan upload artifact dan deploy ulang GitHub
-Pages agar perubahan data langsung tayang.
+Jika data berubah, workflow membuat commit `Sync content data` dan berhenti di
+situ. Workflow sync tidak melakukan deploy sendiri: penerbitan dimiliki
+sepenuhnya oleh workflow `Deploy to GitHub Pages` (satu-satunya jalur deploy).
+Pada upstream yang masih memakai trigger `push: main`, commit dari sync itulah
+yang memicu deploy tersebut, sehingga tidak ada dua deploy yang berjalan
+bersamaan.
 
 ## Contributing
 

@@ -85,7 +85,12 @@ describe('isPublished (frontmatter)', () => {
 describe('renderArticle (frontmatter content)', () => {
   it('renders Markdown to HTML', () => {
     const html = renderArticle('# Title\n\nA **bold** paragraph.');
-    assert.match(html, /<h1[^>]*>Title<\/h1>/);
+    // Body `# Title` is intentionally demoted to <h2> (A11Y-6 / WCAG 1.3.1):
+    // the page template already owns the single page-level <h1>, so the article
+    // body must not inject a second one. Assert the demotion holds and that no
+    // <h1> leaks through.
+    assert.match(html, /<h2[^>]*>Title<\/h2>/);
+    assert.doesNotMatch(html, /<h1[^>]*>/);
     assert.match(html, /<strong>bold<\/strong>/);
   });
 

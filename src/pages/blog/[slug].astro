@@ -29,9 +29,25 @@ const heroAlt = `Thumbnail artikel: ${post.title}`;
 const authorByline = post.authorFromFrontmatter
   ? `Disebutkan di frontmatter artikel${authorDate ? ` (commit pertama ${authorDate})` : ''}.`
   : `Diambil otomatis dari commit pertama file artikel${authorDate ? ` pada ${authorDate}` : ''}.`;
+
+// BlogPosting structured data (passed to BaseLayout's hashed jsonLd prop so it
+// is CSP-allow-listed in <head>, not a separate inline script).
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.description,
+  image: thumbnailUrl,
+  ...(post.releasedAt ? { datePublished: post.releasedAt } : {}),
+  ...(post.lastModifiedAt ? { dateModified: post.lastModifiedAt } : {}),
+  ...(post.author?.name
+    ? { author: { '@type': 'Person', name: post.author.name, ...(post.author.url ? { url: post.author.url } : {}) } }
+    : {}),
+  publisher: { '@type': 'Organization', name: 'IndopenSource' }
+};
 ---
 
-<BaseLayout title={`${post.title} - IndopenSource`} description={post.description} image={thumbnailUrl} type="article">
+<BaseLayout title={`${post.title} - IndopenSource`} description={post.description} image={thumbnailUrl} type="article" jsonLd={jsonLd}>
   <PageHeader eyebrow="Blog" title={post.title}>
     <p>{post.description}</p>
     <div class="mt-4 flex flex-wrap gap-2 text-sm text-muted">

@@ -58,7 +58,7 @@ const topics = [...new Set(projects.flatMap((project) => project.topics || []))]
     </div>
 
     <div class="mb-4 flex flex-wrap items-center justify-between gap-3 text-sm text-muted" data-project-pagination>
-      <p class="font-bold"><span data-project-count>{projects.length}</span> project ditemukan</p>
+      <p class="font-bold" aria-live="polite"><span data-project-count>{projects.length}</span> project ditemukan</p>
       <div class="flex items-center gap-2">
         <button class="rounded-lg border border-line px-3 py-2 font-bold hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-40" type="button" data-project-prev>
           Sebelumnya
@@ -74,7 +74,7 @@ const topics = [...new Set(projects.flatMap((project) => project.topics || []))]
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
 
-    <div class="mt-8 hidden rounded-lg border border-line bg-paper p-5 text-center text-muted" data-project-empty>
+    <div class="mt-8 hidden rounded-lg border border-line bg-paper p-5 text-center text-muted" data-project-empty role="status">
       Tidak ada project yang cocok dengan filter ini.
     </div>
 
