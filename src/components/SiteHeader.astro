@@ -1,5 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
 import { withBase } from '../lib/urls';
+import brandIcon from '../assets/brand/icon-192.png';
 
 const navItems = [
   ['Home', '/'],
@@ -25,7 +27,17 @@ const currentPathWithoutBase = currentPath.replace(new RegExp(`^${baseUrl.replac
 <header class="sticky top-0 z-20 border-b border-ink/10 bg-paper/90 backdrop-blur-xl">
   <nav class="mx-auto flex min-h-17 w-[min(1120px,calc(100%-32px))] items-center justify-between gap-5 py-3 max-sm:flex-col max-sm:items-start" aria-label="Navigasi utama">
     <a class="inline-flex items-center gap-2.5 font-extrabold" href={withBase('/')}>
-      <img class="size-9 rounded-lg object-contain" src={withBase('/brand/icon-192.png')} alt="" />
+      <Picture
+        src={brandIcon}
+        formats={['avif', 'webp']}
+        widths={[36, 72]}
+        sizes="36px"
+        width={36}
+        height={36}
+        alt=""
+        loading="eager"
+        class="size-9 rounded-lg object-contain"
+      />
       <span>IndopenSource</span>
     </a>
     <div class="flex flex-wrap justify-end gap-1.5 max-md:hidden">

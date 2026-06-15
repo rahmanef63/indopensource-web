@@ -59,7 +59,7 @@ const jsonLd = {
       <div>
         <p class="mb-3 text-xs font-black uppercase tracking-[0.08em] text-accent">Project detail</p>
         <div class="flex items-start gap-4">
-          {project.ownerAvatarUrl && <img class="size-14 rounded-lg border border-line bg-canvas" src={project.ownerAvatarUrl} alt={`Avatar ${project.owner || project.fullName}`} />}
+          {project.ownerAvatarUrl && <img class="size-14 rounded-lg border border-line bg-canvas" src={project.ownerAvatarUrl} alt={`Avatar ${project.owner || project.fullName}`} width="56" height="56" loading="eager" decoding="async" />}
           <div class="min-w-0">
             {project.owner && <p class="mb-2 text-lg font-extrabold text-brand-dark">{project.owner}</p>}
             <h1 class="m-0 text-balance text-[clamp(2.3rem,5vw,4.8rem)] leading-[1.02]">{repoName}</h1>

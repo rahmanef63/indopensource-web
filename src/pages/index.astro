@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeHero from '../components/HomeHero.astro';
 import InfoCard from '../components/InfoCard.astro';
@@ -8,14 +9,27 @@ import SectionHeader from '../components/SectionHeader.astro';
 import BaseButton from '../components/BaseButton.astro';
 import LightSvgMotion from '../components/LightSvgMotion.astro';
 import projects from '../data/projects.json';
+import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
 
 const totalProjects = projects.length;
 const topProjects = projects.slice(0, 5);
+
+// Pre-generate the AVIF the hero <Image> will paint as its LCP candidate so we
+// can <link rel="preload"> the exact same /_astro/* file from <head>. Same src,
+// width and quality as HomeHero's largest `widths` stop -> identical emit ->
+// the browser reuses the preloaded download for the LCP paint. (PERF)
+const heroPreload = await getImage({
+  src: heroImage,
+  format: 'avif',
+  width: HERO_PRELOAD_WIDTH,
+  quality: HERO_QUALITY
+});
 ---
 
 <BaseLayout
   title="Komunitas Open Source Indonesia"
   description="IndopenSource adalah komunitas open source Indonesia untuk direktori proyek, falsafah, blog, forum, dan kolaborasi publik."
+  heroPreloadHref={heroPreload.src}
 >
   <HomeHero />
 

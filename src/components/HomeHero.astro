@@ -1,11 +1,47 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseButton from './BaseButton.astro';
 import LightSvgMotion from './LightSvgMotion.astro';
+import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
+
+// The hero is the homepage LCP. It used to be a CSS `background-image`, which
+// browsers can't preload and which shipped the raw JPEG. It is now an optimised
+// <Image> (AVIF/WebP, resized) painted behind the content, with the original
+// dark-green gradient kept as a separate overlay so the visual is identical.
+//
+// The matching high-priority <link rel="preload" as="image"> is emitted from
+// BaseLayout's <head> (index.astro computes the AVIF href via getImage() and
+// passes it through) so the LCP image starts downloading before the renderer
+// reaches this <img>. astro:assets emits to /_astro/* on the same origin, so
+// the existing `img-src 'self'` CSP already covers it — no CSP change needed.
 ---
 
 <section
-  class="home-hero relative overflow-hidden bg-[image:linear-gradient(90deg,rgba(29,37,40,0.92)_0%,rgba(15,111,92,0.78)_46%,rgba(29,37,40,0.5)_100%),var(--hero-image)] bg-cover bg-left py-16 text-paper md:min-h-[min(600px,calc(100vh-68px))] md:py-18 max-md:py-12"
+  class="home-hero relative overflow-hidden bg-ink py-16 text-paper md:min-h-[min(600px,calc(100vh-68px))] md:py-18 max-md:py-12"
 >
+  <!-- Optimised LCP image, painted behind the content. `loading="eager"` +
+       `fetchpriority="high"` (NOT lazy) because this is the above-the-fold
+       LCP element. -->
+  <Picture
+    src={heroImage}
+    formats={['avif', 'webp']}
+    widths={[768, 1200, HERO_PRELOAD_WIDTH]}
+    sizes="100vw"
+    quality={HERO_QUALITY}
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+    fetchpriority="high"
+    pictureAttributes={{ class: 'absolute inset-0 -z-10 block h-full w-full' }}
+    class="h-full w-full object-cover object-left"
+  />
+  <!-- The original dark-green gradient overlay, unchanged, layered on top of the
+       image so the text contrast and look match the previous CSS background. -->
+  <div
+    class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(29,37,40,0.92)_0%,rgba(15,111,92,0.78)_46%,rgba(29,37,40,0.5)_100%)]"
+    aria-hidden="true"
+  >
+  </div>
   <LightSvgMotion variant="network" />
   <div class="relative mx-auto w-[min(1040px,calc(100%-80px))] max-md:w-[calc(100%-32px)]">
     <div class="max-w-[680px]">

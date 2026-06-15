@@ -15,6 +15,14 @@ interface Props {
    * (schema.org graph) and the layout serialises + hashes it for CSP. (SEO-4)
    */
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+  /**
+   * Optional same-origin URL of the above-the-fold LCP image to `<link
+   * rel="preload" as="image" fetchpriority="high">` in `<head>`. Used by the
+   * homepage to start the hero (LCP) download before the renderer reaches the
+   * `<img>`. The URL is an astro:assets `/_astro/*` emit, so the existing
+   * `img-src 'self'` CSP already covers it. (PERF)
+   */
+  heroPreloadHref?: string;
 }
 
 const {
@@ -22,7 +30,8 @@ const {
   description = 'Roadmap website IndopenSource untuk proyek open source Indonesia.',
   image = '/brand/indopensource-hero.jpg',
   type = 'website',
-  jsonLd
+  jsonLd,
+  heroPreloadHref
 } = Astro.props as Props;
 
 const SITE_ORIGIN = Astro.site || new URL('https://indopensource.org');
@@ -102,6 +111,14 @@ const csp = [
     <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
     <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
     <link rel="canonical" href={canonicalUrl} />
+    {
+      /* Preload the above-the-fold LCP image (homepage hero) at high priority so
+         it downloads before the renderer reaches its <img>. astro:assets emits
+         to /_astro/* (same origin) — covered by `img-src 'self'`. (PERF) */
+      heroPreloadHref && (
+        <link rel="preload" as="image" href={heroPreloadHref} type="image/avif" fetchpriority="high" />
+      )
+    }
     <link rel="icon" href={`${baseUrl}brand/favicon.ico`} sizes="any" />
     <link rel="icon" href={`${baseUrl}brand/favicon-32.png`} type="image/png" />
     <link rel="apple-touch-icon" href={`${baseUrl}brand/apple-touch-icon.png`} />

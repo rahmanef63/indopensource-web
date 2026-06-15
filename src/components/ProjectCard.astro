@@ -41,7 +41,10 @@ const homepageUrl = project.homepage ? normalizeHref(project.homepage) : '';
           class="size-11 shrink-0 rounded-lg border border-line bg-canvas"
           src={project.ownerAvatarUrl}
           alt=""
+          width="44"
+          height="44"
           loading="lazy"
+          decoding="async"
         />
       )
     }

@@ -150,12 +150,6 @@
 }
 
 @layer components {
-  /* Hero background image, moved off an inline `style` attribute so the CSP can
-     drop `style-src 'unsafe-inline'` (SEC-02). The site ships at base path `/`. */
-  .home-hero {
-    --hero-image: url("/brand/indopensource-hero.jpg");
-  }
-
   .article-body {
     @apply text-lg leading-8 text-muted;
   }
