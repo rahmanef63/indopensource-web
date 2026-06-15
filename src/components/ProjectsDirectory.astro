@@ -22,7 +22,7 @@ const topics = [...new Set(projects.flatMap((project) => project.topics || []))]
       <label class="grid gap-1.5 font-mono text-xs font-bold uppercase tracking-[0.08em] text-ink lg:col-span-1">
         Cari repo
         <input
-          class="min-h-12 border-2 border-ink bg-paper px-3 font-mono text-sm font-normal text-ink outline-none transition placeholder:text-muted focus:bg-white focus:shadow-[3px_3px_0_var(--color-brand)]"
+          class="min-h-12 border-2 border-ink bg-paper px-3 font-mono text-sm font-normal text-ink outline-none transition placeholder:text-muted riso-focus"
           type="search"
           placeholder="nama, owner, deskripsi…"
           data-project-search
@@ -30,21 +30,21 @@ const topics = [...new Set(projects.flatMap((project) => project.topics || []))]
       </label>
       <label class="grid gap-1.5 font-mono text-xs font-bold uppercase tracking-[0.08em] text-ink">
         Bahasa
-        <select class="min-h-12 border-2 border-ink bg-paper px-3 font-mono text-sm font-normal text-ink outline-none transition focus:bg-white focus:shadow-[3px_3px_0_var(--color-brand)]" data-project-language>
+        <select class="min-h-12 border-2 border-ink bg-paper px-3 font-mono text-sm font-normal text-ink outline-none transition riso-focus" data-project-language>
           <option value="">Semua</option>
           {languages.map((language) => <option value={language.toLowerCase()}>{language}</option>)}
         </select>
       </label>
       <label class="grid gap-1.5 font-mono text-xs font-bold uppercase tracking-[0.08em] text-ink">
         Tag
-        <select class="min-h-12 border-2 border-ink bg-paper px-3 font-mono text-sm font-normal text-ink outline-none transition focus:bg-white focus:shadow-[3px_3px_0_var(--color-brand)]" data-project-topic>
+        <select class="min-h-12 border-2 border-ink bg-paper px-3 font-mono text-sm font-normal text-ink outline-none transition riso-focus" data-project-topic>
           <option value="">Semua</option>
           {topics.map((topic) => <option value={topic.toLowerCase()}>{topic}</option>)}
         </select>
       </label>
       <label class="grid gap-1.5 font-mono text-xs font-bold uppercase tracking-[0.08em] text-ink">
         Urutkan
-        <select class="min-h-12 border-2 border-ink bg-paper px-3 font-mono text-sm font-normal text-ink outline-none transition focus:bg-white focus:shadow-[3px_3px_0_var(--color-brand)]" data-project-sort>
+        <select class="min-h-12 border-2 border-ink bg-paper px-3 font-mono text-sm font-normal text-ink outline-none transition riso-focus" data-project-sort>
           <option value="stars">Stars</option>
           <option value="updated">Update terbaru</option>
           <option value="release">Release terbaru</option>

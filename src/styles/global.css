@@ -361,6 +361,39 @@
   }
 
   /*
+   * .riso-shift-sm — lighter signature for small / mono type (card titles).
+   * A ~1px at-rest ghost reads as misregistration without overpowering 20px
+   * text; widens slightly on hover. Glyph fill unchanged -> zero AA cost.
+   */
+  .riso-shift-sm {
+    text-shadow: 1px 1px 0 color-mix(in srgb, var(--color-accent) 70%, transparent);
+    transition: text-shadow 0.16s ease;
+  }
+
+  .riso-shift-sm:hover {
+    text-shadow:
+      2px 2px 0 var(--color-accent),
+      -1px -1px 0 color-mix(in srgb, var(--color-brand) 60%, transparent);
+  }
+
+  /*
+   * .riso-focus — shared focus state for form controls (search + selects):
+   * white field + hard 3px brand offset, plus a real keyboard outline on
+   * :focus-visible. Replaces the repeated arbitrary focus:shadow utilities.
+   */
+  .riso-focus:focus {
+    background-color: #fff;
+    box-shadow: 3px 3px 0 var(--color-brand);
+    outline: none;
+  }
+
+  .riso-focus:focus-visible {
+    box-shadow: 3px 3px 0 var(--color-brand);
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  /*
    * .rule — THICK ink divider (3px). Replaces the old hairline `border-line`
    * dividers wherever the editorial structure wants a printed rule.
    */
