@@ -4,20 +4,78 @@ const links = [
   ['Discussions', 'https://github.com/orgs/IndopenSource/discussions'],
   ['Roadmap', 'https://github.com/orgs/IndopenSource/projects']
 ];
+
+const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-line bg-ink pt-8 pb-8 text-paper/90 max-md:pb-40">
-  <div class="mx-auto flex w-[min(1120px,calc(100%-32px))] items-center justify-between gap-4 max-md:flex-col max-md:items-start">
-    <span>IndopenSource.org adalah ruang kerja terbuka untuk ekosistem open source Indonesia.</span>
-    <div class="flex flex-wrap gap-3.5">
-      {
-        links.map(([label, href]) => (
-          <a class="font-semibold hover:text-paper" href={href} rel="noopener noreferrer">
-            {label}
-            <span class="sr-only"> (situs eksternal)</span>
-          </a>
-        ))
-      }
+{/*
+  ZINE COLOPHON — dark ink field with extra .grain tooth (printed back-cover
+  feel), oversized display wordmark, mono colophon metadata rows, a thick brand
+  top rule, and community links as riso sticker chips. External links keep their
+  rel + sr-only "(situs eksternal)" cue. Reversed text is paper/white on ink
+  (15.59:1), sticker chips carry ink-on-sun (8.87:1) — all >= AA. No inline
+  styles: every visual comes from design-system utilities.
+*/}
+<footer class="grain border-t-[3px] border-brand bg-ink text-paper max-md:pb-28">
+  <div class="mx-auto w-[min(1120px,calc(100%-32px))] py-12">
+    {/* Top: oversized wordmark + the editorial mission line */}
+    <div class="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+      <div class="max-w-2xl">
+        <p class="display-md text-paper">
+          Indopen<span class="text-sun">Source</span>
+        </p>
+        <p class="mt-4 max-w-xl font-body text-lg leading-7 text-paper/90">
+          Ruang kerja terbuka untuk ekosistem open source Indonesia — dibikin
+          bareng, dirawat bareng.
+        </p>
+      </div>
+      <span class="stamp border-sun text-sun">Open Source ID</span>
     </div>
+
+    {/* Thick rule between mission and the colophon grid */}
+    <hr class="mt-10 rule-brand" aria-hidden="true" />
+
+    {/* Colophon grid: mono metadata column + community sticker links column */}
+    <div class="mt-8 flex flex-wrap items-start justify-between gap-x-10 gap-y-8">
+      <dl class="meta-row grid gap-1.5 text-paper/70">
+        <div class="flex gap-2">
+          <dt class="text-sun">repo</dt>
+          <dd class="text-paper/90">github.com/IndopenSource</dd>
+        </div>
+        <div class="flex gap-2">
+          <dt class="text-sun">lisensi</dt>
+          <dd class="text-paper/90">open source · komunitas</dd>
+        </div>
+        <div class="flex gap-2">
+          <dt class="text-sun">terbit</dt>
+          <dd class="text-paper/90">indopensource.org · {year}</dd>
+        </div>
+      </dl>
+
+      <nav aria-label="Tautan komunitas" class="flex flex-col items-start gap-3">
+        <span class="meta-row uppercase tracking-[0.12em] text-paper/60">// gabung</span>
+        <div class="flex flex-wrap gap-3">
+          {
+            links.map(([label, href]) => (
+              <a
+                class="sticker riso-hover no-underline"
+                href={href}
+                rel="noopener noreferrer"
+              >
+                {label}
+                <span aria-hidden="true">↗</span>
+                <span class="sr-only"> (situs eksternal)</span>
+              </a>
+            ))
+          }
+        </div>
+      </nav>
+    </div>
+
+    {/* Footer baseline: thin printed credit row in mono */}
+    <hr class="mt-10 rule" aria-hidden="true" />
+    <p class="meta-row mt-6 text-paper/60">
+      Dicetak dengan tinta riso digital · dibikin di Indonesia 🇮🇩
+    </p>
   </div>
 </footer>

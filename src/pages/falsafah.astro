@@ -1,7 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InfoCard from '../components/InfoCard.astro';
 import PageHeader from '../components/PageHeader.astro';
+import LightSvgMotion from '../components/LightSvgMotion.astro';
+
+// Three pillars, numbered editorial-style. The page logic is purely
+// presentational (static content) so the restyle is the whole job; an array
+// keeps the numbered rhythm consistent and easy to read.
+const prinsip = [
+  {
+    no: '01',
+    tag: 'Terbuka',
+    title: 'Kode, jejak, dan keputusan dibuka.',
+    body: 'Kode, diskusi, keputusan, dan roadmap dibuat mudah ditemukan oleh publik — bukan rahasia tim, tapi catatan bersama yang bisa dibaca siapa saja.',
+    meta: '// transparansi default'
+  },
+  {
+    no: '02',
+    tag: 'Terawat',
+    title: 'Daftar yang dijaga, bukan ditumpuk.',
+    body: 'Daftar proyek perlu kurasi, metadata yang jelas, dan ritme pembaruan yang sehat. Yang dirawat tetap berguna; yang ditinggalkan jadi beban.',
+    meta: '// kurasi > akumulasi'
+  },
+  {
+    no: '03',
+    tag: 'Bermanfaat',
+    title: 'Dipakai orang Indonesia, hari ini.',
+    body: 'Fokus pada perangkat, pustaka, data, dan praktik yang membantu pengguna Indonesia secara nyata — bukan demo yang mengkilap lalu terlupakan.',
+    meta: '// manfaat lokal nyata'
+  }
+];
 ---
 
 <BaseLayout
@@ -14,17 +41,75 @@ import PageHeader from '../components/PageHeader.astro';
       dirawat bersama, dan memberi manfaat nyata bagi ekosistem teknologi Indonesia.
     </p>
   </PageHeader>
-  <section class="py-18">
-    <div class="mx-auto grid w-[min(1120px,calc(100%-32px))] grid-cols-3 gap-4 max-lg:grid-cols-1">
-      <InfoCard title="Terbuka">
-        <p>Kode, diskusi, keputusan, dan roadmap dibuat mudah ditemukan oleh publik.</p>
-      </InfoCard>
-      <InfoCard title="Terawat">
-        <p>Daftar proyek perlu kurasi, metadata yang jelas, dan ritme pembaruan yang sehat.</p>
-      </InfoCard>
-      <InfoCard title="Bermanfaat">
-        <p>Fokus pada perangkat, pustaka, data, dan praktik yang membantu pengguna Indonesia.</p>
-      </InfoCard>
+
+  {/* Manifesto pull-quote on the deep teal field — the editorial centrepiece.
+       paper/sun text on brand-dark is AA (paper on brand-dark 10.93:1; the sun
+       accent words sit on the dark field, not as body text). */}
+  <section class="grain relative overflow-hidden border-b-[3px] border-ink bg-brand-dark py-16 text-paper md:py-24">
+    <LightSvgMotion variant="orbit" />
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <div class="reveal mb-6 flex items-center gap-3">
+        <span class="sticker">Manifesto</span>
+        <span class="meta-row text-paper/70">// gotong royong, bukan kerja sendiri</span>
+      </div>
+      <p class="reveal max-w-4xl border-l-[6px] border-sun pl-6 font-display text-[clamp(2rem,5vw,4rem)] font-bold leading-[0.98] tracking-[-0.025em] text-paper md:pl-8">
+        Teknologi tumbuh kalau dirawat <span class="text-sun">bersama</span> —
+        dibuka, dibaca, dipakai ulang, dan diwariskan.
+      </p>
+      <p class="reveal meta-row mt-7 text-paper/75">— IndopenSource · komunitas terbuka Indonesia</p>
+    </div>
+  </section>
+
+  {/* Three numbered principles — editorial grid, asymmetric: oversized index +
+       sticker tag on the left rail, the statement and body on the right. Thick
+       ink rule separates each entry. */}
+  <section class="relative overflow-hidden bg-paper py-16 md:py-24">
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <div class="reveal reveal-1 mb-10 flex items-center gap-3">
+        <span class="sticker">Tiga prinsip</span>
+        <span class="rule grow"></span>
+        <span class="meta-row hidden shrink-0 sm:block">03 / pegangan kurasi</span>
+      </div>
+
+      <div class="reveal-stagger flex flex-col">
+        {
+          prinsip.map((p, i) => (
+            <article
+              class={`grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 py-10 md:grid-cols-[7rem_1fr] md:gap-x-10 ${
+                i > 0 ? 'border-t-[3px] border-ink' : ''
+              }`}
+            >
+              <span class="section-number leading-none" aria-hidden="true">
+                {p.no}
+              </span>
+              <div class="min-w-0">
+                <div class="mb-4 flex flex-wrap items-center gap-3">
+                  <span class="sticker">{p.tag}</span>
+                  <span class="meta-row">{p.meta}</span>
+                </div>
+                <h2 class="display-md riso-shift m-0 max-w-3xl text-ink">{p.title}</h2>
+                <p class="mt-4 max-w-2xl font-body text-xl leading-8 text-muted">{p.body}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Closing stamp — a halftone poster band with a rubber-stamp sign-off, so the
+       manifesto ends on a printed, community-made note. ink/brand on canvas all
+       AA. */}
+  <section class="relative overflow-hidden border-t-[3px] border-ink bg-canvas py-16 md:py-20">
+    <div class="halftone pointer-events-none absolute inset-0 text-brand opacity-[0.07]" aria-hidden="true"></div>
+    <div class="relative mx-auto flex w-[min(1120px,calc(100%-32px))] flex-col items-start gap-7 md:flex-row md:items-center md:justify-between">
+      <div class="min-w-0">
+        <p class="pull-quote reveal max-w-2xl">
+          Kalau bisa dipelajari, dipakai ulang, dan dirawat bersama — itu sudah
+          open source.
+        </p>
+      </div>
+      <span class="stamp reveal shrink-0 self-start text-base md:self-center" aria-hidden="true">Open Source · ID</span>
     </div>
   </section>
 </BaseLayout>

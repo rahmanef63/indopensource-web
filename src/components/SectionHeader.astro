@@ -9,19 +9,27 @@ interface Props {
 const { eyebrow, title, ctaHref, ctaLabel } = Astro.props;
 ---
 
-<div class="mb-7 flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
-  <div>
-    <p class="mb-3.5 text-xs font-black uppercase tracking-[0.08em] text-accent">{eyebrow}</p>
-    <h2 class="m-0 text-[clamp(2rem,4vw,3.4rem)] leading-none">{title}</h2>
+<div class="mb-8">
+  <div class="mb-4 flex items-center gap-3">
+    <span class="sticker">{eyebrow}</span>
+    <span class="rule grow"></span>
   </div>
-  <div class="max-w-xl text-muted leading-7">
-    <slot />
+  <div class="flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
+    <div class="min-w-0">
+      <h2 class="display-md riso-shift m-0 text-ink">{title}</h2>
+    </div>
+    <div class="max-w-xl font-body text-lg leading-7 text-muted">
+      <slot />
+    </div>
+    {
+      ctaHref && ctaLabel && (
+        <a
+          class="riso-hover riso-shadow inline-flex min-h-11 shrink-0 items-center justify-center border-2 border-ink bg-brand px-5 font-mono text-sm font-bold tracking-[0.04em] text-white uppercase hover:bg-brand-dark"
+          href={ctaHref}
+        >
+          {ctaLabel}
+        </a>
+      )
+    }
   </div>
-  {
-    ctaHref && ctaLabel && (
-      <a class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg border border-brand bg-brand px-4 font-extrabold text-white transition hover:bg-brand-dark" href={ctaHref}>
-        {ctaLabel}
-      </a>
-    )
-  }
 </div>

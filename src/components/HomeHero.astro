@@ -1,7 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
 import BaseButton from './BaseButton.astro';
-import LightSvgMotion from './LightSvgMotion.astro';
 import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
 
 // The hero is the homepage LCP. It used to be a CSS `background-image`, which
@@ -14,10 +13,16 @@ import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
 // passes it through) so the LCP image starts downloading before the renderer
 // reaches this <img>. astro:assets emits to /_astro/* on the same origin, so
 // the existing `img-src 'self'` CSP already covers it — no CSP change needed.
+//
+// RISO-EDITORIAL restyle: a grid-breaking magazine splash. Oversized Bricolage
+// headline overlapping a halftone field, mono metadata rows, sticker badges and
+// an oversized section index (00), all on the preserved dark hero photo+gradient.
+// One orchestrated staggered `.reveal` entrance. Text contrast on the dark field
+// is AA-verified (paper 15.59:1 on ink, sun 8.87:1 on ink).
 ---
 
 <section
-  class="home-hero relative overflow-hidden bg-ink py-16 text-paper md:min-h-[min(600px,calc(100vh-68px))] md:py-18 max-md:py-12"
+  class="home-hero grain relative isolate overflow-hidden bg-ink py-16 text-paper md:min-h-[min(640px,calc(100vh-68px))] md:py-20 max-md:py-12"
 >
   <!-- Optimised LCP image, painted behind the content. `loading="eager"` +
        `fetchpriority="high"` (NOT lazy) because this is the above-the-fold
@@ -32,30 +37,70 @@ import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
     aria-hidden="true"
     loading="eager"
     fetchpriority="high"
-    pictureAttributes={{ class: 'absolute inset-0 -z-10 block h-full w-full' }}
+    pictureAttributes={{ class: 'absolute inset-0 -z-20 block h-full w-full' }}
     class="h-full w-full object-cover object-left"
   />
   <!-- The original dark-green gradient overlay, unchanged, layered on top of the
        image so the text contrast and look match the previous CSS background. -->
   <div
-    class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(29,37,40,0.92)_0%,rgba(15,111,92,0.78)_46%,rgba(29,37,40,0.5)_100%)]"
+    class="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(29,37,40,0.92)_0%,rgba(15,111,92,0.78)_46%,rgba(29,37,40,0.5)_100%)]"
     aria-hidden="true"
   >
   </div>
-  <LightSvgMotion variant="network" />
-  <div class="relative mx-auto w-[min(1040px,calc(100%-80px))] max-md:w-[calc(100%-32px)]">
-    <div class="max-w-[680px]">
-      <p class="mb-3.5 text-xs font-black uppercase tracking-[0.08em] text-sun">Roadmap website komunitas</p>
-      <h1 class="m-0 max-w-[680px] text-balance text-[clamp(2.6rem,5.2vw,4.8rem)] leading-[1.03] max-sm:text-[clamp(2.3rem,9.5vw,3.2rem)]">
-        Komunitas Open Source Indonesia
+
+  <!-- Riso halftone dot field bleeding off the right edge — a printed poster
+       accent, currentColor (sun) so it reads as a 2nd spot ink over the photo. -->
+  <div
+    class="halftone pointer-events-none absolute -right-16 -top-10 -z-10 h-[120%] w-[55%] text-sun/40 max-md:hidden"
+    aria-hidden="true"
+  >
+  </div>
+  <!-- Oversized editorial section index, grid-breaking off the bottom-left. -->
+  <span
+    class="pointer-events-none absolute -bottom-6 left-2 -z-10 select-none font-display text-[clamp(7rem,22vw,16rem)] font-extrabold leading-none tracking-[-0.04em] text-paper/5 max-md:hidden"
+    aria-hidden="true"
+  >00</span>
+
+  <div class="relative mx-auto w-[min(1080px,calc(100%-80px))] max-md:w-[calc(100%-32px)]">
+    <div class="max-w-[760px]">
+      <!-- Mono metadata row + sticker badge: zine masthead bits. -->
+      <div class="reveal reveal-1 mb-5 flex flex-wrap items-center gap-3">
+        <span class="sticker">Roadmap · Komunitas</span>
+        <span class="meta-row text-paper/70">indopensource.org / open-source · ID</span>
+      </div>
+
+      <h1 class="reveal reveal-2 display-xl riso-shift m-0 text-paper">
+        Komunitas<br />Open&nbsp;Source<br /><span class="text-sun">Indonesia</span>
       </h1>
-      <p class="mt-6 max-w-2xl text-[clamp(1.05rem,1.8vw,1.25rem)] leading-8 text-paper/90">
+
+      <p class="reveal reveal-3 mt-7 max-w-2xl font-body text-[clamp(1.1rem,1.9vw,1.35rem)] leading-8 text-paper/90">
         Rumah terbuka untuk merawat daftar proyek, mendokumentasikan falsafah,
         menulis pembelajaran, dan menghubungkan kontributor open source Indonesia.
       </p>
-      <div class="mt-7 flex flex-wrap gap-3">
+
+      <div class="reveal reveal-4 mt-8 flex flex-wrap gap-3">
         <BaseButton href="/projects/" variant="light">Lihat projects</BaseButton>
         <BaseButton href="https://github.com/orgs/IndopenSource/projects" variant="secondary">Roadmap GitHub</BaseButton>
+      </div>
+
+      <!-- Mono stat strip with thick rule above — the metadata footer of the
+           masthead. paper/85 on dark field stays well above AA. -->
+      <div class="reveal reveal-5 mt-10 max-w-xl">
+        <span class="block h-[3px] w-full bg-paper/30"></span>
+        <dl class="mt-4 grid grid-cols-3 gap-4 font-mono text-paper/85 max-md:grid-cols-1 max-md:gap-2">
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/60">Direktori</dt>
+            <dd class="mt-1 text-base font-bold tracking-[0.02em]">Awesome ID</dd>
+          </div>
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/60">Build</dt>
+            <dd class="mt-1 text-base font-bold tracking-[0.02em]">Static · Astro</dd>
+          </div>
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/60">Lisensi</dt>
+            <dd class="mt-1 text-base font-bold tracking-[0.02em]">Open / Publik</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </div>

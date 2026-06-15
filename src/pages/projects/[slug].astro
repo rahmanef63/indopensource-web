@@ -54,89 +54,103 @@ const jsonLd = {
   type="article"
   jsonLd={jsonLd}
 >
-  <section class="border-b border-line bg-paper py-14">
-    <div class="mx-auto grid w-[min(1040px,calc(100%-40px))] grid-cols-[minmax(0,1fr)_320px] gap-8 max-lg:grid-cols-1">
+  <section class="relative overflow-hidden border-b-[3px] border-ink bg-paper py-14 md:py-16">
+    <div class="mx-auto grid w-[min(1040px,calc(100%-40px))] grid-cols-[minmax(0,1fr)_320px] gap-10 max-lg:grid-cols-1">
       <div>
-        <p class="mb-3 text-xs font-black uppercase tracking-[0.08em] text-accent">Project detail</p>
-        <div class="flex items-start gap-4">
-          {project.ownerAvatarUrl && <img class="size-14 rounded-lg border border-line bg-canvas" src={project.ownerAvatarUrl} alt={`Avatar ${project.owner || project.fullName}`} width="56" height="56" loading="eager" decoding="async" />}
+        <div class="reveal reveal-1 mb-5 flex items-center gap-3">
+          <span class="sticker">Project detail</span>
+          <span class="rule grow"></span>
+        </div>
+        <div class="reveal reveal-2 flex items-start gap-4">
+          {project.ownerAvatarUrl && <img class="size-14 border-2 border-ink bg-canvas riso-shadow-sm" src={project.ownerAvatarUrl} alt={`Avatar ${project.owner || project.fullName}`} width="56" height="56" loading="eager" decoding="async" />}
           <div class="min-w-0">
-            {project.owner && <p class="mb-2 text-lg font-extrabold text-brand-dark">{project.owner}</p>}
-            <h1 class="m-0 text-balance text-[clamp(2.3rem,5vw,4.8rem)] leading-[1.02]">{repoName}</h1>
-            <p class="mt-4 max-w-3xl text-lg leading-8 text-muted">{project.description}</p>
+            {project.owner && <p class="meta-row mb-2 font-semibold text-brand-dark">{project.owner}/</p>}
+            <h1 class="riso-shift m-0 text-balance font-mono font-bold text-[clamp(2.1rem,5vw,4.4rem)] leading-[1.02] tracking-tight">{repoName}</h1>
           </div>
         </div>
-        <div class="mt-6 flex flex-wrap gap-2 text-sm text-muted">
-          {project.language && <span class="rounded-full border border-line px-2.5 py-1">{project.language}</span>}
-          <span class="rounded-full border border-line px-2.5 py-1">{project.stars.toLocaleString('id-ID')} stars</span>
-          <span class="rounded-full border border-line px-2.5 py-1">{project.forks.toLocaleString('id-ID')} forks</span>
-          {updatedLabel && <span class="rounded-full border border-line px-2.5 py-1">Update {updatedLabel}</span>}
-          {project.latestRelease && <a class="rounded-full border border-line px-2.5 py-1 hover:text-brand" href={project.latestRelease.url}>Latest {project.latestRelease.tagName}</a>}
+        <p class="reveal reveal-3 mt-5 max-w-3xl font-body text-xl leading-8 text-muted">{project.description}</p>
+        <div class="reveal reveal-4 meta-row mt-6 flex flex-wrap items-center gap-2 font-semibold">
+          {project.language && <span class="border-2 border-ink bg-canvas px-2.5 py-1 text-ink">{project.language}</span>}
+          <span class="border-2 border-ink bg-canvas px-2.5 py-1 text-ink">★ {project.stars.toLocaleString('id-ID')}</span>
+          <span class="border-2 border-ink bg-canvas px-2.5 py-1 text-ink">⑂ {project.forks.toLocaleString('id-ID')}</span>
+          {updatedLabel && <span class="border-2 border-ink bg-canvas px-2.5 py-1 text-muted">Update {updatedLabel}</span>}
+          {project.latestRelease && <a class="border-2 border-ink bg-sun px-2.5 py-1 text-ink hover:bg-brand hover:text-paper" href={project.latestRelease.url}>{project.latestRelease.tagName}</a>}
         </div>
-        <div class="mt-7 flex flex-wrap gap-3">
+        <div class="reveal reveal-5 mt-7 flex flex-wrap gap-3">
           <BaseButton href={project.url}>Buka GitHub</BaseButton>
           {project.homepage && <BaseButton href={project.homepage} variant="secondary">Homepage</BaseButton>}
           <BaseButton href="/projects/" variant="secondary">Kembali</BaseButton>
         </div>
       </div>
-      <ProjectCard project={project} compact />
+      <div class="reveal reveal-3">
+        <ProjectCard project={project} compact />
+      </div>
     </div>
   </section>
 
   <section class="py-14">
-    <div class="mx-auto grid w-[min(1040px,calc(100%-40px))] gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-      <article class="min-w-0 overflow-hidden rounded-lg border border-line bg-paper p-5">
-        <div class="mb-5 flex items-center justify-between gap-3">
-          <div>
-            <p class="mb-2 text-xs font-black uppercase tracking-[0.08em] text-accent">README</p>
-            <h2 class="text-2xl font-extrabold">Dokumentasi repo</h2>
+    <div class="mx-auto grid w-[min(1040px,calc(100%-40px))] gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <article class="min-w-0 overflow-hidden border-2 border-ink bg-paper riso-shadow">
+        <div class="flex items-center justify-between gap-3 border-b-[3px] border-ink bg-ink px-5 py-4">
+          <div class="flex items-baseline gap-3">
+            <span class="section-number text-sun">01</span>
+            <h2 class="font-mono text-lg font-bold uppercase tracking-[0.06em] text-paper">README</h2>
           </div>
-          <a class="text-sm font-bold text-brand hover:text-brand-dark" href={`${project.url}#readme`}>GitHub</a>
+          <a class="border-2 border-paper bg-transparent px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-[0.04em] text-paper hover:bg-sun hover:text-ink hover:border-ink" href={`${project.url}#readme`}>GitHub ↗</a>
         </div>
-        {
-          readmeHtml ? (
-            <div class="prose-readme max-w-none text-muted" set:html={readmeHtml} />
-          ) : (
-            <p class="text-muted">
-              README belum tersedia di sini. Buka <a class="font-bold text-brand hover:text-brand-dark" href={`${project.url}#readme`}>README langsung dari GitHub</a>.
-            </p>
-          )
-        }
+        <div class="p-5">
+          {
+            readmeHtml ? (
+              <div class="prose-readme max-w-none" set:html={readmeHtml} />
+            ) : (
+              <p class="font-body leading-7 text-muted">
+                README belum tersedia di sini. Buka <a class="font-semibold text-brand underline decoration-2 underline-offset-2 hover:text-accent" href={`${project.url}#readme`}>README langsung dari GitHub</a>.
+              </p>
+            )
+          }
+        </div>
       </article>
 
       <aside class="grid content-start gap-6">
-        <article class="rounded-lg border border-line bg-paper p-5">
-          <p class="mb-2 text-xs font-black uppercase tracking-[0.08em] text-accent">Statistik</p>
-          <h2 class="text-2xl font-extrabold">Ringkasan repo</h2>
-          <dl class="mt-5 grid grid-cols-2 gap-3 text-sm">
-            <div class="rounded-lg border border-line bg-canvas p-3">
-              <dt class="text-muted">Stars</dt>
-              <dd class="text-lg font-extrabold text-brand-dark">{project.stars.toLocaleString('id-ID')}</dd>
+        <article class="border-2 border-ink bg-canvas riso-shadow p-5">
+          <div class="flex items-baseline gap-3">
+            <span class="section-number">02</span>
+            <h2 class="font-mono text-lg font-bold uppercase tracking-[0.06em] text-ink">Statistik</h2>
+          </div>
+          <hr class="rule mt-4" />
+          <dl class="mt-5 grid grid-cols-2 gap-3">
+            <div class="border-2 border-ink bg-paper p-3">
+              <dt class="meta-row uppercase tracking-[0.06em] text-muted">Stars</dt>
+              <dd class="mt-1 font-mono text-2xl font-bold text-ink">{project.stars.toLocaleString('id-ID')}</dd>
             </div>
-            <div class="rounded-lg border border-line bg-canvas p-3">
-              <dt class="text-muted">Forks</dt>
-              <dd class="text-lg font-extrabold text-brand-dark">{project.forks.toLocaleString('id-ID')}</dd>
+            <div class="border-2 border-ink bg-paper p-3">
+              <dt class="meta-row uppercase tracking-[0.06em] text-muted">Forks</dt>
+              <dd class="mt-1 font-mono text-2xl font-bold text-ink">{project.forks.toLocaleString('id-ID')}</dd>
             </div>
             {project.language && (
-              <div class="rounded-lg border border-line bg-canvas p-3">
-                <dt class="text-muted">Bahasa</dt>
-                <dd class="text-base font-extrabold text-brand-dark">{project.language}</dd>
+              <div class="border-2 border-ink bg-paper p-3">
+                <dt class="meta-row uppercase tracking-[0.06em] text-muted">Bahasa</dt>
+                <dd class="mt-1 font-mono text-base font-bold text-ink">{project.language}</dd>
               </div>
             )}
             {updatedLabel && (
-              <div class="rounded-lg border border-line bg-canvas p-3">
-                <dt class="text-muted">Update</dt>
-                <dd class="text-base font-extrabold text-brand-dark">{updatedLabel}</dd>
+              <div class="border-2 border-ink bg-paper p-3">
+                <dt class="meta-row uppercase tracking-[0.06em] text-muted">Update</dt>
+                <dd class="mt-1 font-mono text-base font-bold text-ink">{updatedLabel}</dd>
               </div>
             )}
           </dl>
         </article>
         {
           topics.length > 0 && (
-            <article class="rounded-lg border border-line bg-paper p-5">
-              <p class="mb-2 text-xs font-black uppercase tracking-[0.08em] text-accent">Tags</p>
-              <div class="flex flex-wrap gap-2 text-sm font-bold text-brand-dark">
-                {topics.map((topic) => <span class="rounded-full bg-brand/10 px-2.5 py-1">#{topic}</span>)}
+            <article class="border-2 border-ink bg-paper riso-shadow p-5">
+              <div class="flex items-baseline gap-3">
+                <span class="section-number">03</span>
+                <h2 class="font-mono text-lg font-bold uppercase tracking-[0.06em] text-ink">Tags</h2>
+              </div>
+              <hr class="rule mt-4 mb-4" />
+              <div class="meta-row flex flex-wrap gap-x-3 gap-y-1.5 font-semibold text-brand-dark">
+                {topics.map((topic) => <span>#{topic}</span>)}
               </div>
             </article>
           )

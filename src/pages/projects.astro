@@ -33,30 +33,30 @@ const latestUpdateLabel = latestUpdate
   <PageHeader eyebrow="Projects" title="Direktori proyek Indonesia.">
     <p>
       Daftar awal halaman ini disinkronkan dari
-      <a class="font-bold text-brand hover:text-brand-dark" href="https://github.com/IndopenSource/awesome-indonesia">IndopenSource/awesome-indonesia</a>.
+      <a class="font-semibold text-brand underline decoration-2 underline-offset-2 hover:text-accent" href="https://github.com/IndopenSource/awesome-indonesia">IndopenSource/awesome-indonesia</a>.
     </p>
-    <div class="mt-4 flex flex-wrap gap-2 text-sm">
-      <span class="rounded-full border border-line px-2 py-1">{projects.length} projects</span>
-      <span class="rounded-full border border-line px-2 py-1">{totalStars.toLocaleString('id-ID')} total stars</span>
-      {languages.map((language) => <span class="rounded-full border border-line px-2 py-1">{language}</span>)}
+    <div class="meta-row mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 font-semibold text-ink">
+      <span class="border-2 border-ink bg-canvas px-2 py-1 text-xs">{projects.length} projects</span>
+      <span class="border-2 border-ink bg-canvas px-2 py-1 text-xs">★ {totalStars.toLocaleString('id-ID')}</span>
+      {languages.map((language) => <span class="text-brand-dark">{language}</span>)}
     </div>
     {unavailableCount > 0 && (
-      <p class="mt-3 text-sm text-muted" role="status">
+      <p class="mt-4 font-body text-base leading-7 text-muted" role="status">
         {unavailableCount.toLocaleString('id-ID')} repo belum bisa diperbarui saat sinkronisasi terakhir, jadi tidak dihitung dalam akumulasi stars/forks di bawah.
       </p>
     )}
-    <div class="mt-6 grid gap-3 sm:grid-cols-3">
-      <div class="rounded-lg border border-line bg-canvas p-4">
-        <span class="text-sm font-bold text-muted">Akumulasi stars</span>
-        <strong class="mt-1 block text-2xl text-ink">{totalStars.toLocaleString('id-ID')}</strong>
+    <div class="reveal-stagger mt-8 grid gap-4 sm:grid-cols-3">
+      <div class="border-2 border-ink bg-canvas riso-shadow-brand p-4">
+        <span class="meta-row block font-bold uppercase tracking-[0.06em] text-muted">Akumulasi stars</span>
+        <strong class="mt-2 block font-mono text-3xl font-bold text-ink">{totalStars.toLocaleString('id-ID')}</strong>
       </div>
-      <div class="rounded-lg border border-line bg-canvas p-4">
-        <span class="text-sm font-bold text-muted">Akumulasi forks</span>
-        <strong class="mt-1 block text-2xl text-ink">{totalForks.toLocaleString('id-ID')}</strong>
+      <div class="border-2 border-ink bg-canvas riso-shadow-brand p-4">
+        <span class="meta-row block font-bold uppercase tracking-[0.06em] text-muted">Akumulasi forks</span>
+        <strong class="mt-2 block font-mono text-3xl font-bold text-ink">{totalForks.toLocaleString('id-ID')}</strong>
       </div>
-      <div class="rounded-lg border border-line bg-canvas p-4">
-        <span class="text-sm font-bold text-muted">Update terbaru</span>
-        <strong class="mt-1 block text-2xl text-ink">{latestUpdateLabel || '-'}</strong>
+      <div class="border-2 border-ink bg-canvas riso-shadow-brand p-4">
+        <span class="meta-row block font-bold uppercase tracking-[0.06em] text-muted">Update terbaru</span>
+        <strong class="mt-2 block font-mono text-xl font-bold text-ink">{latestUpdateLabel || '-'}</strong>
       </div>
     </div>
   </PageHeader>

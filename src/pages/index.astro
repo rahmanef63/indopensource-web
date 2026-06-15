@@ -33,14 +33,17 @@ const heroPreload = await getImage({
 >
   <HomeHero />
 
-  <section class="relative overflow-hidden bg-paper py-18">
+  {/* 01 — Editorial block: numbered section index breaks the grid above the
+       SectionHeader; orbit accent bleeds off the right. */}
+  <section class="relative overflow-hidden border-b-[3px] border-ink bg-paper py-18">
     <LightSvgMotion variant="orbit" />
-    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <span class="section-number reveal reveal-1 mb-1 block leading-none" aria-hidden="true">01</span>
       <SectionHeader eyebrow="Arsitektur konten" title="Halaman yang dibangun bertahap">
         Situs ini disiapkan sebagai dashboard komunitas: stabil untuk pengunjung,
         tapi tetap dekat dengan alur kerja GitHub yang dipakai IndopenSource.
       </SectionHeader>
-      <div class="grid grid-cols-3 gap-4 max-lg:grid-cols-1">
+      <div class="reveal-stagger grid grid-cols-3 gap-4 max-lg:grid-cols-1">
         <InfoCard status="Live scaffold" title="Home dan Falsafah">
           <p>Memperkenalkan misi, prinsip kurasi, dan cara kontribusi komunitas.</p>
         </InfoCard>
@@ -54,22 +57,51 @@ const heroPreload = await getImage({
     </div>
   </section>
 
-  <section class="relative overflow-hidden py-18">
+  {/* Pull-quote interstitial — a printed editorial manifesto on the deep teal
+       field. paper/white text on brand-dark is AA (10.93:1+). */}
+  <section class="grain relative overflow-hidden border-b-[3px] border-ink bg-brand-dark py-16 text-paper md:py-20">
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <div class="reveal mb-6 flex items-center gap-3">
+        <span class="sticker">Falsafah</span>
+        <span class="meta-row text-paper/70">// kenapa kami ada</span>
+      </div>
+      <blockquote class="reveal max-w-4xl border-l-[5px] border-sun pl-6 font-display text-[clamp(1.7rem,3.6vw,3rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-paper">
+        Open source bukan cuma kode di GitHub — ini soal merawat catatan,
+        membuka pintu kontribusi, dan menulis ulang cerita teknologi Indonesia
+        secara terbuka.
+      </blockquote>
+      <p class="reveal meta-row mt-6 text-paper/75">— IndopenSource · komunitas terbuka</p>
+    </div>
+  </section>
+
+  {/* 02 — Roadmap as a printed zine timeline. */}
+  <section class="relative overflow-hidden border-b-[3px] border-ink bg-canvas py-18">
     <LightSvgMotion variant="steps" />
-    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
-      <div class="mb-7 flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
-        <SectionHeader eyebrow="Roadmap" title="Urutan pekerjaan" />
-        <BaseButton href="/contact/">Gabung diskusi</BaseButton>
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <span class="section-number reveal reveal-1 mb-1 block leading-none" aria-hidden="true">02</span>
+      <div class="flex items-start justify-between gap-6 max-md:flex-col max-md:items-start">
+        <div class="min-w-0 grow">
+          <SectionHeader eyebrow="Roadmap" title="Urutan pekerjaan" />
+        </div>
+        <div class="shrink-0 max-md:mb-8">
+          <BaseButton href="/contact/">Gabung diskusi</BaseButton>
+        </div>
       </div>
       <RoadmapTimeline />
     </div>
   </section>
 
-  <section class="bg-paper py-18">
-    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
-      <div class="mb-7 flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
-        <SectionHeader eyebrow="Contoh projects" title="Dari awesome-indonesia" />
-        <BaseButton href="/projects/" variant="secondary">Buka semua</BaseButton>
+  {/* 03 — Featured projects rail. */}
+  <section class="relative overflow-hidden bg-paper py-18">
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <span class="section-number reveal reveal-1 mb-1 block leading-none" aria-hidden="true">03</span>
+      <div class="flex items-start justify-between gap-6 max-md:flex-col max-md:items-start">
+        <div class="min-w-0 grow">
+          <SectionHeader eyebrow="Contoh projects" title="Dari awesome-indonesia" />
+        </div>
+        <div class="shrink-0 max-md:mb-8">
+          <BaseButton href="/projects/" variant="secondary">Buka semua</BaseButton>
+        </div>
       </div>
       <div class="-mx-4 overflow-x-auto px-4 pb-4 [scrollbar-width:thin]">
         <div class="flex min-w-full snap-x gap-4">

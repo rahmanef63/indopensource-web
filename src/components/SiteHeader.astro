@@ -24,9 +24,22 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const currentPathWithoutBase = currentPath.replace(new RegExp(`^${baseUrl.replace(/\/$/, '')}`), '') || '/';
 ---
 
-<header class="sticky top-0 z-20 border-b border-ink/10 bg-paper/90 backdrop-blur-xl">
-  <nav class="mx-auto flex min-h-17 w-[min(1120px,calc(100%-32px))] items-center justify-between gap-5 py-3 max-sm:flex-col max-sm:items-start" aria-label="Navigasi utama">
-    <a class="inline-flex items-center gap-2.5 font-extrabold" href={withBase('/')}>
+{/*
+  EDITORIAL MASTHEAD — riso-zine wordmark stamp, mono nav row, thick ink bottom
+  rule. Sticky cream field; the global body grain shows through the translucent
+  paper so the bar reads as printed paper, not glass. All depth via design-system
+  utilities (.rule, .riso-shadow-sm, .sticker, .meta-row) — no inline styles.
+*/}
+<header class="sticky top-0 z-20 bg-paper/92 backdrop-blur-md">
+  <nav
+    class="reveal-stagger mx-auto flex min-h-16 w-[min(1120px,calc(100%-32px))] flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3 max-sm:flex-col max-sm:items-start"
+    aria-label="Navigasi utama"
+  >
+    {/* Wordmark = stamped logo tile + editorial display name + mono kicker */}
+    <a
+      class="riso-hover group inline-flex items-center gap-3 border-2 border-ink bg-paper px-2.5 py-1.5 riso-shadow-sm"
+      href={withBase('/')}
+    >
       <Picture
         src={brandIcon}
         formats={['avif', 'webp']}
@@ -36,39 +49,69 @@ const currentPathWithoutBase = currentPath.replace(new RegExp(`^${baseUrl.replac
         height={36}
         alt=""
         loading="eager"
-        class="size-9 rounded-lg object-contain"
+        class="size-9 border border-ink/20 object-contain"
       />
-      <span>IndopenSource</span>
+      <span class="flex flex-col leading-none">
+        <span class="riso-shift font-display text-xl font-extrabold tracking-tight text-ink">IndopenSource</span>
+        <span class="meta-row mt-0.5 text-brand-dark">/ zine open source ID</span>
+      </span>
     </a>
-    <div class="flex flex-wrap justify-end gap-1.5 max-md:hidden">
+
+    {/* Desktop nav — mono uppercase labels, riso-underline reveal, sticker active state */}
+    <div class="flex flex-wrap items-center justify-end gap-x-1 gap-y-2 max-md:hidden">
       {
-        navItems.map(([label, href]) => (
-          <a
-            class="rounded-lg px-3 py-2 text-sm font-bold text-muted hover:bg-brand/10 hover:text-brand-dark aria-[current=page]:bg-brand/10 aria-[current=page]:text-brand-dark"
-            href={withBase(href)}
-            aria-current={currentPathWithoutBase === href ? 'page' : undefined}
-          >
-            {label}
-          </a>
-        ))
+        navItems.map(([label, href]) => {
+          const isCurrent = currentPathWithoutBase === href;
+          return isCurrent ? (
+            <a
+              class="riso-hover inline-flex items-center border-2 border-ink bg-brand px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.06em] text-white riso-shadow-sm"
+              href={withBase(href)}
+              aria-current="page"
+            >
+              {label}
+            </a>
+          ) : (
+            <a
+              class="inline-flex items-center border-2 border-transparent px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.06em] text-muted transition-colors hover:border-ink hover:bg-sun hover:text-ink"
+              href={withBase(href)}
+            >
+              {label}
+            </a>
+          );
+        })
       }
     </div>
   </nav>
+  {/* Signature thick ink bottom rule — the printed edge of the masthead */}
+  <hr class="rule" aria-hidden="true" />
 </header>
 
-<nav class="fixed inset-x-4 bottom-[calc(env(safe-area-inset-bottom)+3.5rem)] z-30 hidden rounded-2xl border border-line bg-paper/95 p-2 shadow-2xl shadow-ink/20 backdrop-blur-xl max-md:grid max-md:grid-cols-4" aria-label="Navigasi mobile">
+{/*
+  MOBILE DOCK — square riso tiles, thick ink border + hard offset shadow, mono
+  caps labels, active = brand fill (white text, 7.27:1 AA). No rounded pills.
+*/}
+<nav
+  class="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom)+0.75rem)] z-30 hidden border-2 border-ink bg-paper/97 backdrop-blur-md riso-shadow max-md:grid max-md:grid-cols-4"
+  aria-label="Navigasi mobile"
+>
   {
-    mobileNavItems.map(([label, href, iconPath]) => (
-      <a
-        class="flex min-h-14 flex-col items-center justify-center gap-1 rounded-xl px-2 py-2 text-center text-xs font-extrabold text-muted hover:bg-brand/10 hover:text-brand-dark aria-[current=page]:bg-brand aria-[current=page]:text-white"
-        href={withBase(href)}
-        aria-current={currentPathWithoutBase === href ? 'page' : undefined}
-      >
-        <svg class="size-5" viewBox="0 0 24 24" aria-hidden="true">
-          <path d={iconPath} fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-        </svg>
-        {label}
-      </a>
-    ))
+    mobileNavItems.map(([label, href, iconPath]) => {
+      const isCurrent = currentPathWithoutBase === href;
+      return (
+        <a
+          class:list={[
+            'flex min-h-14 flex-col items-center justify-center gap-1 px-2 py-2 text-center font-mono text-[0.62rem] font-semibold uppercase tracking-[0.04em] transition-colors',
+            isCurrent ? 'bg-brand text-white' : 'text-muted hover:bg-sun hover:text-ink'
+          ]}
+          href={withBase(href)}
+          aria-current={isCurrent ? 'page' : undefined}
+        >
+          <svg class="size-5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d={iconPath} fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+          </svg>
+          {label}
+        </a>
+      );
+    })
   }
 </nav>

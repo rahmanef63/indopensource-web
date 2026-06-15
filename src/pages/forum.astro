@@ -13,16 +13,37 @@ import PageHeader from '../components/PageHeader.astro';
       Forum direncanakan mengambil sumber dari organization discussions supaya percakapan
       tetap dekat dengan repo, issue, project board, dan kontributor.
     </p>
-    <div class="mt-7 flex flex-wrap gap-3 text-ink">
+    <div class="mt-7 flex flex-wrap gap-3">
       <BaseButton href="https://github.com/orgs/IndopenSource/discussions">Buka discussions</BaseButton>
       <BaseButton href="https://github.com/orgs/IndopenSource/projects" variant="secondary">Buka project board</BaseButton>
     </div>
   </PageHeader>
-  <section class="bg-paper py-18">
-    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
-      <aside class="border-l-4 border-accent bg-[#fff1dc] px-5 py-4 leading-7" role="note" aria-label="Catatan pengembangan">
-        Integrasi tahap lanjut dapat membaca GraphQL GitHub Discussions untuk menampilkan kategori,
-        thread terbaru, dan status jawaban langsung di situs.
+
+  {/* Printed development notice. The semantic <aside role="note"> is preserved
+       verbatim and restyled as a riso "stamped memo": thick ink border, hard
+       offset shadow, sticker label, oversized section index, and a mono dateline
+       meta-row. ink/muted on canvas all AA. */}
+  <section class="relative overflow-hidden bg-paper py-16 md:py-24">
+    <div class="halftone pointer-events-none absolute inset-0 text-brand opacity-[0.06]" aria-hidden="true"></div>
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <aside
+        class="riso-hover riso-shadow reveal reveal-1 relative grid grid-cols-1 gap-x-10 gap-y-5 border-2 border-ink bg-canvas p-6 md:grid-cols-[7rem_1fr] md:p-9"
+        role="note"
+        aria-label="Catatan pengembangan"
+      >
+        <span class="section-number leading-none" aria-hidden="true">!</span>
+        <div class="min-w-0">
+          <div class="mb-5 flex flex-wrap items-center gap-3">
+            <span class="sticker">Catatan · WIP</span>
+            <span class="meta-row" aria-hidden="true">// roadmap integrasi forum</span>
+          </div>
+          <p class="m-0 max-w-2xl font-body text-xl leading-8 text-ink">
+            Integrasi tahap lanjut dapat membaca GraphQL GitHub Discussions untuk menampilkan kategori,
+            thread terbaru, dan status jawaban langsung di situs.
+          </p>
+          <hr class="rule-brand my-6 max-w-2xl" />
+          <p class="meta-row m-0">// sumber: github.com/orgs/IndopenSource/discussions</p>
+        </div>
       </aside>
     </div>
   </section>

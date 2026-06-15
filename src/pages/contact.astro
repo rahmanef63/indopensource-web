@@ -1,8 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InfoCard from '../components/InfoCard.astro';
-import LightSvgMotion from '../components/LightSvgMotion.astro';
 import PageHeader from '../components/PageHeader.astro';
+import LightSvgMotion from '../components/LightSvgMotion.astro';
+
+// Contact channels as a zine "rolodex". Each entry is a printed card: sticker
+// label + mono handle + the (verbatim, externally-linked) destination. Logic is
+// static; the array keeps the cards uniform. All hrefs/rel/sr-only text are
+// preserved exactly as before.
+const channels = [
+  {
+    tag: 'Organization',
+    handle: '@IndopenSource',
+    href: 'https://github.com/IndopenSource',
+    label: 'github.com/IndopenSource',
+    meta: '// rumah semua repo'
+  },
+  {
+    tag: 'Roadmap',
+    handle: 'GitHub Projects',
+    href: 'https://github.com/orgs/IndopenSource/projects',
+    label: 'GitHub Projects IndopenSource',
+    meta: '// urutan pekerjaan publik'
+  },
+  {
+    tag: 'Forum',
+    handle: 'GitHub Discussions',
+    href: 'https://github.com/orgs/IndopenSource/discussions',
+    label: 'GitHub Discussions IndopenSource',
+    meta: '// tanya, usul, koordinasi'
+  },
+  {
+    tag: 'Instagram',
+    handle: '@indopensource',
+    href: 'https://www.instagram.com/indopensource',
+    label: 'instagram.com/indopensource',
+    meta: '// kabar & sorotan'
+  },
+  {
+    tag: 'Threads',
+    handle: '@indopensource',
+    href: 'https://www.threads.com/@indopensource?xmt=AQG0gissJqZtQXt5UwznNJsDj0IXvg7Plki6SfOkjhcam0o',
+    label: 'threads.com/@indopensource',
+    meta: '// obrolan singkat'
+  }
+];
 ---
 
 <BaseLayout
@@ -15,24 +56,59 @@ import PageHeader from '../components/PageHeader.astro';
       punya jejak terbuka yang bisa ditindaklanjuti komunitas.
     </p>
   </PageHeader>
-  <section class="relative overflow-hidden py-18">
+
+  <section class="relative overflow-hidden bg-paper py-16 md:py-24">
     <LightSvgMotion variant="network" />
-    <div class="mx-auto grid w-[min(1120px,calc(100%-32px))] grid-cols-3 gap-4 max-lg:grid-cols-1">
-      <InfoCard title="Organization">
-        <p><a href="https://github.com/IndopenSource" rel="noopener noreferrer">github.com/IndopenSource<span class="sr-only"> (situs eksternal)</span></a></p>
-      </InfoCard>
-      <InfoCard title="Roadmap">
-        <p><a href="https://github.com/orgs/IndopenSource/projects" rel="noopener noreferrer">GitHub Projects IndopenSource<span class="sr-only"> (situs eksternal)</span></a></p>
-      </InfoCard>
-      <InfoCard title="Forum">
-        <p><a href="https://github.com/orgs/IndopenSource/discussions" rel="noopener noreferrer">GitHub Discussions IndopenSource<span class="sr-only"> (situs eksternal)</span></a></p>
-      </InfoCard>
-      <InfoCard title="Instagram">
-        <p><a href="https://www.instagram.com/indopensource" rel="noopener noreferrer">instagram.com/indopensource<span class="sr-only"> (situs eksternal)</span></a></p>
-      </InfoCard>
-      <InfoCard title="Threads">
-        <p><a href="https://www.threads.com/@indopensource?xmt=AQG0gissJqZtQXt5UwznNJsDj0IXvg7Plki6SfOkjhcam0o" rel="noopener noreferrer">threads.com/@indopensource<span class="sr-only"> (situs eksternal)</span></a></p>
-      </InfoCard>
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <div class="reveal reveal-1 mb-10 flex items-center gap-3">
+        <span class="sticker">Saluran resmi</span>
+        <span class="rule grow"></span>
+        <span class="meta-row hidden shrink-0 sm:block">05 kanal · 1 jejak terbuka</span>
+      </div>
+
+      {/* Asymmetric zine grid: first card spans wide as the "primary" address,
+          the rest pack into a printed rolodex. Each card is the system card
+          pattern (2px ink + riso-shadow + riso-hover). */}
+      <div class="reveal-stagger grid grid-cols-2 gap-4 max-md:grid-cols-1 lg:grid-cols-3">
+        {
+          channels.map((c, i) => (
+            <a
+              class={`riso-hover riso-shadow group flex min-h-44 flex-col justify-between border-2 border-ink bg-paper p-5 ${
+                i === 0 ? 'lg:col-span-2 lg:bg-brand lg:text-paper' : ''
+              }`}
+              href={c.href}
+              rel="noopener noreferrer"
+            >
+              <div class="flex items-center justify-between gap-3">
+                <span class="sticker">{c.tag}</span>
+                <span
+                  class={`meta-row ${i === 0 ? 'lg:text-paper/80' : ''}`}
+                  aria-hidden="true"
+                >
+                  {c.meta}
+                </span>
+              </div>
+              <div class="mt-6">
+                <span
+                  class={`block font-display text-[clamp(1.4rem,3vw,2rem)] font-bold leading-[1.04] tracking-[-0.02em] ${
+                    i === 0 ? 'text-ink lg:text-paper' : 'text-ink'
+                  }`}
+                >
+                  {c.handle}
+                </span>
+                <span
+                  class={`mt-2 block font-mono text-sm tracking-[0.01em] underline decoration-2 underline-offset-4 ${
+                    i === 0 ? 'text-brand lg:text-paper/90' : 'text-brand group-hover:text-accent'
+                  }`}
+                >
+                  {c.label}
+                  <span class="sr-only"> (situs eksternal)</span>
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>

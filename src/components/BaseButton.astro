@@ -9,13 +9,24 @@ interface Props {
 const { href, variant = 'primary' } = Astro.props;
 const targetHref = normalizeHref(href);
 
+/*
+ * Riso sticker-buttons: flat spot-ink fill, THICK ink border, HARD offset block
+ * shadow, mono uppercase label. `.riso-hover` nudges the button into its shadow
+ * on hover (print misregistration). Verified contrast:
+ *   primary   white on brand 7.27:1
+ *   secondary ink on canvas/paper >=14:1
+ *   light     brand-dark on paper 10.93:1
+ */
 const variants = {
-  primary: 'border-brand bg-brand text-white hover:bg-brand-dark',
-  secondary: 'border-current bg-transparent text-current hover:bg-ink/5',
-  light: 'border-paper bg-paper text-brand-dark hover:bg-white'
+  primary: 'border-ink bg-brand text-white riso-shadow hover:bg-brand-dark',
+  secondary: 'border-ink bg-paper text-ink riso-shadow hover:bg-sun',
+  light: 'border-ink bg-paper text-brand-dark riso-shadow hover:bg-sun'
 };
 ---
 
-<a class={`inline-flex min-h-11 items-center justify-center rounded-lg border px-4 font-extrabold transition ${variants[variant]}`} href={targetHref}>
+<a
+  class={`riso-hover inline-flex min-h-11 items-center justify-center border-2 px-5 font-mono text-sm font-bold tracking-[0.04em] uppercase ${variants[variant]}`}
+  href={targetHref}
+>
   <slot />
 </a>

@@ -7,11 +7,14 @@ interface Props {
 const { eyebrow, title } = Astro.props;
 ---
 
-<section class="border-b border-line bg-paper py-16">
+<section class="relative overflow-hidden border-b-[3px] border-ink bg-paper py-16 md:py-20">
   <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
-    <p class="mb-3.5 text-xs font-black uppercase tracking-[0.08em] text-accent">{eyebrow}</p>
-    <h1 class="m-0 max-w-4xl text-[clamp(3rem,8vw,6.6rem)] leading-[0.96]">{title}</h1>
-    <div class="mt-5 max-w-3xl text-lg leading-8 text-muted">
+    <div class="reveal reveal-1 mb-5 flex items-center gap-3">
+      <span class="sticker">{eyebrow}</span>
+      <span class="rule grow"></span>
+    </div>
+    <h1 class="reveal reveal-2 display-lg riso-shift m-0 max-w-5xl text-ink">{title}</h1>
+    <div class="reveal reveal-3 mt-6 max-w-3xl font-body text-xl leading-8 text-muted">
       <slot />
     </div>
   </div>
