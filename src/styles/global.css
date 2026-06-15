@@ -335,25 +335,29 @@
 
   /*
    * .riso-shift — the print-MISREGISTRATION signature. A 2nd-ink (vermilion)
-   * and 3rd-ink (teal) ghost of the glyph is offset AT REST by ~1px on opposing
-   * diagonals, so the headline always carries the off-register spot-colour look
-   * of a riso pull. On hover the offsets widen to ~2–3px and the shift becomes
-   * overt — the brand promise reads on touch and at rest, not only on a mouse.
+   * and 3rd-ink (teal) ghost of the glyph is offset AT REST by a CLEARLY VISIBLE
+   * amount (2px vermilion + 1.5px teal on opposing diagonals), so the headline
+   * carries the off-register spot-colour look of a riso pull for EVERY reader —
+   * touch, mobile and keyboard — not only on mouse :hover. On hover the offsets
+   * widen further (4px) and the shift becomes overt, so the interaction still
+   * pays off without being the only place the signature appears.
    *
    * The shadow is a decorative edge only; the glyph FILL stays paper/ink at full
-   * AA contrast, so this adds zero text-legibility cost on either field.
+   * AA contrast, so this adds zero text-legibility cost on either field. The
+   * reduced-motion catch-all only neutralises the transition (the at-rest offset
+   * is a static text-shadow, not motion, so it remains — the brand look holds).
    */
   .riso-shift {
     text-shadow:
-      1px 1px 0 color-mix(in srgb, var(--color-accent) 78%, transparent),
-      -1px 0 0 color-mix(in srgb, var(--color-brand) 40%, transparent);
+      2px 2px 0 color-mix(in srgb, var(--color-accent) 88%, transparent),
+      -1.5px -1px 0 color-mix(in srgb, var(--color-brand) 62%, transparent);
     transition: text-shadow 0.16s ease;
   }
 
   .riso-shift:hover {
     text-shadow:
-      3px 3px 0 var(--color-accent),
-      -2px -1px 0 color-mix(in srgb, var(--color-brand) 70%, transparent);
+      4px 4px 0 var(--color-accent),
+      -3px -2px 0 color-mix(in srgb, var(--color-brand) 78%, transparent);
   }
 
   /*
@@ -744,18 +748,25 @@
 
   /*
    * ====================================================================
-   * AMBIENT SVG DECORATION (legacy LightSvgMotion). Restyled to riso inks;
-   * still neutralised by the reduced-motion catch-all below.
+   * AMBIENT SVG DECORATION (LightSvgMotion). On-brand RISO motion, not generic
+   * ambient loops: the connector rule "prints" by rolling its dash (a press
+   * feeding paper), the dot fields SHIMMER like a halftone screen catching ink,
+   * the satellites JITTER on a tiny sub-pixel off-register wobble (the plate
+   * misregistration), and the orbit ring rolls its stamped dashes. All keep the
+   * `.motion-*` hooks so the reduced-motion catch-all below neutralises them.
    * ====================================================================
    */
+
+  /* Connector rule — a slow PRINT-ROLL: the dash pattern feeds through like a
+     press pulling paper, rather than a generic marching-ants flow. */
   .motion-line {
     fill: none;
     stroke: currentColor;
     stroke-width: 4;
     stroke-linecap: round;
     color: rgba(251, 247, 238, 0.55);
-    stroke-dasharray: 18 18;
-    animation: dash-flow 18s linear infinite;
+    stroke-dasharray: 26 14;
+    animation: riso-roll 9s linear infinite;
   }
 
   .motion-delay {
@@ -767,21 +778,35 @@
     fill: var(--color-sun);
   }
 
+  /* Stamped satellites — a tiny MISREGISTRATION jitter (sub-pixel off-register
+     wobble + faint ink-density flicker), the signature riso plate drift. */
   .motion-pulse {
     transform-origin: center;
-    animation: pulse-soft 3.8s ease-in-out infinite;
+    transform-box: fill-box;
+    animation: riso-jitter 1.9s steps(1, end) infinite;
   }
 
+  /* Stamped concentric orbit — its dash rolls like the connector (print-roll),
+     reading as a ring being pulled off the drum. */
   .motion-orbit {
     fill: none;
     stroke: var(--color-brand);
     stroke-width: 2;
-    stroke-dasharray: 10 12;
-    animation: dash-flow 22s linear infinite;
+    stroke-dasharray: 14 10;
+    animation: riso-roll 14s linear infinite;
   }
 
+  /* Misregistration frame — drifts on a diagonal so the stacked 3-ink outlines
+     visibly slip out of and back into register (the off-press signature). */
   .motion-float {
-    animation: float-soft 6s ease-in-out infinite;
+    transform-box: fill-box;
+    animation: riso-misregister 7s ease-in-out infinite;
+  }
+
+  /* Halftone dot screens that should SHIMMER (ink catching the screen). Opt-in
+     via this hook on a <rect> filled with a dot pattern. */
+  .motion-screen {
+    animation: riso-shimmer 4.2s ease-in-out infinite;
   }
 }
 
@@ -797,33 +822,69 @@
   }
 }
 
-@keyframes dash-flow {
+/*
+ * RISO PRINT-ROLL — the dash pattern feeds through like paper pulled past a
+ * drum. One full dash period (40px = 26+14) so the roll is seamless.
+ */
+@keyframes riso-roll {
   to {
-    stroke-dashoffset: -180;
+    stroke-dashoffset: -40;
   }
 }
 
-@keyframes pulse-soft {
+/*
+ * MISREGISTRATION JITTER — a stamped satellite drifts a sub-pixel off-register
+ * and the ink density flickers, like a plate that never quite lands true.
+ * `steps()` timing makes it snap between registers (print stutter), not glide.
+ */
+@keyframes riso-jitter {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.85;
+  }
+  25% {
+    transform: translate(0.6px, -0.5px);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-0.5px, 0.4px);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translate(0.4px, 0.6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.85;
+  }
+}
+
+/*
+ * MISREGISTER DRIFT — the stacked 3-ink outline slips out of and back into
+ * register on a slow diagonal, the off-press look of a riso pull.
+ */
+@keyframes riso-misregister {
   0%,
   100% {
-    opacity: 0.55;
-    transform: scale(0.9);
+    transform: translate(0, 0);
   }
+  50% {
+    transform: translate(-3px, 2.5px);
+  }
+}
 
+/*
+ * HALFTONE SHIMMER — the dot screen breathes its ink density, like a screen
+ * catching slightly more or less ink across a pull. Opacity only, so no layout.
+ */
+@keyframes riso-shimmer {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
   50% {
     opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-@keyframes float-soft {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
   }
 }
 
@@ -862,7 +923,8 @@
   .motion-line,
   .motion-pulse,
   .motion-orbit,
-  .motion-float {
+  .motion-float,
+  .motion-screen {
     animation: none !important;
   }
 }

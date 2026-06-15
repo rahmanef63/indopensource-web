@@ -2,10 +2,16 @@
 // RISO-EDITORIAL ambient decoration. Three poster accents — flat spot-ink
 // geometry instead of soft ambient lines: halftone dot fields, a 2nd-ink
 // "misregistration" offset shape, thick riso strokes, and a stamped concentric
-// orbit. Purely decorative (`aria-hidden`), and every animated element keeps the
-// existing `.motion-*` class hooks so the global reduced-motion catch-all in
-// global.css neutralises it. The public API is unchanged (variant + class) so
-// existing call sites in index/blog/contact/projects keep working.
+// orbit. The MOTION is on-brand riso, not generic loops: connector rules and the
+// orbit ring PRINT-ROLL their dashes (paper pulled past a drum, `riso-roll`),
+// the dot screens SHIMMER their ink density (`.motion-screen` -> `riso-shimmer`),
+// the stamped satellites JITTER on a sub-pixel off-register wobble (`.motion-pulse`
+// -> `riso-jitter`), and the stacked 3-ink frame DRIFTS out of and back into
+// register (`.motion-float` -> `riso-misregister`). Purely decorative
+// (`aria-hidden`), and every animated element keeps the `.motion-*` class hooks
+// so the global reduced-motion catch-all in global.css neutralises it. The public
+// API is unchanged (variant + class) so existing call sites in
+// index/blog/contact/projects keep working.
 //
 // `currentColor` drives the halftone fills, so callers tint via a `text-*`
 // class (default is the surrounding ink/brand). To break the all-teal monotony
@@ -29,11 +35,12 @@ const { variant = 'network', class: className = '' } = Astro.props;
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
-      {/* Halftone dot field — a printed poster screen. */}
+      {/* Halftone dot field — a printed poster screen that SHIMMERS its ink
+          density like a screen catching ink across a pull. */}
       <pattern id="lsm-net-dots" width="22" height="22" patternUnits="userSpaceOnUse">
         <circle cx="3" cy="3" r="2.4" fill="currentColor" />
       </pattern>
-      <rect x="480" y="-10" width="460" height="300" fill="url(#lsm-net-dots)" />
+      <rect class="motion-screen" x="480" y="-10" width="460" height="300" fill="url(#lsm-net-dots)" />
       {/* A coarser vermilion screen overprints the teal field — a 2nd spot ink
           at a different gauge, so the dot frequency is not uniform. */}
       <pattern id="lsm-net-dots-v" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -62,11 +69,12 @@ const { variant = 'network', class: className = '' } = Astro.props;
       viewBox="0 0 240 240"
       aria-hidden="true"
     >
-      {/* Stamped concentric orbit — thick riso strokes, no soft glow. */}
+      {/* Stamped concentric orbit — thick riso strokes, no soft glow. The dot
+          screen shimmers its ink density. */}
       <pattern id="lsm-orb-dots" width="14" height="14" patternUnits="userSpaceOnUse">
         <circle cx="2" cy="2" r="1.6" fill="currentColor" />
       </pattern>
-      <circle cx="120" cy="120" r="96" fill="url(#lsm-orb-dots)" />
+      <circle class="motion-screen" cx="120" cy="120" r="96" fill="url(#lsm-orb-dots)" />
       <circle class="motion-orbit" cx="120" cy="120" r="96" stroke-width="3" />
       {/* Vermilion inner orbit slightly off-register from the teal outer ring. */}
       <circle cx="118" cy="122" r="80" fill="none" stroke="var(--color-accent)" stroke-width="2.5" stroke-dasharray="8 10" />
@@ -88,11 +96,12 @@ const { variant = 'network', class: className = '' } = Astro.props;
       preserveAspectRatio="none"
       aria-hidden="true"
     >
-      {/* Printed step rule with a halftone base band and stamped risers. */}
+      {/* Printed step rule with a halftone base band (shimmering ink density)
+          and stamped risers. */}
       <pattern id="lsm-step-dots" width="18" height="18" patternUnits="userSpaceOnUse">
         <circle cx="3" cy="3" r="2" fill="currentColor" />
       </pattern>
-      <rect x="0" y="86" width="900" height="34" fill="url(#lsm-step-dots)" />
+      <rect class="motion-screen" x="0" y="86" width="900" height="34" fill="url(#lsm-step-dots)" />
       {/* Vermilion riser line offset below the teal step rule — misregistration. */}
       <path d="M0 90 H180 V48 H360 V90 H540 V48 H720 V90 H900" fill="none" stroke="var(--color-accent)" stroke-width="3" opacity="0.55" />
       <path class="motion-line" d="M0 86 H180 V44 H360 V86 H540 V44 H720 V86 H900" stroke-width="4" />

@@ -1,4 +1,6 @@
 ---
+import BaseButton from './BaseButton.astro';
+
 interface Props {
   eyebrow: string;
   title: string;
@@ -29,12 +31,9 @@ const hasCta = Boolean(ctaHref && ctaLabel);
           <slot />
         </div>
         {hasCta && (
-          <a
-            class="riso-hover riso-shadow inline-flex min-h-11 shrink-0 items-center justify-center border-2 border-ink bg-brand px-5 font-mono text-sm font-bold tracking-[0.04em] text-white uppercase hover:bg-brand-dark"
-            href={ctaHref}
-          >
-            {ctaLabel}
-          </a>
+          <div class="shrink-0">
+            <BaseButton href={ctaHref!}>{ctaLabel}</BaseButton>
+          </div>
         )}
       </div>
     )

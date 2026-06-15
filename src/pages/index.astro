@@ -57,20 +57,58 @@ const heroPreload = await getImage({
     </div>
   </section>
 
-  {/* Pull-quote interstitial — a printed editorial manifesto on the deep teal
-       field. paper/white text on brand-dark is AA (10.93:1+). */}
-  <section class="grain relative overflow-hidden border-b-[3px] border-ink bg-brand-dark py-16 text-paper md:py-20">
+  {/* Pull-quote interstitial — a printed editorial manifesto OWNED by the ink
+       field via `.panel-ink` (its own fine grain) + `.grain-coarse` so this
+       dark band carries TWO print frequencies (a heavier press over the fine
+       tooth), not one uniform noise. Text re-asserts paper/sun on the dark
+       field: paper on ink 15.59:1, sun on ink 8.87:1 (both AA). */}
+  <section class="panel-ink grain-coarse relative overflow-hidden border-b-[3px] border-ink py-16 md:py-20">
     <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
       <div class="reveal mb-6 flex items-center gap-3">
         <span class="sticker">Falsafah</span>
-        <span class="meta-row text-paper/70">// kenapa kami ada</span>
+        <span class="meta-row text-sun">// kenapa kami ada</span>
       </div>
       <blockquote class="reveal max-w-4xl border-l-[5px] border-sun pl-6 font-display text-[clamp(1.7rem,3.6vw,3rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-paper">
         Open source bukan cuma kode di GitHub — ini soal merawat catatan,
         membuka pintu kontribusi, dan menulis ulang cerita teknologi Indonesia
         secara terbuka.
       </blockquote>
-      <p class="reveal meta-row mt-6 text-paper/75">— IndopenSource · komunitas terbuka</p>
+      <p class="reveal meta-row mt-6 text-sun">— IndopenSource · komunitas terbuka</p>
+    </div>
+  </section>
+
+  {/* Non-teal OWNED field — a full VERMILION manifesto/CTA panel via
+       `.panel-vermilion`, so the most-visited page reads as a true multi-ink
+       riso pull (ink hero -> ink falsafah -> VERMILION -> canvas -> paper),
+       not a teal/cream wash. A `.halftone-coarse` dot screen overprints the
+       field as a SECOND-frequency screen (large gauge) over the fine page grain.
+       Every text/link on this field is full paper or white — NO opacity dimming
+       (paper/90 on vermilion is only 4.47:1) and NO brand/accent ink:
+         paper on accent 5.16:1 · white on accent 5.52:1 · ink-on-sun sticker 8.87:1 (all AA). */}
+  <section class="panel-vermilion relative overflow-hidden border-b-[3px] border-ink py-16 md:py-20">
+    <div
+      class="halftone-coarse pointer-events-none absolute inset-0 text-ink/25"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
+      <div class="reveal mb-6 flex flex-wrap items-center gap-3">
+        <span class="sticker">Kontribusi</span>
+        <span class="meta-row text-paper">// pintu selalu terbuka</span>
+      </div>
+      <div class="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start">
+        <h2 class="reveal display-md riso-shift m-0 max-w-3xl text-balance text-paper">
+          Semua orang boleh ikut menulis catatannya
+        </h2>
+        <div class="reveal shrink-0 max-md:mt-2">
+          <BaseButton href="/contact/" variant="light">Mulai kontribusi</BaseButton>
+        </div>
+      </div>
+      <p class="reveal mt-6 max-w-2xl font-body text-lg leading-7 text-paper">
+        Tidak harus jadi maintainer. Menambah satu repo ke direktori, merapikan
+        deskripsi, atau membuka diskusi sudah merawat ekosistem open source
+        Indonesia secara terbuka.
+      </p>
     </div>
   </section>
 
@@ -90,6 +128,20 @@ const heroPreload = await getImage({
       <RoadmapTimeline />
     </div>
   </section>
+
+  {/* Printed SUN ribbon — a slim full-bleed band that gives the sun spot-ink a
+       real OWNED field (not just sticker chips) and breaks ink->canvas->paper
+       into a punchier rhythm before the projects rail. SUN is fill-only, so the
+       text stays INK (ink on sun 8.87:1 AA); never paper/accent here. */}
+  <aside class="panel-sun relative overflow-hidden border-b-[3px] border-ink py-3" aria-hidden="true">
+    <div class="mx-auto flex w-[min(1120px,calc(100%-32px))] flex-wrap items-center gap-x-6 gap-y-1 font-mono text-sm font-bold tracking-[0.04em] text-ink uppercase">
+      <span>★ {totalProjects} repo terkurasi</span>
+      <span class="text-ink/70">/</span>
+      <span>Awesome Indonesia</span>
+      <span class="text-ink/70">/</span>
+      <span>Open · Publik · Terbuka</span>
+    </div>
+  </aside>
 
   {/* 03 — Featured projects rail. */}
   <section class="relative overflow-hidden bg-paper py-18">
