@@ -7,29 +7,36 @@ interface Props {
 }
 
 const { eyebrow, title, ctaHref, ctaLabel } = Astro.props;
+
+// Editorial stack, top to bottom — never a single baseline row, so the
+// oversized display title can never collide with the body/CTA:
+//   1. eyebrow sticker + printed rule (their own row)
+//   2. the oversized display title (full width, its own line)
+//   3. body prose + optional CTA (a separate baseline row beneath the title)
+const hasCta = Boolean(ctaHref && ctaLabel);
 ---
 
 <div class="mb-8">
-  <div class="mb-4 flex items-center gap-3">
+  <div class="mb-5 flex items-center gap-3">
     <span class="sticker">{eyebrow}</span>
     <span class="rule grow"></span>
   </div>
-  <div class="flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
-    <div class="min-w-0">
-      <h2 class="display-md riso-shift m-0 text-ink">{title}</h2>
-    </div>
-    <div class="max-w-xl font-body text-lg leading-7 text-muted">
-      <slot />
-    </div>
-    {
-      ctaHref && ctaLabel && (
-        <a
-          class="riso-hover riso-shadow inline-flex min-h-11 shrink-0 items-center justify-center border-2 border-ink bg-brand px-5 font-mono text-sm font-bold tracking-[0.04em] text-white uppercase hover:bg-brand-dark"
-          href={ctaHref}
-        >
-          {ctaLabel}
-        </a>
-      )
-    }
-  </div>
+  <h2 class="display-md riso-shift m-0 max-w-4xl text-balance text-ink">{title}</h2>
+  {
+    (Astro.slots.has('default') || hasCta) && (
+      <div class="mt-5 flex items-end justify-between gap-x-8 gap-y-5 max-md:flex-col max-md:items-start">
+        <div class="min-w-0 max-w-xl font-body text-lg leading-7 text-muted">
+          <slot />
+        </div>
+        {hasCta && (
+          <a
+            class="riso-hover riso-shadow inline-flex min-h-11 shrink-0 items-center justify-center border-2 border-ink bg-brand px-5 font-mono text-sm font-bold tracking-[0.04em] text-white uppercase hover:bg-brand-dark"
+            href={ctaHref}
+          >
+            {ctaLabel}
+          </a>
+        )}
+      </div>
+    )
+  }
 </div>

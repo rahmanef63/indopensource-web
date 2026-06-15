@@ -70,7 +70,7 @@ const statusLegend = [
     <section class="border-b-[3px] border-ink bg-canvas py-16 md:py-20">
       <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
         <div class="reveal reveal-1 mb-7 flex items-center gap-3">
-          <span class="section-number">01</span>
+          <span class="section-number" aria-hidden="true">01</span>
           <div class="min-w-0">
             <span class="sticker">Cover story</span>
             <p class="meta-row mt-2 font-semibold text-brand-dark uppercase tracking-[0.06em]">Artikel terbaru</p>
@@ -113,15 +113,19 @@ const statusLegend = [
     </section>
   )}
 
-  <section class="border-b-[3px] border-ink bg-paper py-16 md:py-20">
-    <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
+  {/* Vermilion submit spread — the one tonal break from teal. Accent field
+       with paper/white text (paper-on-accent 5.16:1, white-on-accent 5.52:1,
+       both AA). Step cards stay paper/canvas islands so their ink text + riso
+       layering read cleanly against the vermilion ground. */}
+  <section class="grain relative overflow-hidden border-b-[3px] border-ink bg-accent py-16 text-paper md:py-20">
+    <div class="relative mx-auto w-[min(1120px,calc(100%-32px))]">
       <div class="reveal reveal-1 mb-8 flex items-center gap-3">
-        <span class="section-number">02</span>
+        <span class="section-number text-paper/30" aria-hidden="true">02</span>
         <div class="min-w-0">
           <span class="sticker">Submit</span>
-          <h2 class="display-md riso-shift mt-3 text-ink">Alur kontribusi artikel</h2>
+          <h2 class="display-md riso-shift mt-3 text-paper">Alur kontribusi artikel</h2>
         </div>
-        <span class="rule grow self-end max-md:hidden"></span>
+        <span class="grow self-end border-t-[3px] border-paper max-md:hidden"></span>
       </div>
 
       <ol class="reveal-stagger grid list-none grid-cols-3 gap-4 p-0 max-lg:grid-cols-1">
@@ -129,7 +133,7 @@ const statusLegend = [
           <li class="riso-hover riso-shadow flex flex-col border-2 border-ink bg-canvas p-5">
             <div class="flex items-baseline justify-between gap-3">
               <span class="sticker">{step.status}</span>
-              <span class="section-number leading-none" aria-hidden="true">{step.number}</span>
+              <span class="section-number leading-none text-accent" aria-hidden="true">{step.number}</span>
             </div>
             <h3 class="display-sm mt-4 text-ink">{step.title}</h3>
             <p class="mt-2 font-body leading-7 text-muted">
@@ -146,7 +150,7 @@ const statusLegend = [
   <section class="py-16 md:py-20">
     <div class="mx-auto w-[min(1120px,calc(100%-32px))]">
       <div class="reveal reveal-1 mb-8 flex items-center gap-3">
-        <span class="section-number">03</span>
+        <span class="section-number" aria-hidden="true">03</span>
         <div class="min-w-0">
           <span class="sticker">Markdown repo</span>
           <h2 class="display-md riso-shift mt-3 text-ink">Struktur artikel</h2>

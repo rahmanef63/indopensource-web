@@ -251,6 +251,30 @@
   }
 
   /*
+   * .grain-coarse — a SECOND, lower-frequency tooth so the page is not one
+   * uniform noise everywhere. Larger tile + lower baseFrequency reads as a
+   * heavier press / cheaper paper. Pair on a hero or a feature panel to break
+   * the grain monotony against the fine global body::before grain. Self-
+   * contained data-URI (CSP-safe), screened over a dark field.
+   */
+  .grain-coarse {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .grain-coarse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='gc'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.38' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23gc)'/%3E%3C/svg%3E");
+    background-size: 260px 260px;
+  }
+
+  /*
    * .halftone — riso halftone dot field as a decorative accent (radial-gradient
    * dot grid). Use behind/beside headings or as a poster panel. Currentcolor so
    * it inherits the surrounding ink/brand/accent.
@@ -258,6 +282,19 @@
   .halftone {
     background-image: radial-gradient(currentColor 1.4px, transparent 1.5px);
     background-size: 9px 9px;
+    background-position: 0 0;
+  }
+
+  /*
+   * .halftone-coarse — the SAME radial dot screen at a markedly larger gauge
+   * (bigger dot + wider pitch). Used alongside `.halftone` so a composition can
+   * carry two screen frequencies — the editorial "two-pass" print feel — rather
+   * than one uniform dot field across the whole page. Still currentColor, so it
+   * inherits the surrounding spot ink.
+   */
+  .halftone-coarse {
+    background-image: radial-gradient(currentColor 2.6px, transparent 2.8px);
+    background-size: 18px 18px;
     background-position: 0 0;
   }
 
@@ -297,15 +334,26 @@
   }
 
   /*
-   * .riso-shift — pure colour-shift misregistration accent: a duplicated text
-   * shadow in a 2nd ink offset by a couple px. Use sparingly on display words.
+   * .riso-shift — the print-MISREGISTRATION signature. A 2nd-ink (vermilion)
+   * and 3rd-ink (teal) ghost of the glyph is offset AT REST by ~1px on opposing
+   * diagonals, so the headline always carries the off-register spot-colour look
+   * of a riso pull. On hover the offsets widen to ~2–3px and the shift becomes
+   * overt — the brand promise reads on touch and at rest, not only on a mouse.
+   *
+   * The shadow is a decorative edge only; the glyph FILL stays paper/ink at full
+   * AA contrast, so this adds zero text-legibility cost on either field.
    */
   .riso-shift {
-    transition: text-shadow 0.14s ease;
+    text-shadow:
+      1px 1px 0 color-mix(in srgb, var(--color-accent) 78%, transparent),
+      -1px 0 0 color-mix(in srgb, var(--color-brand) 40%, transparent);
+    transition: text-shadow 0.16s ease;
   }
 
   .riso-shift:hover {
-    text-shadow: 2px 2px 0 var(--color-accent);
+    text-shadow:
+      3px 3px 0 var(--color-accent),
+      -2px -1px 0 color-mix(in srgb, var(--color-brand) 70%, transparent);
   }
 
   /*
@@ -322,6 +370,65 @@
     border: 0;
     border-top: 3px solid var(--color-brand);
     margin: 0;
+  }
+
+  /*
+   * ====================================================================
+   * TONAL PANELS — let a section be OWNED by an ink other than teal, so the
+   * page does not read as one continuous teal/cream wash. Each panel sets a
+   * flat spot-ink field AND the legible default text colour for that field
+   * (every default verified >= 4.5:1 against the contract's measured ratios),
+   * so dropping `<p>`/`<h2>` inside Just Works at AA without per-element colour.
+   *
+   *   .panel-vermilion  accent #bd3b1c field -> PAPER text  (5.16:1 PASS)
+   *   .panel-ink        ink    #16201e field -> PAPER text (15.59:1 PASS) + grain
+   *   .panel-sun        sun    #f3b13f field -> INK text    (8.87:1 PASS)
+   *
+   * SUN remains a fill-only ink: on .panel-sun ONLY ink (or brand-dark, 6.22:1)
+   * is legible — never paper/accent. Accents/links inside a panel must re-assert
+   * an AA-safe colour; these defaults cover plain prose.
+   * ====================================================================
+   */
+  .panel-vermilion {
+    background-color: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  .panel-vermilion :is(h1, h2, h3, h4) {
+    color: var(--color-paper);
+  }
+
+  .panel-ink {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  .panel-ink :is(h1, h2, h3, h4) {
+    color: var(--color-paper);
+  }
+
+  /* Printed tooth on the dark field — reuses the fine grain texture. */
+  .panel-ink::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.2;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='pg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23pg)'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+  }
+
+  .panel-sun {
+    background-color: var(--color-sun);
+    color: var(--color-ink);
+  }
+
+  .panel-sun :is(h1, h2, h3, h4) {
+    color: var(--color-ink);
   }
 
   /*
@@ -443,15 +550,45 @@
 
   /*
    * ====================================================================
-   * PAGE-LOAD REVEAL — ONE orchestrated staggered entrance.
-   * Elements tagged `.reveal` fade up; `.reveal-1..6` add staggered delay.
-   * The reduced-motion catch-all below neutralises this (and shows content
-   * immediately, since the keyframe ends at opacity:1).
+   * SCROLL-AWARE REVEAL — staggered fade-up that fires WHEN a section
+   * scrolls into view, not all at once on page load.
+   *
+   * Mechanics (CSP-safe, no inline anything):
+   *   1. The bundled module script in BaseLayout adds `js-reveal` to <html>
+   *      the instant it runs, then attaches an IntersectionObserver that
+   *      stamps `.in-view` onto each `.reveal` / `.reveal-stagger` as it
+   *      enters the viewport. Above-the-fold elements (the hero) are already
+   *      intersecting on first callback, so they get `.in-view` immediately
+   *      and reveal at once — preserving the orchestrated hero entrance.
+   *   2. The hidden resting state is SCOPED to `html.js-reveal`. If JS is
+   *      disabled the class never lands, so every `.reveal` stays fully
+   *      visible (progressive enhancement — no blank page without JS).
+   *   3. The animation only runs once `.in-view` is present; the staggered
+   *      `animation-delay` then cascades the children of a section in.
+   *   4. The reduced-motion catch-all below forces opacity:1 / no transform.
    * ====================================================================
    */
-  .reveal {
+  html.js-reveal .reveal,
+  html.js-reveal .reveal-stagger > * {
     opacity: 0;
-    animation: riso-reveal 0.62s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    transform: translateY(18px);
+    will-change: opacity, transform;
+    /*
+     * Set the timing sub-properties as LONGHAND (never the `animation`
+     * shorthand) so the staggered `.reveal-1..6` / `:nth-child` delay rules
+     * below — which are lower-specificity — are NOT reset to 0 by a higher-
+     * specificity shorthand on the `.in-view` selector. The element stays
+     * hidden because `animation-name` is `none` until `.in-view` flips it on.
+     */
+    animation-name: none;
+    animation-duration: 0.62s;
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    animation-fill-mode: forwards;
+  }
+
+  html.js-reveal .reveal.in-view,
+  html.js-reveal .reveal-stagger.in-view > * {
+    animation-name: riso-reveal;
   }
 
   .reveal-1 { animation-delay: 0.05s; }
@@ -460,12 +597,6 @@
   .reveal-4 { animation-delay: 0.32s; }
   .reveal-5 { animation-delay: 0.41s; }
   .reveal-6 { animation-delay: 0.5s; }
-
-  /* Auto-stagger direct children of a `.reveal-stagger` container. */
-  .reveal-stagger > * {
-    opacity: 0;
-    animation: riso-reveal 0.62s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  }
 
   .reveal-stagger > *:nth-child(1) { animation-delay: 0.05s; }
   .reveal-stagger > *:nth-child(2) { animation-delay: 0.14s; }
@@ -714,10 +845,13 @@
   }
 
   .reveal,
-  .reveal-stagger > * {
+  .reveal-stagger > *,
+  html.js-reveal .reveal,
+  html.js-reveal .reveal-stagger > * {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
+    will-change: auto !important;
   }
 
   /*

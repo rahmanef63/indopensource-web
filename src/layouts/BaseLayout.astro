@@ -152,5 +152,52 @@ const csp = [
       <slot />
     </main>
     <SiteFooter />
+    <!--
+      SCROLL-AWARE REVEAL (MOTION). A bundled module script — Astro compiles
+      this to /_astro/*, so it is covered by `script-src 'self'` (no inline
+      handler, no inline code). It opts the page into the hidden resting state
+      (`html.js-reveal`) ONLY when JS runs, then reveals each `.reveal` /
+      `.reveal-stagger` section as it scrolls into view via IntersectionObserver.
+      Above-the-fold elements are already intersecting on the first callback, so
+      the hero reveals immediately. Without JS the class never lands and content
+      stays visible; reduced-motion is handled by the CSS catch-all.
+    -->
+    <script>
+      // Only enable the scroll-reveal contract when the API exists AND the user
+      // has not asked for reduced motion. Either way, content is visible: the
+      // hidden state is scoped to `html.js-reveal`, which we never add here when
+      // reduced motion is on, and the CSS catch-all also forces visibility.
+      const root = document.documentElement;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if ('IntersectionObserver' in window && !reduce) {
+        // Flag the page so the CSS hidden resting state applies (progressive
+        // enhancement — set as late as possible, but before first paint of the
+        // observed targets is fine since they begin hidden only under this class).
+        root.classList.add('js-reveal');
+
+        const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                // Reveal is one-shot: stop observing once shown so re-scrolling
+                // never re-triggers the entrance.
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          // Start the entrance a touch before the section's top edge clears the
+          // viewport bottom, so it animates in just as it becomes visible.
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+        );
+
+        for (const el of targets) {
+          observer.observe(el);
+        }
+      }
+    </script>
   </body>
 </html>

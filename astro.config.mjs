@@ -13,7 +13,21 @@ export default defineConfig({
   // matches the directory-style output of the static build and the URLs the
   // sitemap advertises, avoiding duplicate-content and 301 hops. (SEO-5)
   trailingSlash: 'always',
+  build: {
+    // Never inline the scroll-reveal `<script>` (or any other) into the HTML.
+    // A strict `script-src 'self'` CSP (no nonce, no 'unsafe-inline') would block
+    // an inline code-bearing <script>; forcing Astro to emit it as an external
+    // /_astro/*.js entry referenced via `<script src>` keeps it covered by 'self'.
+    // (SEC-02 / MOTION)
+    inlineStylesheets: 'never'
+  },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      // Disable Vite's chunk/asset inlining so the bundled module script is
+      // written to a file under dist/_astro instead of being base64/inlined,
+      // which is what allows `script-src 'self'` to authorise it.
+      assetsInlineLimit: 0
+    }
   }
 });

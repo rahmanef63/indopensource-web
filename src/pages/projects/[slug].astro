@@ -93,7 +93,7 @@ const jsonLd = {
       <article class="min-w-0 overflow-hidden border-2 border-ink bg-paper riso-shadow">
         <div class="flex items-center justify-between gap-3 border-b-[3px] border-ink bg-ink px-5 py-4">
           <div class="flex items-baseline gap-3">
-            <span class="section-number text-sun">01</span>
+            <span class="section-number text-sun" aria-hidden="true">01</span>
             <h2 class="font-mono text-lg font-bold uppercase tracking-[0.06em] text-paper">README</h2>
           </div>
           <a class="border-2 border-paper bg-transparent px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-[0.04em] text-paper hover:bg-sun hover:text-ink hover:border-ink" href={`${project.url}#readme`}>GitHub ↗</a>
@@ -114,7 +114,7 @@ const jsonLd = {
       <aside class="grid content-start gap-6">
         <article class="border-2 border-ink bg-canvas riso-shadow p-5">
           <div class="flex items-baseline gap-3">
-            <span class="section-number">02</span>
+            <span class="section-number" aria-hidden="true">02</span>
             <h2 class="font-mono text-lg font-bold uppercase tracking-[0.06em] text-ink">Statistik</h2>
           </div>
           <hr class="rule mt-4" />
@@ -145,7 +145,7 @@ const jsonLd = {
           topics.length > 0 && (
             <article class="border-2 border-ink bg-paper riso-shadow p-5">
               <div class="flex items-baseline gap-3">
-                <span class="section-number">03</span>
+                <span class="section-number" aria-hidden="true">03</span>
                 <h2 class="font-mono text-lg font-bold uppercase tracking-[0.06em] text-ink">Tags</h2>
               </div>
               <hr class="rule mt-4 mb-4" />

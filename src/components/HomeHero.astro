@@ -5,7 +5,7 @@ import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
 
 // The hero is the homepage LCP. It used to be a CSS `background-image`, which
 // browsers can't preload and which shipped the raw JPEG. It is now an optimised
-// <Image> (AVIF/WebP, resized) painted behind the content, with the original
+// <Picture> (AVIF/WebP, resized) painted behind the content, with the original
 // dark-green gradient kept as a separate overlay so the visual is identical.
 //
 // The matching high-priority <link rel="preload" as="image"> is emitted from
@@ -14,19 +14,30 @@ import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
 // reaches this <img>. astro:assets emits to /_astro/* on the same origin, so
 // the existing `img-src 'self'` CSP already covers it — no CSP change needed.
 //
-// RISO-EDITORIAL restyle: a grid-breaking magazine splash. Oversized Bricolage
-// headline overlapping a halftone field, mono metadata rows, sticker badges and
-// an oversized section index (00), all on the preserved dark hero photo+gradient.
-// One orchestrated staggered `.reveal` entrance. Text contrast on the dark field
-// is AA-verified (paper 15.59:1 on ink, sun 8.87:1 on ink).
+// RISO-EDITORIAL restyle: the photo is no longer a photo. It is printed as a
+// single-INK duotone — grayscale + high-contrast on the <Picture> itself, then
+// recoloured to teal spot-ink by a flat `bg-brand` panel set to mix-blend-color
+// on top, finished with a halftone dot screen so it reads as a riso print, not
+// a photograph. Flat ink BLOCKS frame it: a teal field on the left, a VERMILION
+// accent block owning the lower-left corner, an oversized `00` page index, and
+// a grid-breaking Bricolage headline that bleeds past the column. ONE orchestrated
+// staggered `.reveal` entrance. Contrast (AA-verified):
+//   paper on ink 15.59 | paper on brand 6.80 | paper on accent 5.16
+//   white on accent 5.52 | sun on ink 8.87 | sun on brand-dark 6.22  (all PASS).
+// Every gradient/overlay/duotone layer is a Tailwind class — no inline style,
+// so `style-src 'self'` holds.
 ---
 
 <section
-  class="home-hero grain relative isolate overflow-hidden bg-ink py-16 text-paper md:min-h-[min(640px,calc(100vh-68px))] md:py-20 max-md:py-12"
+  class="home-hero grain relative isolate overflow-hidden bg-ink py-16 text-paper md:min-h-[min(680px,calc(100vh-68px))] md:py-20 max-md:py-12"
 >
-  <!-- Optimised LCP image, painted behind the content. `loading="eager"` +
-       `fetchpriority="high"` (NOT lazy) because this is the above-the-fold
-       LCP element. -->
+  <!--
+    PRINTED-INK PHOTO LAYER. The <Picture> is preserved verbatim (AVIF/WebP,
+    width/height via astro:assets, eager + high fetchpriority — the LCP, and the
+    preload href in <head> is byte-identical) — but the IMG is rendered as a
+    high-contrast GRAYSCALE plate (`grayscale contrast-125 brightness-90`) so it
+    stops being a photograph and becomes a monochrome ink separation.
+  -->
   <Picture
     src={heroImage}
     formats={['avif', 'webp']}
@@ -37,43 +48,81 @@ import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
     aria-hidden="true"
     loading="eager"
     fetchpriority="high"
-    pictureAttributes={{ class: 'absolute inset-0 -z-20 block h-full w-full' }}
-    class="h-full w-full object-cover object-left"
+    pictureAttributes={{ class: 'absolute inset-0 -z-30 block h-full w-full' }}
+    class="h-full w-full object-cover object-left grayscale contrast-125 brightness-90"
   />
-  <!-- The original dark-green gradient overlay, unchanged, layered on top of the
-       image so the text contrast and look match the previous CSS background. -->
+
+  <!--
+    DUOTONE RECOLOUR. A flat teal spot-ink panel set to `mix-blend-color` paints
+    the grayscale plate as a single TEAL ink — the riso duotone. `mix-blend-multiply`
+    on a 2nd ink darkens the shadows so the print has tooth. Decorative only.
+  -->
   <div
-    class="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(29,37,40,0.92)_0%,rgba(15,111,92,0.78)_46%,rgba(29,37,40,0.5)_100%)]"
+    class="pointer-events-none absolute inset-0 -z-20 bg-brand mix-blend-color"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-0 -z-20 bg-brand-dark/70 mix-blend-multiply"
     aria-hidden="true"
   >
   </div>
 
-  <!-- Riso halftone dot field bleeding off the right edge — a printed poster
-       accent, currentColor (sun) so it reads as a 2nd spot ink over the photo. -->
+  <!--
+    HALFTONE DOT SCREEN over the ink plate so it reads as a printed poster, not a
+    gradient. `text-ink/40` so the dots are the same near-black ink. Bleeds off
+    the right edge.
+  -->
   <div
-    class="halftone pointer-events-none absolute -right-16 -top-10 -z-10 h-[120%] w-[55%] text-sun/40 max-md:hidden"
+    class="halftone pointer-events-none absolute inset-0 -z-10 text-ink/40"
     aria-hidden="true"
   >
   </div>
-  <!-- Oversized editorial section index, grid-breaking off the bottom-left. -->
+
+  <!--
+    FLAT RISO COLOUR BLOCKS. A solid ink wash anchors the text column for AA, and
+    a VERMILION accent block owns the lower-left corner — the one place teal does
+    NOT rule. Both are hard-edged flat fills (no blur), pure print blocks.
+  -->
+  <div
+    class="pointer-events-none absolute inset-y-0 left-0 -z-10 w-[58%] bg-ink/85 max-md:w-full max-md:bg-ink/80"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute bottom-0 left-0 -z-10 h-28 w-44 bg-accent max-md:h-16 max-md:w-28"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- Oversized editorial section index, grid-breaking off the bottom-right. -->
   <span
-    class="pointer-events-none absolute -bottom-6 left-2 -z-10 select-none font-display text-[clamp(7rem,22vw,16rem)] font-extrabold leading-none tracking-[-0.04em] text-paper/5 max-md:hidden"
+    class="pointer-events-none absolute -bottom-8 right-2 -z-10 select-none font-display text-[clamp(7rem,22vw,16rem)] font-extrabold leading-none tracking-[-0.04em] text-sun/10 max-md:hidden"
     aria-hidden="true"
   >00</span>
 
   <div class="relative mx-auto w-[min(1080px,calc(100%-80px))] max-md:w-[calc(100%-32px)]">
-    <div class="max-w-[760px]">
-      <!-- Mono metadata row + sticker badge: zine masthead bits. -->
+    <div class="max-w-[780px]">
+      <!-- Mono kicker + sticker badge: zine masthead bits. -->
       <div class="reveal reveal-1 mb-5 flex flex-wrap items-center gap-3">
         <span class="sticker">Roadmap · Komunitas</span>
-        <span class="meta-row text-paper/70">indopensource.org / open-source · ID</span>
+        <span class="meta-row text-paper/80">indopensource.org / open-source · ID</span>
       </div>
 
+      <!--
+        Grid-breaking Bricolage headline. The accent word sits in a VERMILION
+        sticker-block (paper on accent = 5.16, AA) so vermilion OWNS a word, and
+        the headline's last line bleeds past the text column with a negative
+        right margin (grid-break) on wide viewports.
+      -->
       <h1 class="reveal reveal-2 display-xl riso-shift m-0 text-paper">
-        Komunitas<br />Open&nbsp;Source<br /><span class="text-sun">Indonesia</span>
+        Komunitas<br />Open&nbsp;Source<br /><span
+          class="mt-1 inline-block border-2 border-ink bg-accent px-3 text-paper riso-shadow md:-mr-16"
+          >Indonesia</span
+        >
       </h1>
 
-      <p class="reveal reveal-3 mt-7 max-w-2xl font-body text-[clamp(1.1rem,1.9vw,1.35rem)] leading-8 text-paper/90">
+      <p class="reveal reveal-3 mt-8 max-w-2xl font-body text-[clamp(1.1rem,1.9vw,1.35rem)] leading-8 text-paper/90">
         Rumah terbuka untuk merawat daftar proyek, mendokumentasikan falsafah,
         menulis pembelajaran, dan menghubungkan kontributor open source Indonesia.
       </p>
@@ -84,20 +133,20 @@ import { heroImage, HERO_PRELOAD_WIDTH, HERO_QUALITY } from '../lib/hero';
       </div>
 
       <!-- Mono stat strip with thick rule above — the metadata footer of the
-           masthead. paper/85 on dark field stays well above AA. -->
+           masthead. paper/85 on the ink wash stays well above AA. -->
       <div class="reveal reveal-5 mt-10 max-w-xl">
-        <span class="block h-[3px] w-full bg-paper/30"></span>
+        <span class="block h-[3px] w-full bg-sun"></span>
         <dl class="mt-4 grid grid-cols-3 gap-4 font-mono text-paper/85 max-md:grid-cols-1 max-md:gap-2">
           <div>
-            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/60">Direktori</dt>
+            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/65">Direktori</dt>
             <dd class="mt-1 text-base font-bold tracking-[0.02em]">Awesome ID</dd>
           </div>
           <div>
-            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/60">Build</dt>
+            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/65">Build</dt>
             <dd class="mt-1 text-base font-bold tracking-[0.02em]">Static · Astro</dd>
           </div>
           <div>
-            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/60">Lisensi</dt>
+            <dt class="text-[0.7rem] uppercase tracking-[0.08em] text-paper/65">Lisensi</dt>
             <dd class="mt-1 text-base font-bold tracking-[0.02em]">Open / Publik</dd>
           </div>
         </dl>
