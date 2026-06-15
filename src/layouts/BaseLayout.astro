@@ -20,7 +20,7 @@ interface Props {
 const {
   title = 'IndopenSource',
   description = 'Roadmap website IndopenSource untuk proyek open source Indonesia.',
-  image = '/brand/indopensource-logo.png',
+  image = '/brand/indopensource-hero.jpg',
   type = 'website',
   jsonLd
 } = Astro.props as Props;
@@ -75,10 +75,8 @@ const csp = [
   "base-uri 'self'",
   `script-src 'self' 'sha256-${jsonLdHash}'`,
   "style-src 'self'",
-  // `api.star-history.com` serves the per-project star-history SVG embedded on
-  // every project detail page; without it the CSP blocks that image. The other
-  // hosts cover GitHub avatars and raw blog/README assets.
-  "img-src 'self' data: https://raw.githubusercontent.com https://avatars.githubusercontent.com https://api.star-history.com",
+  // First-party + GitHub avatar/raw image hosts only — no third-party beacons.
+  "img-src 'self' data: https://raw.githubusercontent.com https://avatars.githubusercontent.com",
   "font-src 'self' data:",
   "connect-src 'self'",
   "form-action 'self'",

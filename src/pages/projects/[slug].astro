@@ -17,7 +17,6 @@ const updatedDate = project.pushedAt || project.updatedAt;
 const updatedLabel = updatedDate
   ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium' }).format(new Date(updatedDate))
   : '';
-const starHistoryUrl = `https://api.star-history.com/svg?repos=${encodeURIComponent(project.fullName)}&type=Date`;
 const repoName = project.fullName.split('/').at(-1) || project.fullName;
 // README is pre-rendered to sanitized HTML at build time (PERF-1); the browser
 // no longer fetches GitHub or parses Markdown.
@@ -107,9 +106,30 @@ const jsonLd = {
 
       <aside class="grid content-start gap-6">
         <article class="rounded-lg border border-line bg-paper p-5">
-          <p class="mb-2 text-xs font-black uppercase tracking-[0.08em] text-accent">Stars</p>
-          <h2 class="text-2xl font-extrabold">History stars</h2>
-          <img class="mt-5 w-full rounded-lg border border-line bg-white" src={starHistoryUrl} alt={`Grafik riwayat stars ${project.fullName}`} loading="lazy" />
+          <p class="mb-2 text-xs font-black uppercase tracking-[0.08em] text-accent">Statistik</p>
+          <h2 class="text-2xl font-extrabold">Ringkasan repo</h2>
+          <dl class="mt-5 grid grid-cols-2 gap-3 text-sm">
+            <div class="rounded-lg border border-line bg-canvas p-3">
+              <dt class="text-muted">Stars</dt>
+              <dd class="text-lg font-extrabold text-brand-dark">{project.stars.toLocaleString('id-ID')}</dd>
+            </div>
+            <div class="rounded-lg border border-line bg-canvas p-3">
+              <dt class="text-muted">Forks</dt>
+              <dd class="text-lg font-extrabold text-brand-dark">{project.forks.toLocaleString('id-ID')}</dd>
+            </div>
+            {project.language && (
+              <div class="rounded-lg border border-line bg-canvas p-3">
+                <dt class="text-muted">Bahasa</dt>
+                <dd class="text-base font-extrabold text-brand-dark">{project.language}</dd>
+              </div>
+            )}
+            {updatedLabel && (
+              <div class="rounded-lg border border-line bg-canvas p-3">
+                <dt class="text-muted">Update</dt>
+                <dd class="text-base font-extrabold text-brand-dark">{updatedLabel}</dd>
+              </div>
+            )}
+          </dl>
         </article>
         {
           topics.length > 0 && (
