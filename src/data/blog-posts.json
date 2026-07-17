@@ -1,5 +1,33 @@
 [
   {
+    "slug": "bagaimana-open-source-mampu-bertahan",
+    "path": "content/2026/07/bagaimana-open-source-mampu-bertahan.md",
+    "year": "2026",
+    "month": "07",
+    "title": "Bagaimana Open Source mampu bertahan berpuluh puluh tahun berbanding bisnis",
+    "description": "Mengapa kontribusi upstream, tata kelola, dan layanan ekosistem membuat open source bertahan sebagai strategi bisnis.",
+    "date": "2026-07-16",
+    "tags": [
+      "open-source",
+      "sustainability",
+      "governance",
+      "business"
+    ],
+    "status": "published",
+    "thumbnail": "https://raw.githubusercontent.com/IndopenSource/Blog-IndopenSource/main/content/2026/07/assets/model-ekonomi-pusat-yayasan-it.jpg",
+    "content": "Open source bukan sekadar kode yang dapat di-*clone*. Ia adalah infrastruktur\ndigital yang dipakai bersama, lalu dirawat oleh organisasi, perusahaan, dan\nkomunitas. Linux, misalnya, menjalankan seluruh sistem dalam daftar TOP500\nsuperkomputer pada November 2025.\n\nLantas, bila kode dapat disalin dan digunakan bebas, mengapa ekosistem ini\nmampu bertahan puluhan tahun?\n\n## Arsitektur finansial: membiayai operasi bersama\n\nYayasan seperti Linux Foundation, Apache, dan Eclipse tidak menjual akses ke\n*source code*. Mereka membantu menata pekerjaan yang membuat proyek dapat\ndipakai jangka panjang: tata kelola, infrastruktur *CI/CD*, audit keamanan,\nperlindungan hukum, dokumentasi, serta koordinasi komunitas.\n\nPendanaan datang dari beragam sumber, antara lain keanggotaan perusahaan,\npelatihan dan sertifikasi, acara, hibah, donasi, serta dukungan *in-kind*\nseperti komputasi dan *bandwidth*. Model ini membuat biaya pemeliharaan\ninfrastruktur inti menjadi tanggung jawab bersama, bukan beban satu vendor.\n\n## Menghindari private fork yang mahal\n\nBagi organisasi, memakai open source juga merupakan strategi mitigasi risiko.\nKode yang terbuka mengurangi ketergantungan pada roadmap dan harga dari satu\nvendor. Namun kebebasan itu tidak berarti setiap organisasi sebaiknya membuat\nsalinan sendiri lalu berjalan terpisah.\n\n*Private fork* dapat menjadi utang teknis: setiap rilis upstream memunculkan\npatch, konflik, dan pekerjaan keamanan yang harus dipelihara sendiri. Riset\nLinux Foundation 2026 mencatat rata-rata biaya pemeliharaan private fork\nmencapai 5.160 jam kerja atau sekitar US$258.000 per siklus rilis.\n\nKarena itu, kontribusi ke *upstream* sering menjadi keputusan bisnis yang lebih\nbaik daripada memelihara perubahan secara tertutup. Perbaikan keamanan dan\nfitur yang diterima proyek utama dapat dipakai kembali oleh semua pengguna,\ntermasuk organisasi yang menyumbangkannya.\n\n## Mesin ekonomi di sekitar kode\n\nEkosistem open source memonetisasi layanan dan koordinasi di sekeliling kode,\nbukan membatasi salinan kodenya. Perusahaan membayar keanggotaan untuk ikut\nmenentukan arah proyek dan bekerja dalam kelompok standar. Banyak yayasan juga\nmenjalankan sertifikasi, pelatihan, serta konferensi.\n\nDi sisi lain, proyek *community-first* dapat memakai *fiscal host* untuk\nmenerima donasi dan hibah. Bentuknya berbeda-beda, tetapi prinsipnya sama:\norang yang mendapat nilai dari proyek ikut menanggung pemeliharaan proyek.\n\n## Kontribusi sebagai investasi\n\nKontribusi tidak harus berupa kode. Ia dapat berupa pelaporan bug, pengujian,\ndokumentasi, dukungan komunitas, pendanaan, atau keanggotaan yayasan. Dalam\nsurvei Linux Foundation terhadap lebih dari 500 pemimpin TI, kontribusi kode\nmemiliki rasio manfaat-biaya 3,6x, sementara keanggotaan yayasan mencapai 4,8x.\n\nAngka tersebut bukan janji bagi setiap organisasi, tetapi menguatkan satu\npelajaran: kontribusi aktif dapat mengurangi biaya pemeliharaan sekaligus\nmempercepat respons keamanan dan pengembangan produk.\n\n## Tantangan: keamanan dan regulasi\n\nOpen source tetap membutuhkan pemeliharaan yang disiplin. Ketergantungan harus\ndipantau, kerentanan perlu ditangani, dan pengguna perlu mengetahui siapa yang\nbertanggung jawab atas sebuah komponen.\n\nCyber Resilience Act Uni Eropa menunjukkan arah tuntutan ini. Mulai 11\nSeptember 2026, produsen harus memberi peringatan awal atas kerentanan yang\ndieksploitasi aktif atau insiden berat dalam 24 jam setelah mengetahuinya.\nKewajiban ini bukan alasan untuk menjauhi open source; justru ini alasan untuk\nmembangun proses pemeliharaan, koordinasi disclosure, dan kontribusi upstream\nyang sehat.\n\nPada akhirnya, daya tahan open source datang dari gotong royong R&D. Kode yang\nterbuka memperbolehkan banyak pihak berbagi biaya, memperbaiki masalah yang\nsama, dan membangun layanan bernilai di atas fondasi bersama. Kolaborasi itu\nyang membuatnya lebih adaptif daripada model perangkat lunak tertutup semata.\n\n## Referensi\n\n- [TOP500: Linux operating system family](https://www.top500.org/statistics/details/osfam/1/)\n- [Linux Foundation: ROI for Open Source Software Contribution](https://www.linuxfoundation.org/research/contribution-roi)\n- [Linux Foundation: laporan tentang biaya private fork dan ROI kontribusi](https://www.linuxfoundation.org/press/new-linux-foundation-report-shows-active-open-source-contribution-delivers-2-5x-roi-while-passive-consumption-increases-costly-technical-debt)\n- [Komisi Eropa: kewajiban pelaporan Cyber Resilience Act](https://digital-strategy.ec.europa.eu/en/policies/cra-reporting)",
+    "sourceUrl": "https://github.com/IndopenSource/Blog-IndopenSource/blob/main/content/2026/07/bagaimana-open-source-mampu-bertahan.md",
+    "releasedAt": "2026-07-16",
+    "lastModifiedAt": "2026-07-16T11:08:44Z",
+    "author": {
+      "name": "IndopenSource Maintainers",
+      "avatarUrl": "",
+      "url": "",
+      "committedAt": ""
+    },
+    "authorFromFrontmatter": true
+  },
+  {
     "slug": "memperkenalkan-blog-indopensource",
     "path": "content/2026/06/memperkenalkan-blog-indopensource.md",
     "year": "2026",
@@ -11,12 +39,12 @@
       "community",
       "roadmap"
     ],
-    "status": "draft",
+    "status": "published",
     "thumbnail": "https://raw.githubusercontent.com/IndopenSource/Blog-IndopenSource/main/content/2026/06/assets/memperkenalkan-blog-indopensource.jpg",
     "content": "Blog IndopenSource disiapkan sebagai tempat mencatat kerja komunitas open source\nIndonesia secara rapi dan mudah ditinjau.\n\n## Fokus Awal\n\nFokus awal blog ini adalah tulisan yang membantu pembaca menemukan proyek,\nmemahami praktik perawatan open source, dan mengikuti perkembangan komunitas.\n\nKategori awal yang akan dikurasi:\n\n- Project spotlight.\n- Learning notes.\n- Release notes.\n- Catatan maintenance.\n- Kabar komunitas.\n\n## Cara Berkontribusi\n\nKontributor dapat menyalin template dari `templates/article.md`, membuat file di\nfolder `content/YYYY/MM/`, lalu membuka pull request.\n\nSetiap tulisan akan direview agar struktur, sumber, dan nada tulisannya sesuai\ndengan kebutuhan pembaca IndopenSource.\n\n## Langkah Berikutnya\n\nSetelah alur editorial stabil, konten dari repo ini dapat diintegrasikan ke\nwebsite `indopensource.org`.",
     "sourceUrl": "https://github.com/IndopenSource/Blog-IndopenSource/blob/main/content/2026/06/memperkenalkan-blog-indopensource.md",
     "releasedAt": "2026-06-14",
-    "lastModifiedAt": "2026-06-14T01:02:37Z",
+    "lastModifiedAt": "2026-07-16T11:02:50Z",
     "author": {
       "name": "IndopenSource Maintainers",
       "avatarUrl": "",
