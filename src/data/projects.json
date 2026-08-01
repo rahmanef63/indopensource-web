@@ -21,7 +21,7 @@
       "user-agent",
       "user-agent-parser"
     ],
-    "updatedAt": "2026-07-29T20:11:16Z",
+    "updatedAt": "2026-08-01T02:28:20Z",
     "pushedAt": "2026-07-27T15:52:17Z",
     "latestRelease": {
       "name": "v2.0.10",
@@ -42,7 +42,7 @@
     "url": "https://github.com/laravolt/avatar",
     "homepage": "",
     "language": "PHP",
-    "stars": 1983,
+    "stars": 1984,
     "forks": 186,
     "topics": [
       "avatar",
@@ -51,7 +51,7 @@
       "php",
       "php-library"
     ],
-    "updatedAt": "2026-07-24T11:43:59Z",
+    "updatedAt": "2026-07-31T09:28:44Z",
     "pushedAt": "2026-07-21T15:58:49Z",
     "latestRelease": {
       "name": "7.0.0",
@@ -72,7 +72,7 @@
     "url": "https://github.com/danpros/htmly",
     "homepage": "https://www.htmly.com",
     "language": "PHP",
-    "stars": 1351,
+    "stars": 1352,
     "forks": 305,
     "topics": [
       "blog",
@@ -84,7 +84,7 @@
       "php",
       "website"
     ],
-    "updatedAt": "2026-07-30T11:19:36Z",
+    "updatedAt": "2026-08-01T04:00:20Z",
     "pushedAt": "2026-01-25T01:00:57Z",
     "latestRelease": {
       "name": "HTMLy v3.1.1",
@@ -112,7 +112,7 @@
       "sistem-informasi-desa"
     ],
     "updatedAt": "2026-07-30T17:00:53Z",
-    "pushedAt": "2026-07-31T03:42:52Z",
+    "pushedAt": "2026-07-31T21:23:02Z",
     "latestRelease": {
       "name": "Rilis v2607.0.1",
       "tagName": "v2607.0.1",
@@ -132,10 +132,10 @@
     "url": "https://github.com/jipraks/yt-short-clipper",
     "homepage": "",
     "language": "Python",
-    "stars": 913,
-    "forks": 282,
+    "stars": 918,
+    "forks": 283,
     "topics": [],
-    "updatedAt": "2026-07-31T08:58:12Z",
+    "updatedAt": "2026-08-01T07:38:35Z",
     "pushedAt": "2026-07-18T02:05:39Z",
     "latestRelease": {
       "name": "YT Short Clipper v2.0.5-beta",
@@ -243,7 +243,7 @@
     "url": "https://github.com/fajarhide/omni",
     "homepage": "https://omni.weekndlabs.com",
     "language": "Rust",
-    "stars": 315,
+    "stars": 316,
     "forks": 31,
     "topics": [
       "ai-agents",
@@ -265,7 +265,7 @@
       "token-reduction",
       "token-savings"
     ],
-    "updatedAt": "2026-07-29T22:39:11Z",
+    "updatedAt": "2026-07-31T09:52:21Z",
     "pushedAt": "2026-07-29T22:39:08Z",
     "latestRelease": {
       "name": "v0.6.8",
@@ -303,8 +303,8 @@
       "terminal-emulator",
       "workspace-manager"
     ],
-    "updatedAt": "2026-07-31T09:15:47Z",
-    "pushedAt": "2026-07-31T08:53:51Z",
+    "updatedAt": "2026-08-01T07:30:59Z",
+    "pushedAt": "2026-08-01T07:30:42Z",
     "latestRelease": {
       "name": "Termul Manager v0.4.8",
       "tagName": "v0.4.8",
@@ -337,7 +337,7 @@
       "tiptap-editor"
     ],
     "updatedAt": "2026-07-30T03:00:21Z",
-    "pushedAt": "2026-07-31T08:22:51Z",
+    "pushedAt": "2026-08-01T05:17:10Z",
     "latestRelease": {
       "name": "v3.2.2",
       "tagName": "v3.2.2",
@@ -357,10 +357,10 @@
     "url": "https://github.com/mallexibra-dev/clipforge",
     "homepage": "",
     "language": "Python",
-    "stars": 156,
+    "stars": 157,
     "forks": 39,
     "topics": [],
-    "updatedAt": "2026-07-30T02:24:16Z",
+    "updatedAt": "2026-08-01T05:40:04Z",
     "pushedAt": "2026-06-26T05:38:51Z",
     "latestRelease": null,
     "archived": false,
@@ -480,7 +480,7 @@
     "url": "https://github.com/mydisha/keirouter",
     "homepage": "https://keirouter.app",
     "language": "Go",
-    "stars": 109,
+    "stars": 110,
     "forks": 39,
     "topics": [
       "ai",
@@ -502,7 +502,7 @@
       "rtk",
       "zai"
     ],
-    "updatedAt": "2026-07-31T08:13:00Z",
+    "updatedAt": "2026-07-31T13:58:21Z",
     "pushedAt": "2026-07-30T10:08:38Z",
     "latestRelease": {
       "name": "v0.1.28",
@@ -523,7 +523,7 @@
     "url": "https://github.com/adenaufal/anti-slop-writing",
     "homepage": "",
     "language": "",
-    "stars": 102,
+    "stars": 103,
     "forks": 7,
     "topics": [
       "agent-skill",
@@ -542,7 +542,7 @@
       "writing",
       "writing-style"
     ],
-    "updatedAt": "2026-07-28T01:12:38Z",
+    "updatedAt": "2026-08-01T02:47:45Z",
     "pushedAt": "2026-07-06T04:02:38Z",
     "latestRelease": {
       "name": "v3.0",
@@ -592,7 +592,7 @@
     "url": "https://github.com/IlhamriSKY/TEDI",
     "homepage": "https://tedi.ilhamriski.com",
     "language": "TypeScript",
-    "stars": 82,
+    "stars": 86,
     "forks": 11,
     "topics": [
       "ai",
@@ -611,13 +611,13 @@
       "tauri",
       "terminal"
     ],
-    "updatedAt": "2026-07-31T08:32:01Z",
-    "pushedAt": "2026-07-31T08:32:56Z",
+    "updatedAt": "2026-08-01T02:08:26Z",
+    "pushedAt": "2026-08-01T02:11:17Z",
     "latestRelease": {
-      "name": "TEDI v0.4.0",
-      "tagName": "v0.4.0",
-      "url": "https://github.com/IlhamriSKY/TEDI/releases/tag/v0.4.0",
-      "publishedAt": "2026-07-31T08:53:36Z"
+      "name": "TEDI v0.4.2",
+      "tagName": "v0.4.2",
+      "url": "https://github.com/IlhamriSKY/TEDI/releases/tag/v0.4.2",
+      "publishedAt": "2026-08-01T03:14:45Z"
     },
     "archived": false,
     "readmeHtml": "<div>\n  <img src=\"https://raw.githubusercontent.com/IlhamriSKY/TEDI/main/public/icon.png\" width=\"120\" height=\"120\" alt=\"TEDI\" />\n  <h2>TEDI</h2>\n  <p><em>Terminal Director</em></p>\n  <p><strong>One lightweight app. Eight features. Your whole dev workflow in a single window.</strong></p>  <p>\n    <img src=\"https://img.shields.io/badge/license-Apache--2.0-green\" alt=\"license\" />\n    <img src=\"https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey\" alt=\"platform\" />\n    <img src=\"https://img.shields.io/badge/runtime-no%20Electron-brightgreen\" alt=\"no Electron\" />\n    <img src=\"https://img.shields.io/badge/telemetry-none-blue\" alt=\"no telemetry\" />\n  </p>\n</div><hr />\n<h2>What is TEDI?</h2>\n<p><strong>TEDI</strong> (Terminal Director) folds eight tools you reach for every day (a terminal, SSH client, DB browser, editor, AI agent, browser, and Git) into one window, so you stop alt-tabbing. Built on Tauri 2, so a Rust core owns every OS resource and the UI is a single webview: no Node runtime, no bundled Chromium, and a resident footprint closer to a terminal than to an IDE. <strong>No telemetry</strong>; API keys stay in the OS keychain, and it runs fully offline against a local model if you want.</p>\n<h2>The eight features</h2>\n<table>\n<thead>\n<tr>\n<th>#</th>\n<th>Feature</th>\n<th>What it does</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>1</td>\n<td><strong>Terminal multiplexer</strong></td>\n<td>Native PTY terminals (zsh / bash / fish / pwsh) on xterm.js + WebGL: split panes, tab groups, shell integration (OSC 7 / 133), inline search, and link detection. Inactive tabs keep streaming.</td>\n</tr>\n<tr>\n<td>2</td>\n<td><strong>SSH connection</strong></td>\n<td>Connect to remote hosts (<code>russh</code>), open remote shells, and browse/transfer files over an integrated <strong>SFTP</strong> explorer, all from a saved connection manager.</td>\n</tr>\n<tr>\n<td>3</td>\n<td><strong>SQL explorer</strong> <em>(extension)</em></td>\n<td>Browse and query databases from a dedicated panel. Ships as an extension (feature 8), so it installs and updates at runtime.</td>\n</tr>\n<tr>\n<td>4</td>\n<td><strong>Code editor</strong></td>\n<td>CodeMirror 6 for TS/JS, Rust, Python, PHP, HTML/CSS, JSON, Markdown, C/C++, Java, C#, SQL, and more, with inline AI autocomplete, diff view, Vim mode, and Markdown/image preview.</td>\n</tr>\n<tr>\n<td>5</td>\n<td><strong>AI-native agent</strong></td>\n<td>Bring-your-own-key agent across ten providers (OpenAI, Anthropic, Google, xAI, Cerebras, Groq, DeepSeek, SumoPod) and <strong>local models</strong> via LM Studio or any OpenAI-compatible server (Ollama, llama.cpp, vLLM). Plan mode, skills, MCP, ten sub-agents, voice input, project memory via <code>TEDI.md</code>, and tools gated by approval.</td>\n</tr>\n<tr>\n<td>6</td>\n<td><strong>AI browser control</strong></td>\n<td>A real in-app browser (native webview) the agent drives end to end: navigate, read, type, click, scroll, screenshot the tab to <em>see</em> it, and read its <strong>console errors</strong> to find out why your page broke.</td>\n</tr>\n<tr>\n<td>7</td>\n<td><strong>Workspaces</strong></td>\n<td>Each workspace keeps its own project session (tab layout + working dirs) and switches instantly. The header folder picker spawns a terminal rooted there.</td>\n</tr>\n<tr>\n<td>8</td>\n<td><strong>Source control + extensions</strong></td>\n<td>Inline Git diff / SCM pane, and a first-class <strong>extension</strong> system: install from a <code>.zip</code> or GitHub release to add settings, AI tools, commands, keybindings, panels, and status / header / sidebar items.</td>\n</tr>\n</tbody></table>\n<p>Everything is <strong>fully themeable</strong> (presets, custom colors, transparency) while staying lightweight.</p>\n<h2>Install</h2>\n<p>Pre-built binaries: <strong><a href=\"https://github.com/IlhamriSKY/TEDI/releases/latest\" rel=\"noopener noreferrer\">Releases</a></strong> (Windows, macOS, Linux <code>.deb</code> / <code>.rpm</code> / <code>.AppImage</code>). Download for your OS and install; TEDI auto-checks for updates.</p>\n<h2>Screenshots</h2>\n<p>\n  <img src=\"https://raw.githubusercontent.com/IlhamriSKY/TEDI/main/docs/1.png\" width=\"49%\" alt=\"TEDI screenshot 1\" />\n  <img src=\"https://raw.githubusercontent.com/IlhamriSKY/TEDI/main/docs/2.png\" width=\"49%\" alt=\"TEDI screenshot 2\" />\n</p>\n<p>\n  <img src=\"https://raw.githubusercontent.com/IlhamriSKY/TEDI/main/docs/3.png\" width=\"49%\" alt=\"TEDI screenshot 3\" />\n  <img src=\"https://raw.githubusercontent.com/IlhamriSKY/TEDI/main/docs/4.png\" width=\"49%\" alt=\"TEDI screenshot 4\" />\n</p>\n<p>\n  <img src=\"https://raw.githubusercontent.com/IlhamriSKY/TEDI/main/docs/5.png\" width=\"49%\" alt=\"TEDI screenshot 5\" />\n</p><h2>Configure AI</h2>\n<p><strong>Settings → AI</strong>, pick a provider and paste your API key. Keys go to the OS keychain via <code>keyring</code>, never to disk or <code>localStorage</code>. Full list: <code>PROVIDERS</code> in <a href=\"https://github.com/IlhamriSKY/TEDI/blob/main/src/modules/ai/config.ts\" rel=\"noopener noreferrer\">src/modules/ai/config.ts</a>.</p>\n<p><strong>Running fully local?</strong> Two routes, both keyless:</p>\n<ul>\n<li><strong>LM Studio</strong> is its own provider. Start its server and point TEDI at it (default <code>http://localhost:1234/v1</code>).</li>\n<li><strong>OpenAI Compatible</strong> takes any server that speaks the API, and you can add several at once. Presets ship for <strong>Ollama</strong> (<code>:11434</code>), <strong>llama.cpp</strong> (<code>:8080</code>), <strong>vLLM</strong> (<code>:8000</code>), plus OpenRouter and 9Router. A <code>localhost</code> / <code>127.0.0.1</code> endpoint needs no API key; leave the field blank.</li>\n</ul>\n<p>The same providers back <strong>inline autocomplete</strong> (Settings → AI → Autocomplete), so ghost text works on a cloud key or entirely offline. Set the model id yourself when your server names models its own way (<code>qwen2.5-coder:7b</code>, a GGUF filename).</p>\n<h2>Extensions</h2>\n<p>TEDI ships <strong>no extensions</strong> in the binary; every one (including the SQL explorer) installs at runtime. Re-installing the same <code>manifest.id</code> replaces the old copy, so the same path handles updates.</p>\n<pre><code>Settings → Extensions → From file       (pick a local .zip)\nSettings → Extensions → From GitHub     (paste owner/repo)\nSettings → Extensions → Check updates   (re-check releases/latest)\n</code></pre>\n<p>Per-extension icon, namespaced settings/secrets/storage, and a permission-gated host API. Authoring guide: <a href=\"https://github.com/IlhamriSKY/TEDI/blob/main/extensions/README.md\" rel=\"noopener noreferrer\">extensions/README.md</a>. Reference extension: <a href=\"https://github.com/IlhamriSKY/TEDI.discord-rich-presence\" rel=\"noopener noreferrer\">Discord Rich Presence</a>.</p>\n<h2>CLI</h2>\n<pre><code class=\"language-bash\">tedi [PATH]          # open a folder or file in TEDI\ntedi .               # open the current directory\ntedi ext &lt;subcmd&gt;    # manage extensions headlessly (install / list / update / ...)\ntedi theme &lt;subcmd&gt;  # manage themes from the terminal\ntedi --help | --version | --update\n</code></pre>\n<p>If TEDI is already running, the request forwards to the existing window (no second instance). On macOS / Linux AppImage the <code>tedi</code> command is not on <code>PATH</code> by default: <strong>Settings → General → \"Install <code>tedi</code> command in PATH\"</strong> creates a shim at <code>~/.local/bin/tedi</code>. Windows' installer handles this.</p>\n<h2>Architecture</h2>\n<p>A Tauri 2 app: a React 19 webview (<code>src/</code>) talks to a Rust backend (<code>src-tauri/</code>) via <code>invoke()</code> and streaming <code>Channel</code>s. See <strong><a href=\"https://github.com/IlhamriSKY/TEDI/blob/main/ARCHITECTURE.md\" rel=\"noopener noreferrer\">ARCHITECTURE.md</a></strong> for a one-page map, then <a href=\"https://github.com/IlhamriSKY/TEDI/blob/main/TEDI.md\" rel=\"noopener noreferrer\">TEDI.md</a> for the per-module reference.</p>\n<h2>Build from source</h2>\n<p>Prereqs: Rust stable (<a href=\"https://rustup.rs\" rel=\"noopener noreferrer\">rustup</a>), Node 20.19+ / 22.12+ with <a href=\"https://pnpm.io\" rel=\"noopener noreferrer\">pnpm</a>, and <a href=\"https://tauri.app/start/prerequisites/\" rel=\"noopener noreferrer\">Tauri's platform prereqs</a>.</p>\n<pre><code class=\"language-bash\">pnpm install\npnpm tauri:dev     # dev (isolated data dir)\npnpm tauri build   # production bundle\n</code></pre>\n<p>Pre-PR checks (full list in <a href=\"https://github.com/IlhamriSKY/TEDI/blob/main/CONTRIBUTING.md\" rel=\"noopener noreferrer\">CONTRIBUTING.md</a>):</p>\n<pre><code class=\"language-bash\">pnpm exec tsc --noEmit &amp;&amp; pnpm lint:imports &amp;&amp; pnpm format:check\ncd src-tauri &amp;&amp; cargo clippy &amp;&amp; cargo fmt\n</code></pre>\n<h2>Notes per platform</h2>\n<ul>\n<li><strong>Windows</strong>: SmartScreen warns on first launch (unsigned); click <em>More info &gt; Run anyway</em>. Shell priority: <code>pwsh.exe</code>, <code>powershell.exe</code>, <code>cmd.exe</code>.</li>\n<li><strong>Linux</strong>: on <code>EGL_BAD_PARAMETER</code> or a blank window, set <code>WEBKIT_DISABLE_DMABUF_RENDERER=1</code>. AppImage needs FUSE (else <code>--appimage-extract-and-run</code>, or use the <code>.deb</code> / <code>.rpm</code>).</li>\n<li><strong>macOS</strong>: minimum 10.15. Unsigned builds may trip Gatekeeper; drag to <code>/Applications</code>, run <code>xattr -cr /Applications/TEDI.app</code> once, then open from Finder.</li>\n</ul>\n<h2>Credits</h2>\n<p>TEDI is a fork of <strong><a href=\"https://github.com/crynta/terax-ai/releases/tag/v0.5.9\" rel=\"noopener noreferrer\">crynta/terax-ai@v0.5.9</a></strong> by <a href=\"https://github.com/crynta\" rel=\"noopener noreferrer\">Crynta</a>. The Tauri/Rust backend, the xterm.js terminal, the CodeMirror editor, and the AI agent pipeline are the work of Crynta and the Terax contributors. Same Apache-2.0 license; if TEDI is useful, please star upstream <a href=\"https://github.com/crynta/terax-ai\" rel=\"noopener noreferrer\">Terax</a>.</p>\n<h2>License</h2>\n<p>Apache-2.0. See <a href=\"https://github.com/IlhamriSKY/TEDI/blob/main/LICENSE\" rel=\"noopener noreferrer\">LICENSE</a> and <a href=\"https://github.com/IlhamriSKY/TEDI/blob/main/NOTICE\" rel=\"noopener noreferrer\">NOTICE</a> for required attribution.</p>\n"
@@ -644,7 +644,7 @@
       "sveltekit"
     ],
     "updatedAt": "2026-07-26T02:42:40Z",
-    "pushedAt": "2026-07-28T06:25:09Z",
+    "pushedAt": "2026-07-31T19:33:53Z",
     "latestRelease": {
       "name": "svelte-audio-ui@1.0.1",
       "tagName": "v1.0.1",
@@ -721,8 +721,8 @@
     "stars": 50,
     "forks": 15,
     "topics": [],
-    "updatedAt": "2026-07-30T03:21:41Z",
-    "pushedAt": "2026-07-25T14:58:07Z",
+    "updatedAt": "2026-08-01T02:52:04Z",
+    "pushedAt": "2026-08-01T02:51:59Z",
     "latestRelease": null,
     "archived": false,
     "readmeHtml": "<h2>NATS — Enterprise Resource Planning System (v1.0.0-alpha)</h2>\n<p>NATS is a Next.js-based ERP system designed to handle various business functions ranging from accounting, inventory, sales, purchasing, POS, to payroll.</p>\n<p><strong><a href=\"https://maziyank.github.io/nats/\" rel=\"noopener noreferrer\">🌐 Lihat Dokumentasi Online</a></strong></p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Accounting</strong>: Automated general ledger, journals, and financial reports.</li>\n<li><strong>Inventory</strong>: Management of stock, warehouses, and item movements.</li>\n<li><strong>Sales &amp; Purchasing</strong>: Complete workflow from orders to invoices.</li>\n<li><strong>Point of Sale (POS)</strong>: Responsive and user-friendly cashier interface.</li>\n<li><strong>Payroll</strong>: Automated salary structure management and payslip generation.</li>\n<li><strong>AI Integration</strong>: Smart features to assist in business data analysis.</li>\n</ul>\n<h2>Screenshots</h2>\n<p><img src=\"https://raw.githubusercontent.com/maziyank/nats/app-main/image/README/1776302209274.png\" alt=\"1776302209274\" />\n<em>Main Dashboard View</em></p>\n<p><img src=\"https://raw.githubusercontent.com/maziyank/nats/app-main/image/README/1776302243874.png\" alt=\"1776302243874\" />\n<em>Accounting Module</em></p>\n<p><img src=\"https://raw.githubusercontent.com/maziyank/nats/app-main/image/README/1776302322989.png\" alt=\"1776302322989\" />\n<em>Financial Report</em></p>\n<p><img src=\"https://raw.githubusercontent.com/maziyank/nats/app-main/image/README/1776302374473.png\" alt=\"1776302374473\" />\n<em>Point of Sale (POS)</em></p>\n<h2>Installation Guide</h2>\n<p>Follow the steps below to run NATS in your local environment.</p>\n<h3>Prerequisites</h3>\n<p>Before starting, ensure your system has the following components:</p>\n<ul>\n<li><strong>Node.js</strong>: Version 20.x or later.</li>\n<li><strong>NPM</strong>: Usually included with the Node.js installation.</li>\n<li><strong>PostgreSQL</strong>: The main system database.</li>\n<li><strong>Git</strong>: For source code management.</li>\n</ul>\n<h3>Installation Steps</h3>\n<h4>1. Clone Repository</h4>\n<pre><code class=\"language-bash\">git clone &lt;repository-url&gt;\ncd nats\n</code></pre>\n<h4>2. Install Dependencies</h4>\n<pre><code class=\"language-bash\">npm install\n</code></pre>\n<h4>3. Configure Environment Variables</h4>\n<p>Copy the <code>.env.example</code> file to <code>.env</code> and adjust its values:</p>\n<pre><code class=\"language-bash\">cp .env.example .env\n</code></pre>\n<p>Ensure the <code>DATABASE_URL</code> variable correctly points to your PostgreSQL instance:\n<code>DATABASE_URL=\"postgresql://user:password@localhost:5432/nats\"</code></p>\n<h4>4. Database Preparation</h4>\n<p>Create a database in PostgreSQL:</p>\n<pre><code class=\"language-bash\">psql -U postgres -c \"CREATE DATABASE nats;\"\n</code></pre>\n<p>Perform database migration and schema creation:</p>\n<pre><code class=\"language-bash\">npx prisma generate\nnpx prisma migrate dev --name init\n</code></pre>\n<h4>5. Seed Initial Data</h4>\n<p>Populate the database with initial data (roles, default users, etc.). Choose one of the following options:</p>\n<p><strong>Option A: Complete Seeding (Recommended for Testing)</strong>\nIncludes sample products, transactions, and bulk data:</p>\n<pre><code class=\"language-bash\">npm run prisma db seed\n</code></pre>\n<p><strong>Option B: Minimal Seeding (Clean Start)</strong>\nIncludes only essential data: Company Profile, Chart of Accounts, and Default Roles/Users:</p>\n<pre><code class=\"language-bash\">npm run prisma:seed:minimal\n</code></pre>\n<p><strong>Default Credentials:</strong></p>\n<ul>\n<li><strong>Password</strong>: <code>password123</code> (for all default users)</li>\n</ul>\n<table>\n<thead>\n<tr>\n<th align=\"left\">Role</th>\n<th align=\"left\">Email</th>\n<th align=\"left\">Name</th>\n</tr>\n</thead>\n<tbody><tr>\n<td align=\"left\"><strong>Super Admin</strong></td>\n<td align=\"left\"><code>admin@example.com</code></td>\n<td align=\"left\">Admin User</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>Accountant</strong></td>\n<td align=\"left\"><code>accountant@example.com</code></td>\n<td align=\"left\">John Accountant</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>Cashier</strong></td>\n<td align=\"left\"><code>cashier@example.com</code></td>\n<td align=\"left\">Jane Cashier</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>Manager</strong></td>\n<td align=\"left\"><code>manager@example.com</code></td>\n<td align=\"left\">Mike Manager</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>Merchant</strong></td>\n<td align=\"left\"><code>merchant@example.com</code></td>\n<td align=\"left\">Sample Merchant</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>Customer</strong></td>\n<td align=\"left\"><code>customer@example.com</code></td>\n<td align=\"left\">Sample Customer</td>\n</tr>\n</tbody></table>\n<h4>6. Run Application</h4>\n<p>Run the development server:</p>\n<pre><code class=\"language-bash\">npm run dev\n</code></pre>\n<p>The application can be accessed at <a href=\"http://localhost:3000\" rel=\"noopener noreferrer\">http://localhost:3000</a>.</p>\n<hr />\n<h2>Installation Using Docker (Optional)</h2>\n<p>If you want to run the application using Docker Compose:</p>\n<pre><code class=\"language-bash\">docker-compose up -d\n</code></pre>\n<p>After the containers are running, initialize the database:</p>\n<pre><code class=\"language-bash\">docker-compose exec app npx prisma migrate deploy\n# Run complete seed\ndocker-compose exec app npm run prisma db seed\n\n# OR run minimal seed\ndocker-compose exec app npm run prisma:seed:minimal\n</code></pre>\n<hr />\n<h2>License</h2>\n<p>This project is licensed under <a href=\"https://github.com/maziyank/nats/blob/app-main/LICENSE\" rel=\"noopener noreferrer\">LICENSE</a>.</p>\n"
@@ -882,7 +882,7 @@
     "url": "https://github.com/rahmanef63/os-vps",
     "homepage": "",
     "language": "TypeScript",
-    "stars": 42,
+    "stars": 43,
     "forks": 6,
     "topics": [
       "browser-shell",
@@ -905,7 +905,7 @@
       "web-desktop",
       "web-terminal"
     ],
-    "updatedAt": "2026-07-30T17:43:07Z",
+    "updatedAt": "2026-07-31T22:37:27Z",
     "pushedAt": "2026-07-30T17:41:29Z",
     "latestRelease": null,
     "archived": false,
@@ -950,8 +950,8 @@
     "stars": 41,
     "forks": 4,
     "topics": [],
-    "updatedAt": "2026-07-31T01:55:12Z",
-    "pushedAt": "2026-07-31T02:09:41Z",
+    "updatedAt": "2026-08-01T02:19:30Z",
+    "pushedAt": "2026-08-01T02:19:26Z",
     "latestRelease": {
       "name": "Tycho v0.9.0",
       "tagName": "v0.9.0",
@@ -1080,7 +1080,7 @@
       "xendit"
     ],
     "updatedAt": "2026-07-10T18:30:02Z",
-    "pushedAt": "2026-07-17T22:44:07Z",
+    "pushedAt": "2026-07-31T22:43:55Z",
     "latestRelease": {
       "name": "v0.1.11",
       "tagName": "v0.1.11",
@@ -1245,8 +1245,8 @@
     "stars": 18,
     "forks": 2,
     "topics": [],
-    "updatedAt": "2026-07-31T06:54:25Z",
-    "pushedAt": "2026-07-31T06:53:28Z",
+    "updatedAt": "2026-08-01T01:59:53Z",
+    "pushedAt": "2026-08-01T01:59:49Z",
     "latestRelease": {
       "name": "v1.2.615",
       "tagName": "v1.2.615",
@@ -1304,7 +1304,7 @@
     "url": "https://github.com/rizukirr/vibekit",
     "homepage": "",
     "language": "JavaScript",
-    "stars": 16,
+    "stars": 17,
     "forks": 1,
     "topics": [
       "claude-code",
@@ -1318,8 +1318,8 @@
       "vibe-coding",
       "vibecoding"
     ],
-    "updatedAt": "2026-07-28T14:01:51Z",
-    "pushedAt": "2026-07-28T13:57:03Z",
+    "updatedAt": "2026-08-01T07:47:45Z",
+    "pushedAt": "2026-08-01T07:47:35Z",
     "latestRelease": {
       "name": "v0.5.2",
       "tagName": "v0.5.2",
@@ -1578,7 +1578,7 @@
       "semantic-search"
     ],
     "updatedAt": "2026-07-30T03:19:20Z",
-    "pushedAt": "2026-07-30T08:58:54Z",
+    "pushedAt": "2026-07-31T11:45:16Z",
     "latestRelease": {
       "name": "OpenEmpiric v1.0.5",
       "tagName": "v1.0.5",
@@ -1779,8 +1779,8 @@
     "stars": 6,
     "forks": 0,
     "topics": [],
-    "updatedAt": "2026-07-30T20:17:13Z",
-    "pushedAt": "2026-07-30T20:16:31Z",
+    "updatedAt": "2026-07-31T20:21:40Z",
+    "pushedAt": "2026-07-31T20:21:35Z",
     "latestRelease": null,
     "archived": false,
     "readmeHtml": "<h2>tokengratis.id</h2>\n<p>Direktori <strong>free tier &amp; free credits API LLM</strong>, di-aggregate otomatis dari sumber komunitas — plus alat buat milih, masang, dan mantau pilihan itu. Audience Indonesia (antarmuka Bahasa Indonesia). Aggregator transparan — <strong>bukan verifier</strong>.</p>\n<blockquote>\n<p>Live: <strong><a href=\"https://tokengratis.id\" rel=\"noopener noreferrer\">https://tokengratis.id</a></strong> · Spec: <a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/docs/PRD.md\" rel=\"noopener noreferrer\"><code>docs/PRD.md</code></a> · State terkini: <a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/docs/STATE.md\" rel=\"noopener noreferrer\"><code>docs/STATE.md</code></a></p>\n</blockquote>\n<p>Tiap data nampilin <strong>dari mana</strong> + <strong>di-sync kapan</strong> + link ke sumber aslinya. Ga ada klaim \"verified\" — trust dari transparansi, bukan klaim.</p>\n<p>Angka saat ini: <strong>24 provider · 397 model · 54 penawaran modal gratis · 144 URL sitemap.</strong></p>\n<h2>Fitur</h2>\n<ul>\n<li><strong>Direktori</strong> — homepage: 24 provider free-tier LLM, filter modalitas, link <code>/provider/[slug]</code> per provider.</li>\n<li><strong><a href=\"https://tokengratis.id/pilih\" rel=\"noopener noreferrer\"><code>/pilih</code></a></strong> — wizard: saring provider+model by modalitas / context minimum / preferensi rate limit → kandidat provider+model ranked dengan alasan yang di-generate dari data yang beneran ada (bukan skor buatan).</li>\n<li><strong><a href=\"https://tokengratis.id/fallback\" rel=\"noopener noreferrer\"><code>/fallback</code></a></strong> — susun 2–4 provider jadi rantai fallback, generate config siap pakai: Vercel AI SDK, LiteLLM (<code>config.yaml</code>), TypeScript polos, atau <code>.env</code>.</li>\n<li><strong>Panel \"Setup dalam 5 menit\"</strong> di tiap <code>/provider/[slug]</code> — generate <code>.env</code> + snippet kerja: OpenAI SDK (Node/Python), Vercel AI SDK, LangChain, curl.</li>\n<li><strong><a href=\"https://tokengratis.id/modal-gratis\" rel=\"noopener noreferrer\"><code>/modal-gratis</code></a></strong> + 54 halaman detail — free tier &amp; kredit <strong>di luar</strong> token LLM (hosting, database, storage, email, auth, monitoring, devtool, domain, paket mahasiswa, kredit startup). Entity terpisah (<code>lib/offer-types.ts</code>), <strong>di-kurasi manual tiap minggu</strong> — bukan bagian sync nightly, karena riset (<code>docs/PRODUCT-ROADMAP.md</code> §3 Fase 5) nemu nol sumber machine-readable di domain ini.</li>\n<li><strong><code>/opensource</code></strong> — direktori open source Indonesia (sync terpisah, <code>npm run sync:opensource</code>).</li>\n</ul>\n<h2>Machine-readable</h2>\n<ul>\n<li><strong><a href=\"https://tokengratis.id/api/providers\" rel=\"noopener noreferrer\"><code>/api/providers</code></a></strong> · <strong><a href=\"https://tokengratis.id/api/models\" rel=\"noopener noreferrer\"><code>/api/models</code></a></strong> — JSON statis, CORS terbuka.</li>\n<li><strong><a href=\"https://tokengratis.id/feed.xml\" rel=\"noopener noreferrer\"><code>/feed.xml</code></a></strong> — RSS perubahan data (model/provider baru &amp; hilang), di-generate tiap sync.</li>\n<li><strong><a href=\"https://tokengratis.id/llms.txt\" rel=\"noopener noreferrer\"><code>/llms.txt</code></a></strong> / <strong><a href=\"https://tokengratis.id/llms-full.txt\" rel=\"noopener noreferrer\"><code>/llms-full.txt</code></a></strong> — ringkasan buat LLM crawler.</li>\n</ul>\n<h2><code>packages/tokengratis</code> — CLI + MCP server</h2>\n<p>Package npm zero-dependency, published sebagai <strong><code>tokengratis</code></strong>: dua binary, <code>tokengratis</code> (CLI — <code>list</code>/<code>show</code>/<code>search</code>/<code>models</code>, <code>--json</code>, <code>--refresh</code>) dan <code>tokengratis-mcp</code> (MCP server via stdio, JSON-RPC hand-rolled, no SDK). Detail lengkap + config: <a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/packages/tokengratis/README.md\" rel=\"noopener noreferrer\"><code>packages/tokengratis/README.md</code></a>.</p>\n<pre><code class=\"language-bash\">npx -y tokengratis list --modality vision --json\n</code></pre>\n<p>MCP config — <strong><code>tokengratis-mcp</code> itu bin DI DALAM package <code>tokengratis</code>, bukan package sendiri</strong>, jadi wajib <code>-p tokengratis</code>:</p>\n<pre><code class=\"language-json\">{ \"mcpServers\": { \"tokengratis\": { \"command\": \"npx\", \"args\": [\"-y\", \"-p\", \"tokengratis\", \"tokengratis-mcp\"] } } }\n</code></pre>\n<h2>Stack</h2>\n<p>Next.js 16 (App Router, Turbopack) + TypeScript strict + Tailwind v4 · static/SSG · <strong>no DB, no auth, no backend</strong> · data = file JSON di repo, regenerate tiap malam via pipeline aggregator (nightly cron → Vercel rebuild).</p>\n<h2>Dev</h2>\n<pre><code class=\"language-bash\">npm install\nnpm run dev      # http://localhost:3000\nnpm run build    # production build\nnpm test         # pipeline self-tests (jalan offline, no creds)\n</code></pre>\n<p>Env vars semuanya <strong>opsional</strong> — situs build &amp; jalan tanpa satu pun di-set. Copy <a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/.env.example\" rel=\"noopener noreferrer\"><code>.env.example</code></a> → <code>.env</code> kalau mau ngaktifin LLM fallback / newsletter route.</p>\n<h3>Code navigation — agentmap</h3>\n<p>Repo ini pakai <a href=\"https://www.npmjs.com/package/@raymondchins/agentmap\" rel=\"noopener noreferrer\"><strong>agentmap</strong></a> (devDep) — code-relationship &amp; reuse map buat ngejawab \"file apa yang make X\", \"siapa yang import ini\", \"fitur Y filenya apa aja\", reuse-before-rebuild — tanpa grep manual. Berguna buat human contributor maupun AI coding assistant.</p>\n<pre><code class=\"language-bash\">npm run agentmap -- --any &lt;query&gt;      # auto-route: file / symbol / feature / live content\nnpm run agentmap -- --relates &lt;path&gt;   # blast radius (siapa yang import path ini)\nnpm run agentmap -- --find &lt;symbol&gt;    # reuse-before-rebuild\n</code></pre>\n<h2>Cara kerja (pipeline aggregator)</h2>\n<p><code>npm run sync</code> (atau nightly cron) jalanin <code>scripts/sync.mjs</code>:</p>\n<ol>\n<li><strong>Fetch 4 sumber paralel</strong> via <code>scripts/adapters/*.mjs</code> (sumber gagal di-skip, ga jatohin pipeline):<ul>\n<li><code>mnfst/awesome-free-llm-apis</code> — JSON bersih (anchor, prioritas #1)</li>\n<li><code>freellm.net</code> — HTML table (regex parse)</li>\n<li><code>cheahjs/free-llm-api-resources</code> — README markdown</li>\n<li><code>openrouter.ai/api/v1/models</code> — live API publik (filter <code>:free</code>)</li>\n</ul>\n</li>\n<li><strong>Merge/gap-fill by priority</strong> (<code>scripts/lib/merge.mjs</code>) — tiap adapter cuma mindahin field yang eksplisit ada di sumbernya, merge ga nebak.</li>\n<li><strong>Enrich</strong> <code>context</code>/<code>maxOutput</code> yang masih null dari <a href=\"https://models.dev\" rel=\"noopener noreferrer\">models.dev</a> (<code>scripts/lib/enrich.mjs</code>, exact-match doang, ga overwrite).</li>\n<li><strong>LLM fallback</strong> (<code>scripts/lib/llm-fallback.mjs</code>) — re-parse sumber unstructured kalau markup drift; aktif hanya kalau <code>ANTHROPIC_API_KEY</code> / <code>CLAUDE_CODE_OAUTH_TOKEN</code> ada.</li>\n<li><strong>Guards</strong> — sanity floor + smoke test + rolling-baseline diff guard (<code>data/source-baselines.json</code>) → block push kalau data collapse, last-known-good tetap live.</li>\n<li>Tulis <code>data/providers.json</code>.</li>\n</ol>\n<p>Direktori open-source Indonesia di-refresh terpisah via <code>npm run sync:opensource</code> (<code>scripts/sync-opensource.mjs</code>).</p>\n<h3>Guard berbasis bentuk, bukan cuma kuantitas</h3>\n<p>2026-07-25, <code>freellm.net</code> nyisipin kolom baru <strong>\"Score\"</strong> dan ngebuang kolom <strong>\"Max Output\"</strong>. Jumlah kolom tetap sama, jumlah baris tetap normal — cuma ARTI tiap kolom yang berubah. Akibatnya: sanity floor (count-based), diff guard, dan smoke test <strong>semua lolos</strong>, sementara <code>context</code> diam-diam keisi nilai Score. <strong>216 dari 398 model</strong> kena data salah selama berminggu-minggu. Ketahuan cuma karena ada manusia yang notice <code>context=81</code> di output CLI — bukan karena ada guard yang nangkep.</p>\n<p>Perbaikannya nambah axis yang ilang: guard berbasis <strong>bentuk (shape)</strong> nilai, bukan cuma kuantitas.</p>\n<ul>\n<li><strong><code>scripts/lib/shape-guard.mjs</code></strong> — 8 rule berbasis ratio (fatal cuma kalau sistemik: &gt;50% dari sample ≥20; satu-dua baris aneh tetap dianggap noise wajar buat data komunitas).</li>\n<li><strong><code>scripts/lib/diff-guard.mjs</code> Rule 6</strong> — churn nilai-field antar run (bukan cuma churn jumlah).</li>\n<li>Keempat adapter di-perkeras: mapping kolom by nama header (bukan indeks), validasi shape upstream + fill-rate.</li>\n<li><code>npm test</code> jalanin <strong>94 self-test lintas 6 modul</strong>, full offline, no creds.</li>\n</ul>\n<h2>Prinsip non-negotiable</h2>\n<ul>\n<li><strong>Jangan pakai kata \"Verified\".</strong> Pakai \"Synced [tanggal] dari [sumber]\".</li>\n<li><strong>Extract-or-null:</strong> field yang ga eksplisit di sumber → omit. Dilarang nebak. Zero \"Unknown\".</li>\n<li>Indonesia = audience + bahasa UI, bukan filter akses (tidak ada sumber yang track terstruktur).</li>\n</ul>\n<p>Detail lengkap: <a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/CLAUDE.md\" rel=\"noopener noreferrer\"><code>CLAUDE.md</code></a> + <a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/docs/PRD.md\" rel=\"noopener noreferrer\"><code>docs/PRD.md</code></a>.</p>\n<h2>Struktur</h2>\n<pre><code>app/                        ← App Router — homepage · /provider/[slug] · /pilih · /fallback ·\n                               /modal-gratis(/[slug]) · /model/[slug] · /gratis/[modality] ·\n                               /opensource · /changelog · /api/providers · /api/models · /feed.xml\napp/api/subscribe/          ← Resend newsletter route (dormant, belum di-mount di UI)\npackages/tokengratis/       ← CLI + MCP server, zero-dep, published sebagai \"tokengratis\" di npm\ncomponents/                 ← UI components (incl. components/setup/SetupPanel.tsx)\nlib/types.ts               ← schema Provider + Model\nlib/offer-types.ts          ← schema Offer (\"modal gratis\", entity terpisah)\nlib/wizard.ts · lib/fallback.ts · lib/model-clusters.ts ← logic /pilih, /fallback, /model/[slug]\nscripts/sync.mjs           ← pipeline aggregator (npm run sync)\nscripts/adapters/          ← mnfst · freellm · cheahjs · openrouter (4 sumber paralel)\nscripts/lib/               ← merge · enrich · llm-fallback · shape-guard · diff-guard · source-sanity\nscripts/sync-opensource.mjs ← direktori open source Indonesia\ndata/                      ← providers.json · offers.json · opensource.json · source-baselines.json (di-generate; read-only)\ndocs/                      ← PRD, STATE, PRODUCT-ROADMAP, log, CHANGELOG\n</code></pre>\n<h2>Attribution / Sumber data</h2>\n<p>Yang di-aggregate cuma <strong>fakta</strong> (nama provider, context window, rate limit, signup URL), selalu dengan atribusi + link balik (lihat <code>components/Footer.tsx</code> + <code>sources[]</code> provenance per provider). Kredit:</p>\n<table>\n<thead>\n<tr>\n<th>Sumber</th>\n<th>Lisensi</th>\n<th>Peran</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"https://github.com/mnfst/awesome-free-llm-apis\" rel=\"noopener noreferrer\">mnfst/awesome-free-llm-apis</a></td>\n<td>CC0-1.0</td>\n<td>Anchor source (#1)</td>\n</tr>\n<tr>\n<td><a href=\"https://github.com/cheahjs/free-llm-api-resources\" rel=\"noopener noreferrer\">cheahjs/free-llm-api-resources</a></td>\n<td>no license declared</td>\n<td>Cross-ref (fakta only)</td>\n</tr>\n<tr>\n<td><a href=\"https://freellm.net\" rel=\"noopener noreferrer\">freellm.net</a></td>\n<td>website</td>\n<td>Cross-ref</td>\n</tr>\n<tr>\n<td><a href=\"https://openrouter.ai\" rel=\"noopener noreferrer\">openrouter.ai</a></td>\n<td>public API</td>\n<td>Authoritative untuk <code>openrouter</code></td>\n</tr>\n<tr>\n<td><a href=\"https://models.dev\" rel=\"noopener noreferrer\">models.dev</a></td>\n<td>—</td>\n<td>Enrichment metadata teknis</td>\n</tr>\n</tbody></table>\n<p>Detail lisensi/ToS tiap sumber: <a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/docs/PRD.md\" rel=\"noopener noreferrer\"><code>docs/PRD.md</code> §10</a>. Kalau lo pemilik salah satu sumber dan mau entry-nya diturunin, buka <a href=\"https://github.com/raymondchins/tokengratis-id/issues\" rel=\"noopener noreferrer\">issue</a>.</p>\n<h2>Contributing</h2>\n<p>Lihat <a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/CONTRIBUTING.md\" rel=\"noopener noreferrer\"><code>CONTRIBUTING.md</code></a> — terutama cara nambah sumber data baru (bikin adapter di <code>scripts/adapters/</code> → wire ke <code>scripts/sync.mjs</code> → set merge priority). PR ke <code>main</code>; CI jalanin typecheck + build + pipeline self-tests.</p>\n<h2>License</h2>\n<p><a href=\"https://github.com/raymondchins/tokengratis-id/blob/main/LICENSE\" rel=\"noopener noreferrer\">MIT</a> © Raymond Chin. Lisensi nutup <strong>kode</strong> proyek ini — data agregat tetap milik sumber masing-masing (lihat Attribution).</p>\n"
@@ -1806,8 +1806,8 @@
       "rest-api",
       "rust"
     ],
-    "updatedAt": "2026-07-31T04:35:38Z",
-    "pushedAt": "2026-07-31T04:35:33Z",
+    "updatedAt": "2026-07-31T15:52:02Z",
+    "pushedAt": "2026-07-31T15:51:15Z",
     "latestRelease": {
       "name": "v0.4.1",
       "tagName": "v0.4.1",
@@ -1828,7 +1828,7 @@
     "homepage": "https://www.npmjs.com/package/hippocrates-middleware",
     "language": "TypeScript",
     "stars": 5,
-    "forks": 0,
+    "forks": 1,
     "topics": [
       "ai-security",
       "api-security",
@@ -1959,11 +1959,11 @@
     "stars": 4,
     "forks": 1,
     "topics": [],
-    "updatedAt": "2026-07-30T16:15:10Z",
-    "pushedAt": "2026-07-30T16:10:53Z",
+    "updatedAt": "2026-08-01T03:59:51Z",
+    "pushedAt": "2026-08-01T04:01:18Z",
     "latestRelease": null,
     "archived": false,
-    "readmeHtml": "<h2>libmuslim</h2>\n<p>An stb-style collection of single-header C libraries for Muslim applications.\nDrop a header in, define its <code>*_IMPLEMENTATION</code> macro in one translation unit,\nand you are done. C11 and C++17, no build system, no package manager.</p>\n<table>\n<thead>\n<tr>\n<th>Header</th>\n<th>Provides</th>\n<th>Depends on</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/prayertimes.h\" rel=\"noopener noreferrer\"><code>prayertimes.h</code></a></td>\n<td>Prayer times, 21 calculation methods</td>\n<td><code>&lt;math.h&gt;</code></td>\n</tr>\n<tr>\n<td><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/hijri.h\" rel=\"noopener noreferrer\"><code>hijri.h</code></a></td>\n<td>Hijri calendar, crescent visibility models</td>\n<td><code>&lt;math.h&gt;</code></td>\n</tr>\n<tr>\n<td><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/timezone.h\" rel=\"noopener noreferrer\"><code>timezone.h</code></a></td>\n<td>IANA zone name → UTC offset, DST applied</td>\n<td>OS timezone database</td>\n</tr>\n</tbody></table>\n<p><code>prayertimes.h</code> and <code>hijri.h</code> are independent and dependency-free.\n<code>timezone.h</code> is optional and is the only header that touches the OS.</p>\n<h2>Quick start</h2>\n<pre><code class=\"language-c\">#define PRAYERTIMES_IMPLEMENTATION\n#include \"prayertimes.h\"\n\nconst MethodParams *params = method_params_get(CALC_KEMENAG);\n\nstruct PrayerTimes t = calculate_prayer_times(\n    2025, 11, 21,        // date\n    -6.2851291,          // latitude, negative = South\n    106.9814968,         // longitude, positive = East\n    7.0,                 // UTC offset in hours\n    params);\n\nchar buf[16];\nformat_time_hm(t.fajr, buf, sizeof buf);\nprintf(\"Fajr: %s\\n\", buf);   // Fajr: 04:05\n</code></pre>\n<pre><code class=\"language-sh\">gcc -std=c11 -Wall -Wextra -Wpedantic -O2 examples/prayertimes_example.c -lm -o example\n</code></pre>\n<h2>prayertimes.h</h2>\n<p>Each method sets a Fajr angle, an Isha angle or fixed interval, a Maghrib\noffset, an Asr shadow factor (1 = Shafi'i, 2 = Hanafi), and an ihtiyat\nprecautionary margin. Kemenag is the default.</p>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Method</th>\n<th>Region</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><code>mwl</code></td>\n<td>Muslim World League</td>\n<td>Europe, Far East</td>\n</tr>\n<tr>\n<td><code>makkah</code></td>\n<td>Umm al-Qura, Makkah</td>\n<td>Arabian Peninsula</td>\n</tr>\n<tr>\n<td><code>isna</code></td>\n<td>ISNA</td>\n<td>North America</td>\n</tr>\n<tr>\n<td><code>egypt</code></td>\n<td>Egyptian General Authority</td>\n<td>Africa, Middle East</td>\n</tr>\n<tr>\n<td><code>karachi</code></td>\n<td>Univ. Islamic Sciences, Karachi</td>\n<td>Pakistan, India, Bangladesh</td>\n</tr>\n<tr>\n<td><code>turkey</code></td>\n<td>Diyanet</td>\n<td>Turkey</td>\n</tr>\n<tr>\n<td><code>singapore</code></td>\n<td>MUIS</td>\n<td>Singapore</td>\n</tr>\n<tr>\n<td><code>jakim</code></td>\n<td>JAKIM</td>\n<td>Malaysia</td>\n</tr>\n<tr>\n<td><code>kemenag</code></td>\n<td>KEMENAG (default)</td>\n<td>Indonesia</td>\n</tr>\n<tr>\n<td><code>france</code></td>\n<td>UOIF</td>\n<td>France</td>\n</tr>\n<tr>\n<td><code>russia</code></td>\n<td>Spiritual Administration</td>\n<td>Russia</td>\n</tr>\n<tr>\n<td><code>dubai</code></td>\n<td>GAIAE</td>\n<td>UAE</td>\n</tr>\n<tr>\n<td><code>qatar</code> · <code>kuwait</code> · <code>jordan</code> · <code>gulf</code></td>\n<td>Ministries of Awqaf</td>\n<td>Gulf states</td>\n</tr>\n<tr>\n<td><code>tunisia</code> · <code>algeria</code> · <code>morocco</code></td>\n<td>Ministries of Religious Affairs</td>\n<td>Maghreb</td>\n</tr>\n<tr>\n<td><code>portugal</code></td>\n<td>Comunidade Islâmica de Lisboa</td>\n<td>Portugal</td>\n</tr>\n<tr>\n<td><code>moonsighting</code></td>\n<td>Moonsighting Committee</td>\n<td>Worldwide</td>\n</tr>\n</tbody></table>\n<pre><code class=\"language-c\">const MethodParams *mwl = method_params_get(CALC_MWL);\nCalcMethod m = method_from_string(\"isna\");        // case-insensitive\n</code></pre>\n<p>Pass <code>CALC_CUSTOM</code> with your own angles for anything not listed.</p>\n<p>To walk a date range without <code>struct tm</code> or <code>mktime</code>, and therefore without\nlocal-time hazards, use the <code>static inline</code> day-number helpers:</p>\n<pre><code class=\"language-c\">for (long s = mt_days_from_civil(2026, 7, 1); s &lt;= mt_days_from_civil(2026, 7, 31); s++) {\n    int y, m, d;\n    mt_civil_from_days(s, &amp;y, &amp;m, &amp;d);\n    struct PrayerTimes t = calculate_prayer_times(y, m, d, lat, lon, tz, params);\n}\n</code></pre>\n<p>Times are cross-checked against published timetables to within 1–2 minutes\ndepending on method. Those references are third-party calculators, not primary\nauthorities. See <a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/KEMENAG_METHOD.md\" rel=\"noopener noreferrer\"><code>docs/KEMENAG_METHOD.md</code></a> for the\nworked mathematics.</p>\n<h2>hijri.h</h2>\n<p>The API is layered deliberately, and the layers mean different things:</p>\n<ul>\n<li><code>HijriEveningParameters</code> — explicit astronomical quantities for one evening\nat one location: sunset, moonset, conjunction, altitudes, both geocentric and\ntopocentric elongation, Moon age, lag.</li>\n<li><code>HijriLocalPredicate</code> — one threshold condition at one observer location.</li>\n<li>Calendar functions — convert a Gregorian date to a Hijri date.</li>\n</ul>\n<p><strong>A local predicate is not a national or global authority decision.</strong> Real\nauthorities combine calculation with geographic aggregation, actual sighting\nreports, and administrative rulings. Applications must add that themselves.</p>\n<pre><code class=\"language-c\">HijriLocation jakarta = {-6.2088, 106.8456, 8.0, \"Jakarta\"};\nHijriDate date;\nhijri_from_gregorian_with_local_predicate(\n    2026, 7, 27, &amp;jakarta, HIJRI_PREDICATE_MABIMS_2021, &amp;date);\n\nhijri_umm_al_qura_from_gregorian(2026, 7, 27, &amp;date);   // Mecca-based, takes no location\n</code></pre>\n<p>Yallop and Odeh are graded visibility classifications, not calendar policies —\n<code>hijri_yallop_evaluate_evening()</code> and <code>hijri_odeh_evaluate_evening()</code> return\nbest-time parameters, a score, and a zone. Turning a zone into a date is an\napplication policy you define.</p>\n<p><strong>Accuracy.</strong> The lunar position uses the full Meeus ch. 47 series. Measured\nagainst 24 JPL Horizons epochs spanning 1900–2100: 0.0051° in longitude,\n0.0006° in latitude, 41.9 km in distance. Nutation and aberration are not\napplied, so these are geometric positions referred to the mean equinox of date.\nA calculated result is still not an observation, and nothing here decides\nreligious validity.</p>\n<h2>timezone.h</h2>\n<blockquote>\n<p><code>prayertimes.h</code> takes a fixed numeric UTC offset and has no notion of zones or\nDST — deliberately, since DST is a political rule rather than an astronomical\none. <strong>For a DST-active date you must pass the adjusted offset yourself</strong>\n(<code>1.0</code> for London in summer, <code>0.0</code> in winter).</p>\n</blockquote>\n<p><code>timezone.h</code> will resolve it for you from the host OS timezone database:</p>\n<pre><code class=\"language-c\">#define MUSLIM_TIMEZONE_IMPLEMENTATION   // exactly one translation unit\n#include \"timezone.h\"\n\nchar zone[64];\nget_system_timezone(zone, sizeof zone);              // \"Europe/London\"\ndouble tz = parse_timezone_offset(zone, time(NULL)); // DST applied\n</code></pre>\n<p>On a platform without a timezone database, keep supplying the offset yourself.</p>\n<h2>Building and tests</h2>\n<p>Everything compiles standalone. No build system.</p>\n<pre><code class=\"language-sh\">for t in tests/test_prayertimes.c tests/test_hijri.c tests/test_moon_meeus.c tests/test_timezone.c; do\n    gcc -std=c11 -Wall -Wextra -Wpedantic -O2 \"$t\" -lm -o /tmp/t &amp;&amp; /tmp/t || echo \"FAIL $t\"\ndone\n</code></pre>\n<p><code>tests/test_moon_meeus.c</code> validates the lunar series against a vendored JPL\nHorizons fixture, Meeus's own printed worked example, and published ΔT values.\n<code>tests/test_hijri.c</code> covers calendar arithmetic, predicate thresholds, and a\nlongitude sweep asserting each observer's own local evening is used.</p>\n<p>The research baseline is a generated artifact, committed so changes to it are\nvisible in review:</p>\n<pre><code class=\"language-sh\">gcc -std=c11 -Wall -Wextra -Wpedantic -O2 tests/hijri_research_probe.c -lm -o /tmp/probe\n/tmp/probe &gt; /tmp/baseline.csv\ncmp /tmp/baseline.csv docs/research/hijri-2020-2025-baseline.csv\n</code></pre>\n<p>Any change to the ephemeris, the predicates, or the evening calculation will\nbreak that <code>cmp</code> until the baseline is regenerated, and nothing in <code>tests/</code>\nenforces it — so run it after touching those areas. <strong>No value in that CSV is\nreference truth</strong>: it is produced by the library it is used to check, and its\nnine-decimal Julian Days imply precision the underlying accuracy does not\nsupport.</p>\n<p>Sources, conventions, and fixture admission decisions are recorded in\n<a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/research/\" rel=\"noopener noreferrer\"><code>docs/research/</code></a>.</p>\n<h2>Documentation</h2>\n<ul>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/KEMENAG_METHOD.md\" rel=\"noopener noreferrer\"><code>docs/KEMENAG_METHOD.md</code></a> — prayer-time mathematics (Indonesian)</li>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/INTERNATIONAL_METHODS.md\" rel=\"noopener noreferrer\"><code>docs/INTERNATIONAL_METHODS.md</code></a> — method parameters</li>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/HIJRI_CALCULATIONS.md\" rel=\"noopener noreferrer\"><code>docs/HIJRI_CALCULATIONS.md</code></a> — Hijri calculations</li>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/METHOD_TOLERANCES.md\" rel=\"noopener noreferrer\"><code>docs/METHOD_TOLERANCES.md</code></a> — accuracy expectations</li>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/ROADMAP.md\" rel=\"noopener noreferrer\"><code>ROADMAP.md</code></a> — what is planned and what is deliberately not</li>\n<li><a href=\"https://medium.com/@rizkirakasiwi09/understanding-islamic-prayer-time-calculations-the-mathematics-behind-libmuslim-library-ee169e3e97c3\" rel=\"noopener noreferrer\">Understanding Islamic Prayer Time Calculations</a></li>\n</ul>\n<h2>Contributing</h2>\n<p>Changes to calculation methods must be verified against a source, and the\nsource recorded. <code>docs/research/hijri-2020-2025-sources.md</code> shows the standard:\na fixture is admitted only when its value <em>and its conventions</em> are\nunambiguous, and an unknown convention is recorded as a gap rather than guessed.</p>\n<h2>License</h2>\n<p>MIT. Copyright 2025 muslimtify-org.</p>\n"
+    "readmeHtml": "<h2>libmuslim</h2>\n<p>An stb-style collection of single-header C libraries for Muslim applications.\nDrop a header in, define its <code>*_IMPLEMENTATION</code> macro in one translation unit,\nand you are done. C11 and C++17, no build system, no package manager.</p>\n<table>\n<thead>\n<tr>\n<th>Header</th>\n<th>Provides</th>\n<th>Depends on</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/prayertimes.h\" rel=\"noopener noreferrer\"><code>prayertimes.h</code></a></td>\n<td>Prayer times, 21 calculation methods</td>\n<td><code>&lt;math.h&gt;</code></td>\n</tr>\n<tr>\n<td><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/hijri.h\" rel=\"noopener noreferrer\"><code>hijri.h</code></a></td>\n<td>Hijri calendar, crescent visibility models</td>\n<td><code>&lt;math.h&gt;</code></td>\n</tr>\n<tr>\n<td><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/timezone.h\" rel=\"noopener noreferrer\"><code>timezone.h</code></a></td>\n<td>IANA zone name → UTC offset, DST applied</td>\n<td>OS timezone database</td>\n</tr>\n</tbody></table>\n<p><code>prayertimes.h</code> and <code>hijri.h</code> are independent and dependency-free.\n<code>timezone.h</code> is optional and is the only header that touches the OS.</p>\n<h2>Quick start</h2>\n<pre><code class=\"language-c\">#define PRAYERTIMES_IMPLEMENTATION\n#include \"prayertimes.h\"\n\nconst MethodParams *params = method_params_get(CALC_KEMENAG);\n\nstruct PrayerTimes t = calculate_prayer_times(\n    2025, 11, 21,        // date\n    -6.2851291,          // latitude, negative = South\n    106.9814968,         // longitude, positive = East\n    7.0,                 // UTC offset in hours\n    params);\n\nchar buf[16];\nformat_time_hm(t.fajr, buf, sizeof buf);\nprintf(\"Fajr: %s\\n\", buf);   // Fajr: 04:05\n</code></pre>\n<pre><code class=\"language-sh\">gcc -std=c11 -Wall -Wextra -Wpedantic -O2 examples/prayertimes_example.c -lm -o example\n</code></pre>\n<h2>prayertimes.h</h2>\n<p>Each method sets a Fajr angle, an Isha angle or fixed interval, a Maghrib\noffset, an Asr shadow factor (1 = Shafi'i, 2 = Hanafi), and an ihtiyat\nprecautionary margin. Kemenag is the default.</p>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Method</th>\n<th>Region</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><code>mwl</code></td>\n<td>Muslim World League</td>\n<td>Europe, Far East</td>\n</tr>\n<tr>\n<td><code>makkah</code></td>\n<td>Umm al-Qura, Makkah</td>\n<td>Arabian Peninsula</td>\n</tr>\n<tr>\n<td><code>isna</code></td>\n<td>ISNA</td>\n<td>North America</td>\n</tr>\n<tr>\n<td><code>egypt</code></td>\n<td>Egyptian General Authority</td>\n<td>Africa, Middle East</td>\n</tr>\n<tr>\n<td><code>karachi</code></td>\n<td>Univ. Islamic Sciences, Karachi</td>\n<td>Pakistan, India, Bangladesh</td>\n</tr>\n<tr>\n<td><code>turkey</code></td>\n<td>Diyanet</td>\n<td>Turkey</td>\n</tr>\n<tr>\n<td><code>singapore</code></td>\n<td>MUIS</td>\n<td>Singapore</td>\n</tr>\n<tr>\n<td><code>jakim</code></td>\n<td>JAKIM</td>\n<td>Malaysia</td>\n</tr>\n<tr>\n<td><code>kemenag</code></td>\n<td>KEMENAG (default)</td>\n<td>Indonesia</td>\n</tr>\n<tr>\n<td><code>france</code></td>\n<td>UOIF</td>\n<td>France</td>\n</tr>\n<tr>\n<td><code>russia</code></td>\n<td>Spiritual Administration</td>\n<td>Russia</td>\n</tr>\n<tr>\n<td><code>dubai</code></td>\n<td>GAIAE</td>\n<td>UAE</td>\n</tr>\n<tr>\n<td><code>qatar</code> · <code>kuwait</code> · <code>jordan</code> · <code>gulf</code></td>\n<td>Ministries of Awqaf</td>\n<td>Gulf states</td>\n</tr>\n<tr>\n<td><code>tunisia</code> · <code>algeria</code> · <code>morocco</code></td>\n<td>Ministries of Religious Affairs</td>\n<td>Maghreb</td>\n</tr>\n<tr>\n<td><code>portugal</code></td>\n<td>Comunidade Islâmica de Lisboa</td>\n<td>Portugal</td>\n</tr>\n<tr>\n<td><code>moonsighting</code></td>\n<td>Moonsighting Committee</td>\n<td>Worldwide</td>\n</tr>\n</tbody></table>\n<pre><code class=\"language-c\">const MethodParams *mwl = method_params_get(CALC_MWL);\nCalcMethod m = method_from_string(\"isna\");        // case-insensitive\n</code></pre>\n<p>Pass <code>CALC_CUSTOM</code> with your own angles for anything not listed.</p>\n<p>To walk a date range without <code>struct tm</code> or <code>mktime</code>, and therefore without\nlocal-time hazards, use the <code>static inline</code> day-number helpers:</p>\n<pre><code class=\"language-c\">for (long s = mt_days_from_civil(2026, 7, 1); s &lt;= mt_days_from_civil(2026, 7, 31); s++) {\n    int y, m, d;\n    mt_civil_from_days(s, &amp;y, &amp;m, &amp;d);\n    struct PrayerTimes t = calculate_prayer_times(y, m, d, lat, lon, tz, params);\n}\n</code></pre>\n<p>Times are cross-checked against published timetables to within 1–2 minutes\ndepending on method. Those references are third-party calculators, not primary\nauthorities. See <a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/KEMENAG_METHOD.md\" rel=\"noopener noreferrer\"><code>docs/KEMENAG_METHOD.md</code></a> for the\nworked mathematics.</p>\n<h2>hijri.h</h2>\n<p>The API is layered deliberately, and the layers mean different things:</p>\n<ul>\n<li><code>HijriEveningParameters</code> — explicit astronomical quantities for one evening\nat one location: sunset, moonset, conjunction, altitudes, both geocentric and\ntopocentric elongation, Moon age, lag.</li>\n<li><code>HijriLocalPredicate</code> — one threshold condition at one observer location.</li>\n<li>Calendar functions — convert a Gregorian date to a Hijri date.</li>\n</ul>\n<p><strong>A local predicate is not a national or global authority decision.</strong> Real\nauthorities combine calculation with geographic aggregation, actual sighting\nreports, and administrative rulings. Applications must add that themselves.</p>\n<pre><code class=\"language-c\">HijriLocation jakarta = {-6.2088, 106.8456, 8.0, \"Jakarta\"};\nHijriDate date;\nhijri_from_gregorian_with_local_predicate(\n    2026, 7, 27, &amp;jakarta, HIJRI_PREDICATE_MABIMS_2021, &amp;date);\n\nhijri_umm_al_qura_from_gregorian(2026, 7, 27, &amp;date);   // Mecca-based, takes no location\n</code></pre>\n<p>Yallop and Odeh are graded visibility classifications, not calendar policies —\n<code>hijri_yallop_evaluate_evening()</code> and <code>hijri_odeh_evaluate_evening()</code> return\nbest-time parameters, a score, and a zone. Turning a zone into a date is an\napplication policy you define.</p>\n<p><strong>Accuracy.</strong> The lunar position uses the full Meeus ch. 47 series. Measured\nagainst 24 JPL Horizons epochs spanning 1900–2100: 0.0051° in longitude,\n0.0006° in latitude, 41.9 km in distance. Nutation and aberration are not\napplied, so these are geometric positions referred to the mean equinox of date.\nA calculated result is still not an observation, and nothing here decides\nreligious validity.</p>\n<h2>timezone.h</h2>\n<blockquote>\n<p><code>prayertimes.h</code> takes a fixed numeric UTC offset and has no notion of zones or\nDST — deliberately, since DST is a political rule rather than an astronomical\none. <strong>For a DST-active date you must pass the adjusted offset yourself</strong>\n(<code>1.0</code> for London in summer, <code>0.0</code> in winter).</p>\n</blockquote>\n<p><code>timezone.h</code> will resolve it for you from the host OS timezone database:</p>\n<pre><code class=\"language-c\">#define MUSLIM_TIMEZONE_IMPLEMENTATION   // exactly one translation unit\n#include \"timezone.h\"\n\nchar zone[64];\nget_system_timezone(zone, sizeof zone);              // \"Europe/London\"\ndouble tz = parse_timezone_offset(zone, time(NULL)); // DST applied\n</code></pre>\n<p>On a platform without a timezone database, keep supplying the offset yourself.</p>\n<h2>Building and tests</h2>\n<p>Using the library needs no build system — drop the header in. The <code>Makefile</code> is\nfor checking the library itself, and needs <strong>GNU make</strong> (<code>gmake</code> on the BSDs):</p>\n<pre><code class=\"language-sh\">make                              # everything below\nmake test                         # build all tests strict-C11 and run them\nmake cxx                          # compile every header as C++17\nmake baseline                     # regenerate the research CSV and compare\nmake check CC=clang CXX=clang++   # same checks, different toolchain\n</code></pre>\n<p>CI runs <code>make check</code> on Linux and macOS with gcc and clang on every push and\npull request. Each target enforces something the project asserts and which was\npreviously checked only by remembering to run a command — <code>prayertimes.h</code> once\nshipped broken under its own documented build line because nobody ran it.</p>\n<p><code>tests/test_moon_meeus.c</code> validates the lunar series against a vendored JPL\nHorizons fixture, Meeus's own printed worked example, and published ΔT values.\n<code>tests/test_hijri.c</code> covers calendar arithmetic, predicate thresholds, and a\nlongitude sweep asserting each observer's own local evening is used.</p>\n<p>The research baseline is a generated artifact, committed so changes to it are\nvisible in review. Any change to the ephemeris, the predicates, or the evening\ncalculation moves it, and <code>make baseline</code> fails until it is regenerated with\n<code>make baseline-update</code>. <strong>No value in that CSV is reference truth</strong>: it is\nproduced by the library it is used to check, and its nine-decimal Julian Days\nimply precision the underlying accuracy does not support.</p>\n<p>Sources, conventions, and fixture admission decisions are recorded in\n<a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/research/\" rel=\"noopener noreferrer\"><code>docs/research/</code></a>.</p>\n<h2>Documentation</h2>\n<ul>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/KEMENAG_METHOD.md\" rel=\"noopener noreferrer\"><code>docs/KEMENAG_METHOD.md</code></a> — prayer-time mathematics (Indonesian)</li>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/INTERNATIONAL_METHODS.md\" rel=\"noopener noreferrer\"><code>docs/INTERNATIONAL_METHODS.md</code></a> — method parameters</li>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/HIJRI_CALCULATIONS.md\" rel=\"noopener noreferrer\"><code>docs/HIJRI_CALCULATIONS.md</code></a> — Hijri calculations</li>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/docs/METHOD_TOLERANCES.md\" rel=\"noopener noreferrer\"><code>docs/METHOD_TOLERANCES.md</code></a> — accuracy expectations</li>\n<li><a href=\"https://github.com/muslimtify-org/libmuslim/blob/main/ROADMAP.md\" rel=\"noopener noreferrer\"><code>ROADMAP.md</code></a> — what is planned and what is deliberately not</li>\n<li><a href=\"https://medium.com/@rizkirakasiwi09/understanding-islamic-prayer-time-calculations-the-mathematics-behind-libmuslim-library-ee169e3e97c3\" rel=\"noopener noreferrer\">Understanding Islamic Prayer Time Calculations</a></li>\n</ul>\n<h2>Contributing</h2>\n<p>Changes to calculation methods must be verified against a source, and the\nsource recorded. <code>docs/research/hijri-2020-2025-sources.md</code> shows the standard:\na fixture is admitted only when its value <em>and its conventions</em> are\nunambiguous, and an unknown convention is recorded as a gap rather than guessed.</p>\n<h2>License</h2>\n<p>MIT. Copyright 2025 muslimtify-org.</p>\n"
   },
   {
     "fullName": "wauputr4/agent-proxmox",
